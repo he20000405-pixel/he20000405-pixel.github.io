@@ -1,0 +1,48 @@
+# ChongGrok AI Membership Guides
+
+> Unified directory for independent ChatGPT and SuperGrok membership subscription, payment troubleshooting and account-status guides. ChongGrok is not affiliated with OpenAI, xAI or X.
+
+## Primary directory
+
+- Knowledge hub: https://he20000405-pixel.github.io/
+- Search: https://he20000405-pixel.github.io/search/
+- Service boundaries: https://he20000405-pixel.github.io/about/
+- English directory: https://he20000405-pixel.github.io/en/
+
+## ChatGPT guide
+
+- Main guide: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/
+- Plus automated recharge: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-plus-auto-recharge/
+- 5x / 20x Pro: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-pro-100-200/
+- Plus vs Pro: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-plus-vs-pro/
+- Payment errors: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-payment-errors/
+- Paid but still Free: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-paid-but-still-free/
+- Renewal failed and back to Free: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-renewal-failed-back-to-free/
+- GPT-5.6 update: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/gpt-5-6-update/
+
+## Grok guide
+
+- Main guide: https://he20000405-pixel.github.io/supergrok-china-guide/
+- SuperGrok recharge: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-auto-recharge/
+- Grok User ID: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-user-id/
+- SuperGrok plans: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-plans/
+- Payment errors: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-payment-errors/
+- Paid but still Free: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-paid-but-still-free/
+- Grok Build login and 403: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-build-login-403/
+- SuperGrok vs X Premium+: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-vs-x-premium-plus/
+- Grok 4.5 update: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-4-5-update/
+
+## Primary service pages
+
+- ChongGrok: https://chonggrok.com/
+- ChatGPT membership: https://chonggrok.com/chatgpt
+- SuperGrok membership: https://chonggrok.com/supergrok
+- Card-key verification: https://chonggrok.com/verify
+
+## Scope and safety
+
+- Membership subscriptions only; no API credits.
+- No ready-made accounts, SMS verification or bulk registration.
+- Passwords, email verification codes and recovery codes are not requested.
+- ChatGPT session credentials are sensitive and should be refreshed after completion.
+- No online service is risk-free; no guaranteed account outcome is claimed.

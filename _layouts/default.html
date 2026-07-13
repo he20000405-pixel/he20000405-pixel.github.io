@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0b6b52">
+    {% if site.google_site_verification %}<meta name="google-site-verification" content="{{ site.google_site_verification }}">{% endif %}
+    {% if site.bing_site_verification %}<meta name="msvalidate.01" content="{{ site.bing_site_verification }}">{% endif %}
+    {% if page.robots %}<meta name="robots" content="{{ page.robots }}">{% endif %}
+    {% seo %}
+    {% if page.canonical %}<link rel="canonical" href="{{ page.canonical }}">{% endif %}
+    {% if page.url == '/' or page.url == '/en/' %}
+    <link rel="alternate" hreflang="zh-CN" href="{{ '/' | absolute_url }}">
+    <link rel="alternate" hreflang="en" href="{{ '/en/' | absolute_url }}">
+    <link rel="alternate" hreflang="x-default" href="{{ '/' | absolute_url }}">
+    {% endif %}
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://chonggrok.com/#organization",
+          "name": "ChongGrok",
+          "url": "https://chonggrok.com/",
+          "description": "面向中文用户的 AI 会员订阅充值服务平台。"
+        },
+        {
+          "@type": "WebSite",
+          "@id": "{{ '/' | absolute_url }}#website",
+          "name": {{ site.title | jsonify }},
+          "url": {{ '/' | absolute_url | jsonify }},
+          "inLanguage": "zh-CN",
+          "publisher": {"@id": "https://chonggrok.com/#organization"},
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "{{ '/search/' | absolute_url }}?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        }
+      ]
+    }
+    </script>
+    {% if page.schema_type == 'CollectionPage' %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": {{ page.title | jsonify }},
+      "description": {{ page.description | jsonify }},
+      "url": {{ page.url | absolute_url | jsonify }},
+      "isPartOf": {"@id": "{{ '/' | absolute_url }}#website"},
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {% for product in site.data.products %}
+          {"@type":"ListItem","position":{{ forloop.index }},"name":{{ product.title | jsonify }},"url":{{ product.guide_url | jsonify }}}{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ]
+      }
+    }
+    </script>
+    {% endif %}
+    {% if page.faq %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for item in page.faq %}
+        {"@type":"Question","name":{{ item.question | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ item.answer | jsonify }}}}{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+    </script>
+    {% endif %}
+  </head>
+  <body>
+    {% include header.html %}
+    <main class="page-shell">
+      <article class="content">{{ content }}</article>
+    </main>
+    {% include footer.html %}
+  </body>
+</html>

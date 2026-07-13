@@ -1,0 +1,10 @@
+---
+layout: null
+permalink: /robots.txt
+---
+User-agent: *
+Allow: /
+
+Sitemap: https://he20000405-pixel.github.io/sitemap.xml
+Sitemap: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/sitemap.xml
+Sitemap: https://he20000405-pixel.github.io/supergrok-china-guide/sitemap.xml

@@ -1,0 +1,32 @@
+- id: chatgpt
+  name: "ChatGPT"
+  eyebrow: "OpenAI / ChatGPT"
+  title: "ChatGPT Plus / Pro 指南"
+  description: "Plus 自动充值、5x/20x Pro、付款被拒、续费失败和已付款仍显示 Free。"
+  guide_url: "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/"
+  topics_url: "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/"
+  service_url: "https://chonggrok.com/chatgpt"
+  image: "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/assets/images/social-preview.webp"
+  image_alt: "ChatGPT Free、Plus 与 Pro 使用场景和国内付款路径对比"
+  guide_count: 7
+  keywords:
+    - "ChatGPT Plus 充值"
+    - "ChatGPT Pro"
+    - "付款失败"
+    - "续费失败"
+- id: grok
+  name: "Grok"
+  eyebrow: "xAI / Grok"
+  title: "SuperGrok 充值与使用指南"
+  description: "卡密核销、Grok User ID、付款报错、Grok Build 403 和 Grok 4.5。"
+  guide_url: "https://he20000405-pixel.github.io/supergrok-china-guide/"
+  topics_url: "https://he20000405-pixel.github.io/supergrok-china-guide/guides/"
+  service_url: "https://chonggrok.com/supergrok"
+  image: "https://he20000405-pixel.github.io/supergrok-china-guide/img/social-preview.webp"
+  image_alt: "ChongGrok SuperGrok 充值页面与套餐确认说明"
+  guide_count: 8
+  keywords:
+    - "SuperGrok 充值"
+    - "Grok User ID"
+    - "Grok Build 403"
+    - "Grok 4.5"

@@ -1,0 +1,37 @@
+title: "ChongGrok AI 会员指南"
+tagline: "ChatGPT 与 SuperGrok 充值、付款报错和订阅排查知识库"
+description: "ChongGrok AI 会员指南汇总 ChatGPT Plus / Pro 与 SuperGrok 的充值流程、付款报错、订阅状态和账号凭证安全说明。"
+url: "https://he20000405-pixel.github.io"
+baseurl: ""
+repository: "he20000405-pixel/he20000405-pixel.github.io"
+lang: "zh-CN"
+timezone: "Asia/Shanghai"
+portal_url: "https://he20000405-pixel.github.io/"
+chatgpt_guide_url: "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/"
+grok_guide_url: "https://he20000405-pixel.github.io/supergrok-china-guide/"
+author:
+  name: "ChongGrok"
+  url: "https://chonggrok.com/"
+
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+      image: "https://he20000405-pixel.github.io/assets/images/social-preview.png"
+
+exclude:
+  - README.md
+  - PUBLISHING.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - social-preview-source.html

@@ -1,0 +1,29 @@
+---
+title: "ChongGrok AI Membership Guides"
+description: "Independent ChatGPT and SuperGrok membership guides covering subscription recharge, payment errors, account checks and credential safety boundaries."
+permalink: /en/
+lang: en
+last_modified_at: 2026-07-13
+---
+
+<p class="eyebrow">English Guide Directory</p>
+# ChongGrok AI Membership Guides
+
+This is the unified directory for ChongGrok's independent ChatGPT and SuperGrok membership knowledge bases. It covers subscription recharge, payment errors, entitlement checks and credential safety boundaries for users who do not have a supported international payment card.
+
+## Available guides
+
+| Product | Coverage | Guide |
+| --- | --- | --- |
+| ChatGPT | Plus automated recharge, 5x/20x Pro, card declines, renewal failures and paid-but-Free status | [Open ChatGPT guide](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/en/) |
+| Grok | SuperGrok recharge, Grok User ID, payment errors, Grok Build 403 and Grok 4.5 | [Open SuperGrok guide](https://he20000405-pixel.github.io/supergrok-china-guide/en/) |
+
+## Service boundaries
+
+- Passwords, email verification codes and recovery codes are not requested.
+- A ChatGPT session credential is sensitive even when no password is requested. It should be refreshed by signing out and back in after completion.
+- A Grok User ID is an account identifier, not a login password, but it should still be handled carefully.
+- No API credits, ready-made accounts, SMS verification or bulk registration are offered.
+- ChongGrok is not affiliated with OpenAI, xAI, X, Anthropic or Google.
+
+[Visit chonggrok.com](https://chonggrok.com/)
