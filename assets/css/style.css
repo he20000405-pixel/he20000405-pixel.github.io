@@ -182,5 +182,6 @@ code { padding: 2px 5px; border-radius: 4px; background: #eef2f1; font-size: .92
   .product-grid, .intent-grid { grid-template-columns: 1fr; }
   .search-form { grid-template-columns: 1fr; }
   .search-form button { width: 100%; }
-  th, td { min-width: 130px; }
+  table { display: table; table-layout: fixed; overflow: visible; }
+  th, td { min-width: 0; padding: 9px 8px; overflow-wrap: anywhere; }
 }
