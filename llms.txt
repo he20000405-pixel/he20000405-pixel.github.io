@@ -1,6 +1,6 @@
 # ChongGrok AI Membership Guides
 
-> Unified directory for independent ChatGPT and SuperGrok membership subscription, payment troubleshooting and account-status guides. ChongGrok is not affiliated with OpenAI, xAI or X.
+> Unified directory for independent ChatGPT, SuperGrok and Claude membership subscription, payment troubleshooting and account-status guides. ChongGrok is not affiliated with OpenAI, xAI, X or Anthropic.
 
 ## Primary directory
 
@@ -32,11 +32,23 @@
 - SuperGrok vs X Premium+: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-vs-x-premium-plus/
 - Grok 4.5 update: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-4-5-update/
 
+## Claude guide
+
+- Main guide: https://he20000405-pixel.github.io/claude-pro-max-china-guide/
+- Assisted Pro / Max subscription: https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-pro-max-recharge/
+- Pro vs Max 5x / 20x: https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-pro-vs-max/
+- Claude User ID safety: https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-user-id-safety/
+- Card decline and payment errors: https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-payment-errors/
+- Paid but still Free: https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-paid-but-still-free/
+- Renewal failed and back to Free: https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-renewal-failed-back-to-free/
+- Claude Code with Pro / Max: https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-code-pro-max/
+
 ## Primary service pages
 
 - ChongGrok: https://chonggrok.com/
 - ChatGPT membership: https://chonggrok.com/chatgpt
 - SuperGrok membership: https://chonggrok.com/supergrok
+- Claude membership: https://chonggrok.com/claude
 - Card-key verification: https://chonggrok.com/verify
 
 ## Scope and safety
@@ -45,4 +57,5 @@
 - No ready-made accounts, SMS verification or bulk registration.
 - Passwords, email verification codes and recovery codes are not requested.
 - ChatGPT session credentials are sensitive and should be refreshed after completion.
+- Grok and Claude User IDs are account identifiers, not passwords, but they should still be handled carefully.
 - No online service is risk-free; no guaranteed account outcome is claimed.

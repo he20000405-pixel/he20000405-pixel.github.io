@@ -30,3 +30,19 @@
     - "Grok User ID"
     - "Grok Build 403"
     - "Grok 4.5"
+- id: claude
+  name: "Claude"
+  eyebrow: "Anthropic / Claude"
+  title: "Claude Pro / Max 订阅指南"
+  description: "Pro、Max 5x/20x、User ID、付款被拒、续费失败、已付款仍显示 Free 和 Claude Code。"
+  guide_url: "https://he20000405-pixel.github.io/claude-pro-max-china-guide/"
+  topics_url: "https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/"
+  service_url: "https://chonggrok.com/claude"
+  image: "https://he20000405-pixel.github.io/claude-pro-max-china-guide/assets/images/social-preview.png"
+  image_alt: "Claude Pro、Max 5x 与 Max 20x 国内订阅和付款排障指南"
+  guide_count: 7
+  keywords:
+    - "Claude Pro"
+    - "Claude Max"
+    - "Claude User ID"
+    - "card declined"

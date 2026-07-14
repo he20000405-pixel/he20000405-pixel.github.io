@@ -7,19 +7,20 @@
   <style>
     * { box-sizing: border-box; }
     body { margin: 0; width: 1200px; height: 630px; overflow: hidden; color: #11191d; background: #f4f7f5; font-family: "Microsoft YaHei", "Segoe UI", Arial, sans-serif; }
-    .canvas { width: 1200px; height: 630px; display: grid; grid-template-columns: 1.1fr .9fr; border: 18px solid #fff; }
-    .copy { padding: 62px 52px; display: flex; flex-direction: column; justify-content: center; background: #fff; }
+    .canvas { width: 1200px; height: 630px; display: grid; grid-template-columns: 1.03fr .97fr; border: 18px solid #fff; }
+    .copy { padding: 56px 48px; display: flex; flex-direction: column; justify-content: center; background: #fff; }
     .mark { display: inline-grid; width: 48px; height: 48px; place-items: center; border-radius: 6px; color: #fff; background: #0b6b52; font-size: 15px; font-weight: 800; }
     .eyebrow { margin: 22px 0 12px; color: #0b6b52; font-size: 18px; font-weight: 800; letter-spacing: 2px; }
-    h1 { margin: 0; max-width: 610px; font-size: 54px; line-height: 1.18; letter-spacing: 0; }
-    p { margin: 22px 0 0; max-width: 600px; color: #506067; font-size: 23px; line-height: 1.55; }
-    .products { padding: 46px; display: grid; align-content: center; gap: 18px; background: #eaf2ee; }
-    .product { min-height: 184px; padding: 28px; border: 1px solid #c8d8d1; border-radius: 7px; background: #fff; }
+    h1 { margin: 0; max-width: 610px; font-size: 50px; line-height: 1.18; letter-spacing: 0; }
+    p { margin: 22px 0 0; max-width: 600px; color: #506067; font-size: 21px; line-height: 1.55; }
+    .products { padding: 34px; display: grid; align-content: center; gap: 13px; background: #eaf2ee; }
+    .product { min-height: 148px; padding: 22px 24px; border: 1px solid #c8d8d1; border-radius: 7px; background: #fff; }
     .product small { color: #0b6b52; font-size: 15px; font-weight: 800; letter-spacing: 1px; }
-    .product h2 { margin: 10px 0 6px; font-size: 30px; line-height: 1.25; }
-    .product span { color: #5f6b70; font-size: 18px; }
+    .product h2 { margin: 7px 0 4px; font-size: 26px; line-height: 1.2; }
+    .product span { color: #5f6b70; font-size: 16px; }
     .product.grok { border-left: 6px solid #202a31; }
     .product.chatgpt { border-left: 6px solid #0b6b52; }
+    .product.claude { border-left: 6px solid #9a4f32; }
   </style>
 </head>
 <body>
@@ -28,7 +29,7 @@
       <div class="mark">CG</div>
       <div class="eyebrow">CHONGGROK KNOWLEDGE HUB</div>
       <h1>AI 会员订阅<br>充值与报错指南</h1>
-      <p>结构清晰的 ChatGPT 与 SuperGrok 知识库入口</p>
+      <p>ChatGPT、Grok 与 Claude 订阅和报错知识库入口</p>
     </section>
     <section class="products">
       <div class="product chatgpt">
@@ -40,6 +41,11 @@
         <small>XAI / GROK</small>
         <h2>SuperGrok</h2>
         <span>User ID · 付款报错 · 403 · Grok 4.5</span>
+      </div>
+      <div class="product claude">
+        <small>ANTHROPIC / CLAUDE</small>
+        <h2>Claude Pro / Max</h2>
+        <span>User ID · card declined · Free · Claude Code</span>
       </div>
     </section>
   </main>
