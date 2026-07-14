@@ -1,6 +1,7 @@
 ---
-title: "ChongGrok AI 会员指南：ChatGPT、Grok 与 Claude 订阅及报错知识库"
+title: "ChatGPT、Grok 与 Claude 订阅及报错知识库"
 description: "ChongGrok AI 会员指南统一入口，覆盖 ChatGPT Plus / Pro、SuperGrok 与 Claude Pro / Max 的订阅、付款失败、续费、账号状态和凭证安全说明。"
+image_alt: "ChongGrok AI 会员指南：ChatGPT、Grok 与 Claude 三套知识库入口"
 permalink: /
 schema_type: CollectionPage
 last_modified_at: 2026-07-14

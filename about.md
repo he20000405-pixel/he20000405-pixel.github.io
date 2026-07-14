@@ -1,5 +1,5 @@
 ---
-title: "关于 ChongGrok AI 会员指南"
+title: "关于本站与服务边界"
 description: "说明 ChongGrok AI 会员指南的内容范围、充值业务边界、凭证安全口径和第三方关系。"
 permalink: /about/
 last_modified_at: 2026-07-14
