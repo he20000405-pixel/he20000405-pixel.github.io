@@ -57,6 +57,24 @@ def make_social():
     image.save(IMAGES / "ai-membership-safety-checklist-social.png", quality=95)
 
 
+def make_social_en():
+    image = Image.new("RGB", (1200, 630), "#f7faf8")
+    draw = ImageDraw.Draw(image)
+    draw.rectangle((0, 0, 28, 630), fill=GREEN)
+    draw.text((82, 72), "CHONGGROK · REUSABLE RESOURCE", fill=GREEN, font=pil_font(EN_BOLD, 25))
+    draw.text((82, 154), "AI Membership Safety", fill=INK, font=pil_font(EN_BOLD, 62))
+    draw.text((82, 232), "and Verification Checklist", fill=INK, font=pil_font(EN_BOLD, 62))
+    draw.text((82, 346), "ChatGPT · Grok · Claude · Gemini", fill=MUTED, font=pil_font(EN_BOLD, 31))
+    draw.rounded_rectangle((82, 430, 1115, 535), radius=12, fill=PALE, outline=LINE, width=2)
+    draw.text(
+        (112, 463),
+        "Check the billing route · Share minimum data · Verify officially",
+        fill=GREEN,
+        font=pil_font(EN_BOLD, 28),
+    )
+    image.save(IMAGES / "ai-membership-safety-checklist-social-en.png", quality=95)
+
+
 def make_infographic(language):
     zh = language == "zh"
     image = Image.new("RGB", (1200, 1600), "#f8faf9")
@@ -203,6 +221,7 @@ def make_pdf(language):
 
 if __name__ == "__main__":
     make_social()
+    make_social_en()
     for lang in ("zh", "en"):
         make_infographic(lang)
         make_pdf(lang)

@@ -6,7 +6,7 @@ lang: en
 schema_type: Article
 alternate_zh: /resources/ai-membership-safety-checklist/
 alternate_en: /en/resources/ai-membership-safety-checklist/
-image: "https://he20000405-pixel.github.io/assets/images/ai-membership-safety-checklist-social.png"
+image: "https://he20000405-pixel.github.io/assets/images/ai-membership-safety-checklist-social-en.png"
 image_alt: "AI membership safety checklist for ChatGPT, Grok, Claude and Gemini"
 date_published: 2026-07-15
 last_modified_at: 2026-07-15
@@ -28,7 +28,7 @@ faq:
       <a class="button-link" href="{{ '/resources/ai-membership-safety-checklist/' | relative_url }}" lang="zh-CN">中文版</a>
     </div>
   </div>
-  <figure class="resource-preview"><img src="{{ '/assets/images/ai-membership-safety-checklist-social.png' | relative_url }}" alt="AI membership safety checklist preview" width="1200" height="630"></figure>
+  <figure class="resource-preview"><img src="{{ '/assets/images/ai-membership-safety-checklist-social-en.png' | relative_url }}" alt="AI membership safety checklist preview" width="1200" height="630"></figure>
 </section>
 
 ## The three rules
