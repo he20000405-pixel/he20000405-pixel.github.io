@@ -1,5 +1,5 @@
 ---
-title: "AI Membership Safety Checklist for ChatGPT, Grok, Claude and Gemini"
+title: "AI Subscription Safety Checklist"
 description: "A practical checklist for identifying the billing channel, limiting shared account data, avoiding duplicate charges and verifying AI subscription entitlements."
 permalink: /en/resources/ai-membership-safety-checklist/
 lang: en
