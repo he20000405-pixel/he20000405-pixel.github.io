@@ -12,7 +12,11 @@
     <meta property="og:image:alt" content="{{ page.image_alt | default: page.title | default: site.title | escape }}">
     <meta name="twitter:image:alt" content="{{ page.image_alt | default: page.title | default: site.title | escape }}">
     {% if page.canonical %}<link rel="canonical" href="{{ page.canonical }}">{% endif %}
-    {% if page.url == '/' or page.url == '/en/' %}
+    {% if page.alternate_zh and page.alternate_en %}
+    <link rel="alternate" hreflang="zh-CN" href="{{ page.alternate_zh | absolute_url }}">
+    <link rel="alternate" hreflang="en" href="{{ page.alternate_en | absolute_url }}">
+    <link rel="alternate" hreflang="x-default" href="{{ page.alternate_zh | absolute_url }}">
+    {% elsif page.url == '/' or page.url == '/en/' %}
     <link rel="alternate" hreflang="zh-CN" href="{{ '/' | absolute_url }}">
     <link rel="alternate" hreflang="en" href="{{ '/en/' | absolute_url }}">
     <link rel="alternate" hreflang="x-default" href="{{ '/' | absolute_url }}">
@@ -76,6 +80,23 @@
         {"@type":"Question","name":{{ item.question | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ item.answer | jsonify }}}}{% unless forloop.last %},{% endunless %}
         {% endfor %}
       ]
+    }
+    </script>
+    {% endif %}
+    {% if page.schema_type == 'Article' %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": {{ page.title | jsonify }},
+      "description": {{ page.description | jsonify }},
+      "inLanguage": {{ page.lang | default: site.lang | jsonify }},
+      "datePublished": {{ page.date_published | jsonify }},
+      "dateModified": {{ page.last_modified_at | jsonify }},
+      "image": {{ page.image | jsonify }},
+      "author": {"@type":"Organization","name":"ChongGrok","url":"https://chonggrok.com/"},
+      "publisher": {"@id":"https://chonggrok.com/#organization"},
+      "mainEntityOfPage": {{ page.url | absolute_url | jsonify }}
     }
     </script>
     {% endif %}

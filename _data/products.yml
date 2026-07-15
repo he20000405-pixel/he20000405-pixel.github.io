@@ -46,3 +46,18 @@
     - "Claude Max"
     - "Claude User ID"
     - "card declined"
+- id: gemini
+  name: "Gemini"
+  eyebrow: "Google / Gemini"
+  title: "Gemini / Google AI 订阅指南"
+  description: "自有账号升级、Google AI 套餐、付款失败、权益未生效、续费降级、Google Play 与账号安全。"
+  guide_url: "https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/"
+  topics_url: "https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/"
+  image: "https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/assets/images/social-preview.png"
+  image_alt: "Gemini 与 Google AI 自有账号订阅、付款和权益排查指南"
+  guide_count: 7
+  keywords:
+    - "Google AI"
+    - "Gemini 订阅"
+    - "Google Play"
+    - "权益未生效"

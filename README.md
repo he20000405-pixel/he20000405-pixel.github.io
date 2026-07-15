@@ -1,11 +1,13 @@
 # ChongGrok AI Membership Guides
 
-Unified GitHub Pages directory for the ChongGrok ChatGPT, SuperGrok and Claude membership knowledge bases.
+Unified GitHub Pages directory for the ChongGrok ChatGPT, SuperGrok, Claude and Gemini membership knowledge bases.
 
 - Website: <https://he20000405-pixel.github.io/>
 - ChatGPT guide: <https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/>
 - Grok guide: <https://he20000405-pixel.github.io/supergrok-china-guide/>
 - Claude guide: <https://he20000405-pixel.github.io/claude-pro-max-china-guide/>
+- Gemini guide: <https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/>
+- Safety checklist: <https://he20000405-pixel.github.io/resources/ai-membership-safety-checklist/>
 - Main service: <https://chonggrok.com/>
 
 ## Scope

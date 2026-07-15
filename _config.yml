@@ -1,6 +1,6 @@
 title: "ChongGrok AI 会员指南"
-tagline: "ChatGPT、Grok 与 Claude 订阅、付款报错和账号状态知识库"
-description: "ChongGrok AI 会员指南汇总 ChatGPT Plus / Pro、SuperGrok 与 Claude Pro / Max 的订阅流程、付款报错、订阅状态和账号凭证安全说明。"
+tagline: "ChatGPT、Grok、Claude 与 Gemini 订阅安全和付款排障知识库"
+description: "ChongGrok AI 会员指南汇总 ChatGPT、Grok、Claude 与 Gemini 的订阅安全、付款报错、订阅状态和账号验收说明。"
 url: "https://he20000405-pixel.github.io"
 baseurl: ""
 repository: "he20000405-pixel/he20000405-pixel.github.io"
@@ -10,7 +10,8 @@ portal_url: "https://he20000405-pixel.github.io/"
 chatgpt_guide_url: "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/"
 grok_guide_url: "https://he20000405-pixel.github.io/supergrok-china-guide/"
 claude_guide_url: "https://he20000405-pixel.github.io/claude-pro-max-china-guide/"
-asset_version: "20260714-claude"
+gemini_guide_url: "https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/"
+asset_version: "20260715-safety-gemini"
 author:
   name: "ChongGrok"
   url: "https://chonggrok.com/"
@@ -29,6 +30,10 @@ defaults:
     values:
       layout: default
       image: "https://he20000405-pixel.github.io/assets/images/social-preview.png"
+  - scope:
+      path: "resources"
+    values:
+      schema_type: Article
 
 exclude:
   - README.md
@@ -37,3 +42,5 @@ exclude:
   - Gemfile.lock
   - vendor
   - social-preview-source.html
+  - scripts
+  - tmp
