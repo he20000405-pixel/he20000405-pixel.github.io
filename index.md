@@ -21,6 +21,7 @@ faq:
   <div class="intro-actions">
     <a class="button-link primary" href="{{ '/search/' | relative_url }}">搜索问题</a>
     <a class="button-link" href="{{ '/resources/ai-membership-safety-checklist/' | relative_url }}">订阅安全清单</a>
+    <a class="button-link" href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">付款排障决策树</a>
     <a class="button-link" href="https://chonggrok.com/blog">查看主站博客</a>
   </div>
 </section>
@@ -98,6 +99,16 @@ faq:
     <h3><a href="{{ '/resources/ai-membership-safety-checklist/' | relative_url }}">AI 会员订阅安全与验收清单</a></h3>
     <p>覆盖付款前核对、最小资料边界、重复购买预防、官方页面验收和售后证据。提供中英文网页、PDF 与信息图。</p>
     <a class="button-link primary" href="{{ '/resources/ai-membership-safety-checklist/' | relative_url }}">打开清单</a>
+  </div>
+</div>
+
+<div class="resource-feature">
+  <img src="{{ '/assets/images/ai-subscription-payment-troubleshooting-zh.png' | relative_url }}" alt="AI 订阅付款排障决策树信息图" width="1200" height="1800" loading="lazy">
+  <div>
+    <p class="eyebrow">Troubleshooting Decision Tree</p>
+    <h3><a href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">AI 订阅付款排障决策树</a></h3>
+    <p>把预授权、最终扣款、有效订阅和账号权益拆开判断，覆盖已扣款未生效、仍显示 Free、续费失败和重复订阅。</p>
+    <a class="button-link primary" href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">打开决策树</a>
   </div>
 </div>
 

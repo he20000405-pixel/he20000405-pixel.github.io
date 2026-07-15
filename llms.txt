@@ -10,6 +10,8 @@
 - English directory: https://he20000405-pixel.github.io/en/
 - Bilingual AI membership safety checklist: https://he20000405-pixel.github.io/resources/ai-membership-safety-checklist/
 - English safety checklist: https://he20000405-pixel.github.io/en/resources/ai-membership-safety-checklist/
+- AI subscription payment troubleshooting decision tree: https://he20000405-pixel.github.io/resources/ai-subscription-payment-troubleshooting/
+- English payment troubleshooting decision tree: https://he20000405-pixel.github.io/en/resources/ai-subscription-payment-troubleshooting/
 
 ## ChatGPT guide
 

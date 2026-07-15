@@ -13,6 +13,8 @@ This is the unified directory for ChongGrok's independent ChatGPT, SuperGrok, Cl
 
 [Open the bilingual AI Membership Safety Checklist]({{ '/en/resources/ai-membership-safety-checklist/' | relative_url }})
 
+[Open the AI Subscription Payment Troubleshooting Decision Tree]({{ '/en/resources/ai-subscription-payment-troubleshooting/' | relative_url }})
+
 ## Available guides
 
 | Product | Coverage | Guide |
