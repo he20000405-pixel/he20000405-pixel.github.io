@@ -1,5 +1,5 @@
 ---
-title: "ChongGrok AI 会员指南：ChatGPT、Grok、Claude、Gemini"
+title: "ChatGPT、Grok、Claude、Gemini 会员指南"
 description: "面向中文用户的 ChatGPT、Grok、Claude 与 Gemini 会员订阅、付款失败、续费、Free 状态和账号验收知识库。"
 image_alt: "ChongGrok AI 会员指南：四产品订阅与付款排障知识库"
 permalink: /
