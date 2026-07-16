@@ -96,7 +96,7 @@ def make_infographic(language):
         ("02  最小资料" if zh else "02  MINIMUM DATA", [
             "不交密码、验证码或恢复码" if zh else "Never share passwords, codes or recovery data",
             "session 和 User ID 也不能公开" if zh else "Do not publish sessions or User IDs",
-            "Gemini 资料由客服逐单确认" if zh else "Gemini requirements are confirmed case by case",
+            "Gemini 先区分两种独立交付路径" if zh else "Gemini has two separate fulfillment paths",
         ]),
         ("03  付款后" if zh else "03  AFTER PAYMENT", [
             "区分预授权、收据和有效订阅" if zh else "Separate authorizations, receipts and entitlements",
@@ -161,14 +161,14 @@ def make_pdf(language):
     if zh:
         sections = [
             ("01 付款前", ["确认账号可以登录，并检查已有会员、试用和待处理订单。", "记录购买入口：官方网页、App Store、Google Play 或第三方。", "套餐、价格、额度和地区可用性以官方实时页面为准。"]),
-            ("02 最小必要资料", ["不提交密码、邮箱验证码、两步验证码或恢复码。", "session 和 User ID 也不应公开，只在确认的履约流程中提交。", "Gemini 仅处理用户自有账号，资料由客服逐单确认。"]),
+            ("02 最小必要资料", ["不提交密码、邮箱验证码、两步验证码或恢复码。", "session 和 User ID 也不应公开，只在确认的履约流程中提交。", "Gemini 自有账号升级与专属账号是两条独立交付路径。"]),
             ("03 付款后验收", ["区分银行预授权、正式收据、商店有效订阅和官方权益。", "回原购买入口检查订单，再回官方产品页面核对计划。", "保存订单号、准确时间、付款账号和脱敏后的计划截图。"]),
             ("04 权益未出现", ["停止重复付款，确认原购买账号和登录方式。", "账单未完成联系账单方；账单完成但权益缺失联系产品支持。", "ChongGrok 订单通过原订单记录联系 ChongGrok 售后。"]),
         ]
     else:
         sections = [
             ("01 BEFORE PAYMENT", ["Confirm the account can sign in; check plans, trials and pending orders.", "Record whether billing is web, App Store, Google Play or third-party.", "Use official pages for plans, prices, limits and availability."]),
-            ("02 MINIMUM DATA", ["Never share passwords, verification codes or recovery codes.", "Sessions and User IDs should only be used in a verified flow.", "Gemini supports the user's account; requirements are confirmed case by case."]),
+            ("02 MINIMUM DATA", ["Never share passwords, verification codes or recovery codes.", "Sessions and User IDs should only be used in a verified flow.", "Gemini own-account assistance and delivered accounts are separate paths."]),
             ("03 VERIFY AFTER PAYMENT", ["Separate bank authorizations, receipts, store subscriptions and entitlements.", "Check the original billing channel, then the official product page.", "Keep the order ID, time, purchasing account and a masked plan screen."]),
             ("04 IF THE PLAN IS MISSING", ["Stop and do not pay again; confirm the account and sign-in method.", "Send incomplete charges to billing and missing entitlements to product support.", "Use the original order when contacting ChongGrok about its order."]),
         ]
@@ -186,7 +186,7 @@ def make_pdf(language):
         ("ChatGPT", "session 敏感；完成后重新登录刷新" if zh else "Sensitive session; sign out and back in afterwards"),
         ("Grok", "User ID 是账号标识，不是登录密码" if zh else "User ID identifies the account; it is not a password"),
         ("Claude", "User ID 是履约标识，不是 Anthropic 订阅要求" if zh else "User ID is a fulfillment identifier, not an Anthropic billing rule"),
-        ("Gemini", "仅自有账号；资料由客服逐单确认" if zh else "Own account only; requirements are confirmed case by case"),
+        ("Gemini", "自有账号升级与专属账号是两条独立路径" if zh else "Own-account help and delivered accounts are separate paths"),
     ]
     y = height - 112
     for product, detail in rows:

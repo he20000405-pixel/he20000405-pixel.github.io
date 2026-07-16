@@ -64,14 +64,15 @@
 - ChatGPT membership: https://chonggrok.com/chatgpt
 - SuperGrok membership: https://chonggrok.com/supergrok
 - Claude membership: https://chonggrok.com/claude
+- Gemini membership: https://chonggrok.com/gemini
 - Card-key verification: https://chonggrok.com/verify
 
 ## Scope and safety
 
 - Membership subscriptions only; no API credits.
-- No ready-made accounts, SMS verification or bulk registration.
+- No SMS verification or bulk registration. ChatGPT, Grok and Claude do not offer ready-made accounts; Gemini is the only product with a separate ready-made annual account option.
 - Passwords, email verification codes and recovery codes are not requested.
 - ChatGPT session credentials are sensitive and should be refreshed after completion.
 - Grok and Claude User IDs are account identifiers, not passwords, but they should still be handled carefully.
-- Gemini assistance is limited to the user's own Google account; required information is confirmed case by case and no fixed credential is claimed.
+- Gemini own-account assistance is confirmed case by case and no fixed credential is claimed. Gemini also has a separate ready-made annual account option; the two fulfillment paths must not be conflated.
 - No online service is risk-free; no guaranteed account outcome is claimed.

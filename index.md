@@ -1,143 +1,196 @@
 ---
-title: "ChatGPT、Grok、Claude 与 Gemini 订阅及报错知识库"
-description: "ChongGrok AI 会员指南统一入口，覆盖 ChatGPT、Grok、Claude 与 Gemini 的订阅、付款失败、续费、账号状态和凭证安全说明。"
-image_alt: "ChongGrok AI 会员指南：ChatGPT、Grok、Claude 与 Gemini 四套知识库入口"
+title: "ChongGrok AI 会员指南：ChatGPT、Grok、Claude、Gemini"
+description: "面向中文用户的 ChatGPT、Grok、Claude 与 Gemini 会员订阅、付款失败、续费、Free 状态和账号验收知识库。"
+image_alt: "ChongGrok AI 会员指南：四产品订阅与付款排障知识库"
 permalink: /
 schema_type: CollectionPage
-last_modified_at: 2026-07-15
+last_modified_at: 2026-07-16
 faq:
   - question: "这个网站提供哪些会员订阅指南？"
-    answer: "当前收录 ChatGPT Plus / Pro、Grok / SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套独立知识库，覆盖订阅流程、付款报错、账号状态和凭证安全说明。"
+    answer: "当前收录 ChatGPT Plus / Pro、Grok / SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套平级知识库，覆盖订阅流程、付款报错、账号状态和资料安全说明。"
   - question: "ChongGrok 充值需要账号密码吗？"
-    answer: "不需要账号密码。ChatGPT Plus 自动流程使用本次升级所需 session，SuperGrok 使用 Grok User ID，Claude 客服协助流程使用 Claude User ID；Gemini 仅面向用户自有账号，资料由客服逐单确认，不声明固定凭证。"
+    answer: "不需要账号密码。ChatGPT Plus 自动流程使用本次升级所需 session，SuperGrok 使用 Grok User ID，Claude 客服协助流程使用 Claude User ID；Gemini 自有账号升级所需资料由客服逐单确认。任何凭证都不应公开传播。"
   - question: "这个网站提供 API 额度或成品账号吗？"
-    answer: "不提供。ChongGrok 这里只处理 ChatGPT、Grok、Claude、Gemini 的会员订阅，不提供 API 额度、成品号、接码或批量注册服务。"
+    answer: "不提供 API 额度、接码或批量注册。ChatGPT、Grok、Claude 不提供成品账号；Gemini 是唯一例外，同时提供用户自有账号升级与 Gemini 专属一年成品账号。"
 ---
 
-<section class="intro-band">
-  <p class="eyebrow">ChongGrok Knowledge Hub</p>
-  <h1>ChongGrok AI 会员指南</h1>
-  <p class="lead">面向国内用户的 ChatGPT、Grok、Claude 与 Gemini 会员订阅知识库。先判断套餐和购买入口，再处理付款被拒、续费失败、权益未同步和账号资料问题。</p>
-  <div class="intro-actions">
-    <a class="button-link primary" href="{{ '/search/' | relative_url }}">搜索问题</a>
-    <a class="button-link" href="{{ '/resources/ai-membership-safety-checklist/' | relative_url }}">订阅安全清单</a>
-    <a class="button-link" href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">付款排障决策树</a>
-    <a class="button-link" href="https://chonggrok.com/blog">查看主站博客</a>
+<section class="home-hero" aria-labelledby="home-title">
+  <div class="hero-copy">
+    <p class="eyebrow">ChongGrok Knowledge Hub · 2026</p>
+    <h1 id="home-title">ChatGPT、Grok、Claude、Gemini 会员订阅与付款排障指南</h1>
+    <p class="lead">从一个具体问题开始：选择套餐、识别购买入口、排查付款被拒、确认订阅权益，或核对账号资料。四套知识库平级开放，ChatGPT 与 Grok 保持重点更新。</p>
+  </div>
+  <form class="hero-search" action="{{ '/search/' | relative_url }}" method="get" role="search">
+    <label for="home-search">搜索知识库</label>
+    <div class="hero-search-row">
+      <span class="search-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+        </svg>
+      </span>
+      <input id="home-search" name="q" type="search" autocomplete="off" placeholder="输入报错、产品或状态，例如：已扣款仍是 Free">
+      <button type="submit">搜索</button>
+    </div>
+  </form>
+  <div class="popular-searches" aria-label="热门搜索">
+    <span>热门问题</span>
+    <a href="{{ '/search/?q=付款失败' | relative_url }}">付款失败</a>
+    <a href="{{ '/search/?q=已扣款 Free' | relative_url }}">已扣款仍是 Free</a>
+    <a href="{{ '/search/?q=续费失败' | relative_url }}">续费失败</a>
+    <a href="{{ '/search/?q=session' | relative_url }}">session</a>
+    <a href="{{ '/search/?q=User ID' | relative_url }}">User ID</a>
+    <a href="{{ '/search/?q=Google Play' | relative_url }}">Google Play</a>
   </div>
 </section>
 
-<div class="product-grid">
-{% for product in site.data.products %}
-  <article class="product-card">
-    <div class="product-media">
-      <img src="{{ product.image }}" alt="{{ product.image_alt }}" width="1200" height="630" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+<section class="home-section product-directory" aria-labelledby="product-directory-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Product Guides</p>
+      <h2 id="product-directory-title">选择产品知识库</h2>
     </div>
-    <div class="product-body">
-      <p class="eyebrow">{{ product.eyebrow }}</p>
-      <h2><a href="{{ product.guide_url }}">{{ product.title }}</a></h2>
-      <p>{{ product.description }}</p>
-      <p class="meta">{{ product.guide_count }} 个核心专题</p>
-      <div class="tag-list">
-      {% for keyword in product.keywords %}<span>{{ keyword }}</span>{% endfor %}
+    <p>四类业务入口平级展示。套餐、价格、额度和地区可用性以对应官方页面与账号实时展示为准。</p>
+  </div>
+
+  <div class="product-grid">
+  {% for product in site.data.products %}
+    <article class="product-card product-{{ product.id }}">
+      <div class="product-media">
+        <img src="{{ product.image | relative_url }}" alt="{{ product.image_alt }}" width="1200" height="630" loading="{% if forloop.index <= 2 %}eager{% else %}lazy{% endif %}">
       </div>
-      <div class="card-actions">
-        <a class="button-link primary" href="{{ product.guide_url }}">进入知识库</a>
-        {% if product.service_url %}<a class="button-link" href="{{ product.service_url }}">查看实时方案</a>{% endif %}
+      <div class="product-body">
+        <div class="product-kicker">
+          <p class="eyebrow">{{ product.eyebrow }}</p>
+          <span class="status-badge{% if product.focus %} focus{% endif %}">{{ product.status }}</span>
+        </div>
+        <h3><a href="{{ product.guide_url }}">{{ product.title }}</a></h3>
+        <p>{{ product.description }}</p>
+        <p class="meta">{{ product.guide_count }} 个核心专题</p>
+        <ul class="product-links">
+        {% for link in product.quick_links %}
+          <li><a href="{{ link.url }}">{{ link.label }} <span aria-hidden="true">→</span></a></li>
+        {% endfor %}
+        </ul>
+        <div class="tag-list" aria-label="{{ product.name }} 关键词">
+        {% for keyword in product.keywords %}<span>{{ keyword }}</span>{% endfor %}
+        </div>
+        <div class="card-actions">
+          <a class="button-link primary" href="{{ product.guide_url }}">进入知识库</a>
+          <a class="button-link" href="{{ product.service_url }}">{{ product.service_label }}</a>
+        </div>
       </div>
+    </article>
+  {% endfor %}
+  </div>
+</section>
+
+<section class="home-section focus-section" aria-labelledby="focus-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Editorial Focus</p>
+      <h2 id="focus-title">近期重点：ChatGPT 与 Grok</h2>
     </div>
-  </article>
-{% endfor %}
-</div>
-
-## 按问题进入
-
-<div class="intent-grid">
-  <section class="intent-group">
-    <h3>ChatGPT 常见问题</h3>
-    <ul>
-      <li><a href="https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-payment-errors/">银行卡付款被拒或认证失败</a></li>
-      <li><a href="https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-paid-but-still-free/">已付款但仍显示 Free</a></li>
-      <li><a href="https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-renewal-failed-back-to-free/">续费失败后变回 Free</a></li>
-      <li><a href="https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-plus-auto-recharge/">Plus 自动充值与卡密核销</a></li>
-    </ul>
-  </section>
-  <section class="intent-group grok">
-    <h3>Grok 常见问题</h3>
-    <ul>
-      <li><a href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-payment-errors/">SuperGrok 付款失败</a></li>
-      <li><a href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-paid-but-still-free/">付款成功但仍显示 Free</a></li>
-      <li><a href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-user-id/">Grok User ID 查找与核对</a></li>
-      <li><a href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-build-login-403/">Grok Build 登录与 403</a></li>
-    </ul>
-  </section>
-  <section class="intent-group claude">
-    <h3>Claude 常见问题</h3>
-    <ul>
-      <li><a href="https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-pro-vs-max/">Pro、Max 5x 与 Max 20x 怎么选</a></li>
-      <li><a href="https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-payment-errors/">银行卡被拒、账单地址与 3DS</a></li>
-      <li><a href="https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-paid-but-still-free/">已付款但仍显示 Free</a></li>
-      <li><a href="https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-code-pro-max/">Claude Code 登录与额度边界</a></li>
-    </ul>
-  </section>
-  <section class="intent-group gemini">
-    <h3>Gemini 常见问题</h3>
-    <ul>
-      <li><a href="https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/google-ai-plans/">Google AI 套餐怎么选</a></li>
-      <li><a href="https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/gemini-payment-errors/">银行卡、账单地址与付款失败</a></li>
-      <li><a href="https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/gemini-paid-but-not-active/">已付款但权益未生效</a></li>
-      <li><a href="https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/gemini-billing-channel/">Google One、网页与 Google Play</a></li>
-    </ul>
-  </section>
-</div>
-
-## 可引用资源
-
-<div class="resource-feature">
-  <img src="{{ '/assets/images/ai-membership-safety-checklist-zh.png' | relative_url }}" alt="AI 会员订阅安全与验收清单信息图" width="1200" height="1600" loading="lazy">
-  <div>
-    <p class="eyebrow">Linkable Resource</p>
-    <h3><a href="{{ '/resources/ai-membership-safety-checklist/' | relative_url }}">AI 会员订阅安全与验收清单</a></h3>
-    <p>覆盖付款前核对、最小资料边界、重复购买预防、官方页面验收和售后证据。提供中英文网页、PDF 与信息图。</p>
-    <a class="button-link primary" href="{{ '/resources/ai-membership-safety-checklist/' | relative_url }}">打开清单</a>
+    <p>未来三个月优先更新高意向排障、版本变化和会员选择内容；Claude 与 Gemini 继续维护事实和搜索入口。</p>
   </div>
-</div>
-
-<div class="resource-feature">
-  <img src="{{ '/assets/images/ai-subscription-payment-troubleshooting-zh.png' | relative_url }}" alt="AI 订阅付款排障决策树信息图" width="1200" height="1800" loading="lazy">
-  <div>
-    <p class="eyebrow">Troubleshooting Decision Tree</p>
-    <h3><a href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">AI 订阅付款排障决策树</a></h3>
-    <p>把预授权、最终扣款、有效订阅和账号权益拆开判断，覆盖已扣款未生效、仍显示 Free、续费失败和重复订阅。</p>
-    <a class="button-link primary" href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">打开决策树</a>
+  <div class="focus-grid">
+    <article class="focus-column chatgpt">
+      <div class="focus-label"><span>01</span> ChatGPT</div>
+      <h3>从新版本热度进入高意向订阅问题</h3>
+      <p>覆盖 GPT-5.6、Plus/Pro 选择、已付款仍显示 Free 与续费失败。</p>
+      <ul>
+        <li><a href="https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/gpt-5-6-update/">GPT-5.6 更新与付费计划边界</a></li>
+        <li><a href="https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-paid-but-still-free/">已付款但仍显示 Free</a></li>
+        <li><a href="https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-renewal-failed-back-to-free/">续费失败后变回 Free</a></li>
+      </ul>
+    </article>
+    <article class="focus-column grok">
+      <div class="focus-label"><span>02</span> Grok</div>
+      <h3>连接 Grok 4.5、SuperGrok 与开发者排障</h3>
+      <p>覆盖 Grok 4.5、付款状态、Grok User ID 和 Grok Build 403。</p>
+      <ul>
+        <li><a href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-4-5-update/">Grok 4.5 更新与可用性</a></li>
+        <li><a href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-paid-but-still-free/">付款成功但仍显示 Free</a></li>
+        <li><a href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-build-login-403/">Grok Build 登录与 403</a></li>
+      </ul>
+    </article>
   </div>
-</div>
+</section>
 
-## 使用边界
+<section class="home-section" aria-labelledby="resources-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Reusable Resources</p>
+      <h2 id="resources-title">可引用的双语资源</h2>
+    </div>
+    <p>HTML 是唯一 SEO 主页面；PDF 和信息图用于保存、分享和引用，不建立重复正文。</p>
+  </div>
+  <div class="resource-grid">
+    <article class="resource-card">
+      <a class="resource-media" href="{{ '/resources/ai-membership-safety-checklist/' | relative_url }}">
+        <img src="{{ '/assets/images/ai-membership-safety-checklist-social.png' | relative_url }}" alt="AI 会员订阅安全与验收清单" width="1200" height="630" loading="lazy">
+      </a>
+      <div class="resource-body">
+        <p class="eyebrow">Safety Checklist</p>
+        <h3><a href="{{ '/resources/ai-membership-safety-checklist/' | relative_url }}">AI 会员订阅安全与验收清单</a></h3>
+        <p>付款前核对、最小资料边界、重复购买预防、官方页面验收和售后证据。</p>
+        <a class="text-link" href="{{ '/resources/ai-membership-safety-checklist/' | relative_url }}">打开中英双语清单 <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+    <article class="resource-card">
+      <a class="resource-media" href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">
+        <img src="{{ '/assets/images/ai-subscription-payment-troubleshooting-social-zh.png' | relative_url }}" alt="AI 订阅付款排障决策树" width="1200" height="630" loading="lazy">
+      </a>
+      <div class="resource-body">
+        <p class="eyebrow">Payment Decision Tree</p>
+        <h3><a href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">AI 订阅付款排障决策树</a></h3>
+        <p>拆分预授权、最终扣款、有效订阅和账号权益，避免已扣款用户重复付款。</p>
+        <a class="text-link" href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">打开中英双语决策树 <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+  </div>
+</section>
 
-<div class="notice warning">
-  <strong>不要密码不等于零风险。</strong>ChatGPT session、Grok User ID 与 Claude User ID 的敏感程度不同；Gemini 资料按订单逐单确认。所有信息都只应在确认的订阅协助流程中提交。
-</div>
+<section class="home-section boundaries" aria-labelledby="boundaries-title">
+  <div class="section-heading compact">
+    <div>
+      <p class="eyebrow">Service Boundaries</p>
+      <h2 id="boundaries-title">服务与资料边界</h2>
+    </div>
+  </div>
+  <div class="boundary-layout">
+    <div class="notice warning">
+      <strong>不要密码不等于零风险。</strong>ChatGPT session、Grok User ID 与 Claude User ID 的敏感程度不同；任何凭证和账号标识都不应公开传播。
+    </div>
+    <ul class="boundary-list">
+      <li>ChatGPT、Grok、Claude 均使用用户自己的账号，不提供成品号。</li>
+      <li>Gemini 是唯一例外：同时提供用户自有账号升级与 Gemini 专属一年成品账号。</li>
+      <li>不提供 API 额度、接码或批量注册，不承诺绝对安全、固定到账或保证恢复。</li>
+      <li>ChongGrok 与 OpenAI、xAI、X、Anthropic、Google 不存在隶属、授权或官方合作关系。</li>
+    </ul>
+  </div>
+</section>
 
-- 账号始终归用户自己，完成后由用户登录官方页面验收。
-- 只提供 ChatGPT、Grok、Claude、Gemini 的会员订阅服务。
-- 不提供 API 额度、成品账号、接码或批量注册。
-- ChongGrok 与 OpenAI、xAI、X、Anthropic、Google 不存在隶属、授权或官方合作关系。
+<section class="home-section faq-section" aria-labelledby="faq-title">
+  <div class="section-heading compact">
+    <div>
+      <p class="eyebrow">FAQ</p>
+      <h2 id="faq-title">常见问题</h2>
+    </div>
+  </div>
+  <div class="faq-list">
+    <details>
+      <summary>这个网站提供哪些会员订阅指南？</summary>
+      <p>当前收录 ChatGPT Plus / Pro、Grok / SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套平级知识库。</p>
+    </details>
+    <details>
+      <summary>ChongGrok 充值需要账号密码吗？</summary>
+      <p>不需要账号密码。ChatGPT Plus 自动流程使用本次升级所需 session，Grok 与 Claude 使用各自 User ID；Gemini 自有账号升级资料由客服逐单确认。任何凭证都应谨慎处理。</p>
+    </details>
+    <details>
+      <summary>这个网站提供 API 额度或成品账号吗？</summary>
+      <p>不提供 API 额度、接码或批量注册。ChatGPT、Grok、Claude 不提供成品账号；Gemini 是唯一提供专属一年成品账号的例外产品。</p>
+    </details>
+  </div>
+</section>
 
-## 常见问题
-
-<div class="faq-list">
-  <details>
-    <summary>这个网站提供哪些会员订阅指南？</summary>
-    <p>当前收录 ChatGPT Plus / Pro、Grok / SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套独立知识库。</p>
-  </details>
-  <details>
-    <summary>ChongGrok 充值需要账号密码吗？</summary>
-    <p>不需要账号密码。ChatGPT 使用 session，Grok 与 Claude 使用各自 User ID；Gemini 仅面向用户自有账号，资料由客服逐单确认，不声明固定凭证。</p>
-  </details>
-  <details>
-    <summary>这个网站提供 API 额度或成品账号吗？</summary>
-    <p>不提供。这里只处理会员订阅，不提供 API 额度、成品号、接码或批量注册。</p>
-  </details>
-</div>
-
-<p class="meta">最后更新：2026-07-15</p>
+<p class="meta home-updated">最后更新：2026-07-16</p>

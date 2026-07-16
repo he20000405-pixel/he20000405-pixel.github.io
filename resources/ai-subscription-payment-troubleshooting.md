@@ -143,9 +143,9 @@ X Premium+ 账单先回 X 检查；Gemini / Google AI 计划先回 Google One、
 
 ## 确认没有订阅后再考虑新的路径
 
-只有在原交易没有形成有效订阅、没有待处理扣款或退款，并确认当前账号可以正常登录后，才重新评估购买。没有合适的海外付款方式时，可查看 ChongGrok 的 [ChatGPT](https://chonggrok.com/chatgpt)、[SuperGrok](https://chonggrok.com/supergrok)或 [Claude](https://chonggrok.com/claude)会员页面。
+只有在原交易没有形成有效订阅、没有待处理扣款或退款，并确认当前账号可以正常登录后，才重新评估购买。没有合适的海外付款方式时，可查看 ChongGrok 的 [ChatGPT](https://chonggrok.com/chatgpt)、[SuperGrok](https://chonggrok.com/supergrok)、[Claude](https://chonggrok.com/claude)或 [Gemini](https://chonggrok.com/gemini)会员页面。
 
-Gemini 当前只提供[独立知识库](https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/)用于事实核对和排障；本页不设置 Gemini 购买入口。
+Gemini 的用户自有账号升级与专属一年成品账号属于两条独立交付路径。选择前应先确认自己需要哪一种，不应把已有官方扣款、待处理交易或权益未同步问题转成重复购买。
 
 ## 官方参考
 

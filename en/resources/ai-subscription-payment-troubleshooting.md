@@ -114,9 +114,9 @@ Do not publish complete session credentials, User IDs, card keys, email addresse
 
 ## Only consider a new purchase after the old state is closed
 
-Re-evaluate purchase options only after confirming that no active subscription, pending charge, pending refund or unresolved fulfillment order exists. If a user lacks a supported international payment method, ChongGrok has separate membership pages for [ChatGPT](https://chonggrok.com/chatgpt), [SuperGrok](https://chonggrok.com/supergrok) and [Claude](https://chonggrok.com/claude).
+Re-evaluate purchase options only after confirming that no active subscription, pending charge, pending refund or unresolved fulfillment order exists. If a user lacks a supported international payment method, ChongGrok has separate membership pages for [ChatGPT](https://chonggrok.com/chatgpt), [SuperGrok](https://chonggrok.com/supergrok), [Claude](https://chonggrok.com/claude) and [Gemini](https://chonggrok.com/gemini).
 
-For Gemini, this page links only to the [independent Gemini knowledge base](https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/) and does not provide a purchase call to action.
+Gemini own-account assistance and the separate ready-made annual account option are different fulfillment paths. Choose only after the old billing state is closed, and do not turn a pending charge or missing entitlement into a duplicate purchase.
 
 ## Official references
 

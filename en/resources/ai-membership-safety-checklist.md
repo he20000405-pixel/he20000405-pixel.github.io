@@ -9,7 +9,7 @@ alternate_en: /en/resources/ai-membership-safety-checklist/
 image: "https://he20000405-pixel.github.io/assets/images/ai-membership-safety-checklist-social-en.png"
 image_alt: "AI membership safety checklist for ChatGPT, Grok, Claude and Gemini"
 date_published: 2026-07-15
-last_modified_at: 2026-07-15
+last_modified_at: 2026-07-16
 faq:
   - question: "Should I subscribe again if the paid plan does not appear immediately?"
     answer: "No. First confirm whether the transaction is complete, which billing channel manages it, and whether you are signed in to the original purchasing account."
@@ -44,7 +44,7 @@ faq:
 | ChatGPT | ChongGrok's automated Plus flow uses a sensitive session credential for that upgrade | Password, email code, recovery code | ChatGPT plan settings; sign out and back in afterwards to refresh the session |
 | Grok | Grok User ID identifies the target account; it is not a login password | X/Grok password, codes, recovery data | grok.com or the original subscription channel |
 | Claude | ChongGrok may use a Claude User ID to identify the target account; this is not an Anthropic billing requirement | Password, codes, recovery data | Claude settings or Billing |
-| Gemini | Only the user's own account is supported; required information is confirmed case by case | Google password, two-step code, recovery code | Gemini, Google One and the original billing channel |
+| Gemini | Own-account assistance is confirmed case by case; a ready-made annual account is a separate fulfillment path | The user's Google password, two-step code or recovery code | For an own account, verify in Gemini, Google One and the original billing channel; for a delivered account, verify ownership, plan and support boundaries stated for that service |
 
 ## Before payment
 

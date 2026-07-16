@@ -8,7 +8,7 @@ alternate_en: /en/resources/ai-membership-safety-checklist/
 image: "https://he20000405-pixel.github.io/assets/images/ai-membership-safety-checklist-social.png"
 image_alt: "ChatGPT、Grok、Claude、Gemini AI 会员订阅安全与验收清单"
 date_published: 2026-07-15
-last_modified_at: 2026-07-15
+last_modified_at: 2026-07-16
 faq:
   - question: "AI 会员付款后没有立即生效，可以再买一次吗？"
     answer: "不建议。先确认交易是否最终完成、订阅由哪个入口管理，以及当前登录账号是否就是原购买账号。已有成功扣款或待处理交易时，应先联系对应账单方。"
@@ -64,7 +64,7 @@ faq:
 | ChatGPT | ChongGrok Plus 自动流程使用本次升级所需 session；它属于敏感会话凭证 | 密码、邮箱验证码、恢复码 | 回 ChatGPT 官方设置检查计划；完成后退出并重新登录以刷新 session |
 | Grok | Grok User ID，用于识别目标账号，不是登录密码 | X/Grok 密码、验证码、恢复码 | 回 grok.com 或原订阅入口检查权益与到期状态 |
 | Claude | ChongGrok 履约使用 Claude User ID；它不是 Anthropic 官方订阅要求 | 密码、验证码、恢复码 | 回 Claude 官方设置或 Billing 页面核对计划 |
-| Gemini | 仅处理用户自有账号；所需资料由客服按当前流程逐单确认，不声明固定凭证 | Google 密码、两步验证码、恢复码 | 回 Gemini、Google One 与原账单入口核对计划和管理方 |
+| Gemini | 自有账号升级资料由客服逐单确认；专属一年成品账号属于独立交付路径 | 自有账号的 Google 密码、两步验证码、恢复码 | 自有账号回 Gemini、Google One 与原账单入口核对；成品账号按商品页与客服说明验收归属、计划和售后边界 |
 
 <div class="notice warning"><strong>不要密码不等于零风险。</strong>账号标识和 session 的敏感程度不同，但都不应公开发布，也不应提交给无法确认身份的个人或页面。</div>
 
