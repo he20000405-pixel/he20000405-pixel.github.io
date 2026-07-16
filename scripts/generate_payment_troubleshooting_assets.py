@@ -107,22 +107,28 @@ def make_dev_cover():
     image = Image.new("RGB", (1000, 420), BG)
     draw = ImageDraw.Draw(image)
     draw.rectangle((0, 0, 24, 420), fill=GREEN)
-    draw.text((66, 46), "CHONGGROK · BILLING STATE MACHINE", fill=GREEN, font=font(EN_BOLD, 20))
-    draw.text((66, 100), "Payment succeeded.", fill=INK, font=font(EN_BOLD, 48))
-    draw.text((66, 158), "Why is the account still Free?", fill=INK, font=font(EN_BOLD, 43))
+    # DEV uses a wider article cover but crops social previews to roughly 803x420.
+    # Keep all meaningful text inside the centered social-preview safe area.
+    safe_left = 120
+    draw.text((safe_left, 44), "CHONGGROK · BILLING STATE MACHINE", fill=GREEN, font=font(EN_BOLD, 19))
+    draw.text((safe_left, 96), "Payment succeeded.", fill=INK, font=font(EN_BOLD, 44))
+    draw.text((safe_left, 151), "Why is the account still Free?", fill=INK, font=font(EN_BOLD, 38))
 
     states = ["AUTHORIZED", "CAPTURED", "SUBSCRIPTION", "ENTITLEMENT"]
-    x = 66
+    widths = [150, 145, 170, 165]
+    x = safe_left
     for index, state in enumerate(states):
-        width = 188 if index < 2 else 202
+        width = widths[index]
         draw.rounded_rectangle((x, 275, x + width, 344), radius=9, fill=WHITE, outline=LINE, width=2)
-        draw.text((x + 16, 298), state, fill=GREEN, font=font(EN_BOLD, 16))
+        label_face = font(EN_BOLD, 14)
+        label_width = draw.textbbox((0, 0), state, font=label_face)[2]
+        draw.text((x + (width - label_width) / 2, 299), state, fill=GREEN, font=label_face)
         x += width
         if index < len(states) - 1:
-            draw.line((x + 8, 309, x + 32, 309), fill=AMBER, width=3)
-            draw.polygon([(x + 32, 303), (x + 42, 309), (x + 32, 315)], fill=AMBER)
-            x += 50
-    draw.text((66, 373), "A practical troubleshooting model for AI subscriptions", fill=MUTED, font=font(EN, 21))
+            draw.line((x + 6, 309, x + 22, 309), fill=AMBER, width=3)
+            draw.polygon([(x + 22, 303), (x + 31, 309), (x + 22, 315)], fill=AMBER)
+            x += 36
+    draw.text((safe_left, 373), "A practical troubleshooting model for AI subscriptions", fill=MUTED, font=font(EN, 19))
     image.save(OUTREACH_ASSETS / "dev-ai-subscription-payment-state-machine-cover.png", quality=96)
 
 

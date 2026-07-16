@@ -9,7 +9,7 @@ alternate_en: /en/resources/ai-subscription-payment-troubleshooting/
 image: "https://he20000405-pixel.github.io/assets/images/ai-subscription-payment-troubleshooting-social-zh.png"
 image_alt: "ChatGPT、Grok、Claude、Gemini AI 订阅付款排障决策树"
 date_published: 2026-07-15
-last_modified_at: 2026-07-15
+last_modified_at: 2026-07-16
 faq:
   - question: "AI 会员已经扣款但仍显示 Free，可以再买一次吗？"
     answer: "不要立即重复购买。先确认扣款是预授权还是最终入账、订阅由哪个渠道管理、当前登录账号是否为原购买账号，以及官方产品页面是否已经识别权益。"
@@ -152,7 +152,7 @@ Gemini 当前只提供[独立知识库](https://he20000405-pixel.github.io/gemin
 - [OpenAI：避免网页、iOS 与 Android 重复订阅](https://help.openai.com/en/articles/20001043-how-do-i-avoid-being-charged-twice-if-i-subscribe-to-chatgpt-on-ios-android-and-the-web)
 - [OpenAI：恢复 Apple App Store 购买](https://help.openai.com/en/articles/8346573)
 - [xAI：Grok 消费者常见问题](https://docs.x.ai/grok/faq)
-- [Anthropic：付费套餐 Billing FAQ](https://support.anthropic.com/en/articles/8325618-paid-plan-billing-faqs)
+- [Anthropic：付费套餐 Billing FAQ](https://support.claude.com/en/articles/8325618-paid-plan-billing-faqs)
 - [Google：通过 Gemini 管理 Google AI 计划](https://support.google.com/gemini/answer/14517446)
 - [Google Play：管理订阅](https://support.google.com/googleplay/answer/7018481)
 
@@ -162,4 +162,4 @@ ChongGrok 是独立第三方会员订阅协助服务，与 OpenAI、xAI、X、An
 
 <div class="download-band"><p><strong>引用建议：</strong>引用当前 HTML 页面，而不是单独转载图片或 PDF，以便读者获得后续修正。</p><a class="button-link primary" href="{{ '/assets/downloads/ai-subscription-payment-troubleshooting-zh.pdf' | relative_url }}">下载 A4 PDF</a></div>
 
-<p class="meta">版本：2026-07-15 · 有实质事实变化时更新版本日期。</p>
+<p class="meta">版本：2026-07-16 · 有实质事实变化时更新版本日期。</p>

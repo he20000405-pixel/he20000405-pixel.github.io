@@ -9,7 +9,7 @@ alternate_en: /en/resources/ai-subscription-payment-troubleshooting/
 image: "https://he20000405-pixel.github.io/assets/images/ai-subscription-payment-troubleshooting-social-en.png"
 image_alt: "AI subscription payment troubleshooting decision tree for ChatGPT, Grok, Claude and Gemini"
 date_published: 2026-07-15
-last_modified_at: 2026-07-15
+last_modified_at: 2026-07-16
 faq:
   - question: "Should I pay again if an AI subscription was charged but the account still shows Free?"
     answer: "No. First distinguish an authorization from a captured charge, identify the billing channel, confirm the original purchasing account and check whether the product account has the entitlement."
@@ -123,7 +123,7 @@ For Gemini, this page links only to the [independent Gemini knowledge base](http
 - [OpenAI: avoid duplicate subscriptions across web, iOS and Android](https://help.openai.com/en/articles/20001043-how-do-i-avoid-being-charged-twice-if-i-subscribe-to-chatgpt-on-ios-android-and-the-web)
 - [OpenAI: restore an Apple App Store purchase](https://help.openai.com/en/articles/8346573)
 - [xAI: Grok consumer FAQ](https://docs.x.ai/grok/faq)
-- [Anthropic: paid plan billing FAQs](https://support.anthropic.com/en/articles/8325618-paid-plan-billing-faqs)
+- [Anthropic: paid plan billing FAQs](https://support.claude.com/en/articles/8325618-paid-plan-billing-faqs)
 - [Google: manage a Google AI plan from Gemini](https://support.google.com/gemini/answer/14517446)
 - [Google Play: manage subscriptions](https://support.google.com/googleplay/answer/7018481)
 
@@ -133,4 +133,4 @@ ChongGrok is an independent membership-assistance service and is not affiliated 
 
 <div class="download-band"><p><strong>Citation:</strong> link to this HTML page rather than republishing the image or PDF so readers receive future corrections.</p><a class="button-link primary" href="{{ '/assets/downloads/ai-subscription-payment-troubleshooting-en.pdf' | relative_url }}">Download A4 PDF</a></div>
 
-<p class="meta">Version: 2026-07-15</p>
+<p class="meta">Version: 2026-07-16</p>
