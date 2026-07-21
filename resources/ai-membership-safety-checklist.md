@@ -1,5 +1,5 @@
 ---
-title: "AI 会员订阅安全与验收清单：ChatGPT、Grok、Claude、Gemini"
+title: "AI 会员订阅安全清单"
 description: "付款前检查账号与购买入口，付款后核对扣款和订阅状态，并按 ChatGPT、Grok、Claude、Gemini 的资料边界安全验收。"
 permalink: /resources/ai-membership-safety-checklist/
 lang: zh-CN
@@ -8,7 +8,7 @@ alternate_en: /en/resources/ai-membership-safety-checklist/
 image: "https://he20000405-pixel.github.io/assets/images/ai-membership-safety-checklist-social.png"
 image_alt: "ChatGPT、Grok、Claude、Gemini AI 会员订阅安全与验收清单"
 date_published: 2026-07-15
-last_modified_at: 2026-07-16
+last_modified_at: 2026-07-21
 faq:
   - question: "AI 会员付款后没有立即生效，可以再买一次吗？"
     answer: "不建议。先确认交易是否最终完成、订阅由哪个入口管理，以及当前登录账号是否就是原购买账号。已有成功扣款或待处理交易时，应先联系对应账单方。"
@@ -110,7 +110,7 @@ faq:
 <ul class="source-list">
   <li><a href="https://help.openai.com/en/articles/20001043-how-do-i-avoid-being-charged-twice-if-i-subscribe-to-chatgpt-on-ios-android-and-the-web">OpenAI：避免网页、iOS 与 Android 重复订阅</a></li>
   <li><a href="https://docs.x.ai/grok/faq">xAI：Grok 消费者常见问题</a></li>
-  <li><a href="https://support.anthropic.com/en/collections/4078534-claude-pro-and-claude-max">Anthropic：Claude Pro 与 Max 帮助中心</a></li>
+  <li><a href="https://support.claude.com/en/collections/5953830-claude-ai-pro-plan">Anthropic：Claude Pro 与 Max 帮助中心</a></li>
   <li><a href="https://support.google.com/gemini/answer/14517446">Google：通过 Gemini 管理 Google AI 计划</a></li>
   <li><a href="https://support.google.com/googleplay/answer/1050566">Google Play：应用内购买未显示或未交付</a></li>
 </ul>

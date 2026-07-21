@@ -9,7 +9,7 @@ alternate_en: /en/resources/ai-membership-safety-checklist/
 image: "https://he20000405-pixel.github.io/assets/images/ai-membership-safety-checklist-social-en.png"
 image_alt: "AI membership safety checklist for ChatGPT, Grok, Claude and Gemini"
 date_published: 2026-07-15
-last_modified_at: 2026-07-16
+last_modified_at: 2026-07-21
 faq:
   - question: "Should I subscribe again if the paid plan does not appear immediately?"
     answer: "No. First confirm whether the transaction is complete, which billing channel manages it, and whether you are signed in to the original purchasing account."
@@ -94,7 +94,7 @@ Do not post complete session credentials, User IDs, email addresses, order numbe
 
 - [OpenAI: avoiding duplicate subscriptions](https://help.openai.com/en/articles/20001043-how-do-i-avoid-being-charged-twice-if-i-subscribe-to-chatgpt-on-ios-android-and-the-web)
 - [xAI: Grok consumer FAQ](https://docs.x.ai/grok/faq)
-- [Anthropic: Claude Pro and Max help](https://support.anthropic.com/en/collections/4078534-claude-pro-and-claude-max)
+- [Anthropic: Claude Pro and Max help](https://support.claude.com/en/collections/5953830-claude-ai-pro-plan)
 - [Google: manage a Google AI plan from Gemini](https://support.google.com/gemini/answer/14517446)
 - [Google Play: problems with in-app purchases](https://support.google.com/googleplay/answer/1050566)
 

@@ -3,7 +3,7 @@ title: "ChongGrok AI Membership Guides"
 description: "Independent ChatGPT, SuperGrok, Claude and Gemini membership guides covering subscription assistance, payment errors, account checks and safety boundaries."
 permalink: /en/
 lang: en
-last_modified_at: 2026-07-16
+last_modified_at: 2026-07-21
 ---
 
 <p class="eyebrow">English Guide Directory</p>
@@ -34,6 +34,6 @@ This is the unified directory for ChongGrok's independent ChatGPT, SuperGrok, Cl
 - No API credits, SMS verification or bulk registration are offered. Ready-made accounts are not offered for ChatGPT, Grok or Claude; Gemini is the only exception.
 - ChongGrok is not affiliated with OpenAI, xAI, X, Anthropic or Google.
 
-[Visit chonggrok.com](https://chonggrok.com/)
+[Visit chonggrok.com](https://chonggrok.com/?utm_source=github_pages&utm_medium=referral&utm_campaign=knowledge_hub_en&utm_content=directory_main_site)
 
-[View Gemini service options](https://chonggrok.com/gemini)
+[View Gemini service options](https://chonggrok.com/gemini?utm_source=github_pages&utm_medium=referral&utm_campaign=knowledge_hub_en&utm_content=directory_gemini)

@@ -3,7 +3,12 @@ title: "AI 会员订阅安全资源"
 description: "ChongGrok 可引用、可打印的 AI 会员订阅安全清单、付款验收资料和账号风险说明。"
 permalink: /resources/
 schema_type: CollectionPage
-last_modified_at: 2026-07-15
+last_modified_at: 2026-07-21
+collection_items:
+  - title: "AI 会员订阅安全与验收清单"
+    url: "/resources/ai-membership-safety-checklist/"
+  - title: "AI 订阅付款排障决策树"
+    url: "/resources/ai-subscription-payment-troubleshooting/"
 ---
 
 <p class="eyebrow">Reusable Resources</p>

@@ -9,7 +9,7 @@ alternate_en: /en/resources/ai-subscription-payment-troubleshooting/
 image: "https://he20000405-pixel.github.io/assets/images/ai-subscription-payment-troubleshooting-social-zh.png"
 image_alt: "ChatGPT、Grok、Claude、Gemini AI 订阅付款排障决策树"
 date_published: 2026-07-15
-last_modified_at: 2026-07-16
+last_modified_at: 2026-07-21
 faq:
   - question: "AI 会员已经扣款但仍显示 Free，可以再买一次吗？"
     answer: "不要立即重复购买。先确认扣款是预授权还是最终入账、订阅由哪个渠道管理、当前登录账号是否为原购买账号，以及官方产品页面是否已经识别权益。"
@@ -107,7 +107,7 @@ X Premium+ 账单先回 X 检查；Gemini / Google AI 计划先回 Google One、
 
 ### ChongGrok 订单
 
-只使用原订单、卡密或客服记录查询。ChatGPT 自动流程可在 [卡密核销页面](https://chonggrok.com/verify)核对；Grok、Claude 或其他客服协助订单应提供原订单号和脱敏后的账号状态。不要公开 session、User ID、卡密或完整订单资料。
+只使用原订单、卡密或客服记录查询。ChatGPT 自动流程可在 [卡密核销页面](https://chonggrok.com/verify?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting&utm_content=verify_existing_order)核对；Grok、Claude 或其他客服协助订单应提供原订单号和脱敏后的账号状态。不要公开 session、User ID、卡密或完整订单资料。
 
 ## 按产品进入详细专题
 
@@ -143,7 +143,7 @@ X Premium+ 账单先回 X 检查；Gemini / Google AI 计划先回 Google One、
 
 ## 确认没有订阅后再考虑新的路径
 
-只有在原交易没有形成有效订阅、没有待处理扣款或退款，并确认当前账号可以正常登录后，才重新评估购买。没有合适的海外付款方式时，可查看 ChongGrok 的 [ChatGPT](https://chonggrok.com/chatgpt)、[SuperGrok](https://chonggrok.com/supergrok)、[Claude](https://chonggrok.com/claude)或 [Gemini](https://chonggrok.com/gemini)会员页面。
+只有在原交易没有形成有效订阅、没有待处理扣款或退款，并确认当前账号可以正常登录后，才重新评估购买。没有合适的海外付款方式时，可查看 ChongGrok 的 [ChatGPT](https://chonggrok.com/chatgpt?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting&utm_content=chatgpt_repurchase_boundary)、[SuperGrok](https://chonggrok.com/supergrok?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting&utm_content=grok_repurchase_boundary)、[Claude](https://chonggrok.com/claude?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting&utm_content=claude_repurchase_boundary)或 [Gemini](https://chonggrok.com/gemini?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting&utm_content=gemini_repurchase_boundary)会员页面。
 
 Gemini 的用户自有账号升级与专属一年成品账号属于两条独立交付路径。选择前应先确认自己需要哪一种，不应把已有官方扣款、待处理交易或权益未同步问题转成重复购买。
 

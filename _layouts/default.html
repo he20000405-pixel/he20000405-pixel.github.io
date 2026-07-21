@@ -23,6 +23,7 @@
     {% endif %}
     <link rel="icon" href="{{ '/assets/images/favicon.svg' | relative_url }}" type="image/svg+xml">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.asset_version }}">
+    <script src="{{ '/assets/js/navigation.js' | relative_url }}?v={{ site.asset_version }}" defer></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -35,12 +36,7 @@
           "description": "面向中文用户的 AI 会员订阅充值服务平台。"
         },
         {
-          "@type": "WebSite",
           "@id": "{{ '/' | absolute_url }}#website",
-          "name": {{ site.title | jsonify }},
-          "url": {{ '/' | absolute_url | jsonify }},
-          "inLanguage": "zh-CN",
-          "publisher": {"@id": "https://chonggrok.com/#organization"},
           "potentialAction": {
             "@type": "SearchAction",
             "target": "{{ '/search/' | absolute_url }}?q={search_term_string}",
@@ -62,8 +58,9 @@
       "mainEntity": {
         "@type": "ItemList",
         "itemListElement": [
-          {% for product in site.data.products %}
-          {"@type":"ListItem","position":{{ forloop.index }},"name":{{ product.title | jsonify }},"url":{{ product.guide_url | jsonify }}}{% unless forloop.last %},{% endunless %}
+          {% assign collection_items = page.collection_items | default: site.data.products %}
+          {% for item in collection_items %}
+          {"@type":"ListItem","position":{{ forloop.index }},"name":{{ item.title | jsonify }},"url":{{ item.url | default: item.guide_url | absolute_url | jsonify }}}{% unless forloop.last %},{% endunless %}
           {% endfor %}
         ]
       }

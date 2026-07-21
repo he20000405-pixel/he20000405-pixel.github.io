@@ -9,7 +9,7 @@ alternate_en: /en/resources/ai-subscription-payment-troubleshooting/
 image: "https://he20000405-pixel.github.io/assets/images/ai-subscription-payment-troubleshooting-social-en.png"
 image_alt: "AI subscription payment troubleshooting decision tree for ChatGPT, Grok, Claude and Gemini"
 date_published: 2026-07-15
-last_modified_at: 2026-07-16
+last_modified_at: 2026-07-21
 faq:
   - question: "Should I pay again if an AI subscription was charged but the account still shows Free?"
     answer: "No. First distinguish an authorization from a captured charge, identify the billing channel, confirm the original purchasing account and check whether the product account has the entitlement."
@@ -114,7 +114,7 @@ Do not publish complete session credentials, User IDs, card keys, email addresse
 
 ## Only consider a new purchase after the old state is closed
 
-Re-evaluate purchase options only after confirming that no active subscription, pending charge, pending refund or unresolved fulfillment order exists. If a user lacks a supported international payment method, ChongGrok has separate membership pages for [ChatGPT](https://chonggrok.com/chatgpt), [SuperGrok](https://chonggrok.com/supergrok), [Claude](https://chonggrok.com/claude) and [Gemini](https://chonggrok.com/gemini).
+Re-evaluate purchase options only after confirming that no active subscription, pending charge, pending refund or unresolved fulfillment order exists. If a user lacks a supported international payment method, ChongGrok has separate membership pages for [ChatGPT](https://chonggrok.com/chatgpt?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting_en&utm_content=chatgpt_repurchase_boundary), [SuperGrok](https://chonggrok.com/supergrok?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting_en&utm_content=grok_repurchase_boundary), [Claude](https://chonggrok.com/claude?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting_en&utm_content=claude_repurchase_boundary) and [Gemini](https://chonggrok.com/gemini?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting_en&utm_content=gemini_repurchase_boundary).
 
 Gemini own-account assistance and the separate ready-made annual account option are different fulfillment paths. Choose only after the old billing state is closed, and do not turn a pending charge or missing entitlement into a duplicate purchase.
 
