@@ -422,6 +422,15 @@ table { display: block; width: 100%; overflow-x: auto; border-collapse: collapse
 th, td { min-width: 150px; padding: 11px 12px; border: 1px solid var(--line); text-align: left; vertical-align: top; }
 th { background: var(--soft); }
 code { padding: 2px 5px; border-radius: 4px; background: #eef2f1; font-size: .92em; }
+pre {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 15px 16px;
+  border: 1px solid var(--line);
+  background: #f4f7f6;
+  -webkit-overflow-scrolling: touch;
+}
+pre code { display: block; width: max-content; min-width: 100%; padding: 0; background: transparent; }
 
 .search-panel { padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--soft); }
 .search-form { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
