@@ -27,23 +27,11 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Organization",
-          "@id": "https://chonggrok.com/#organization",
-          "name": "ChongGrok",
-          "url": "https://chonggrok.com/",
-          "description": "面向中文用户的 AI 会员订阅充值服务平台。"
-        },
-        {
-          "@id": "{{ '/' | absolute_url }}#website",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "{{ '/search/' | absolute_url }}?q={search_term_string}",
-            "query-input": "required name=search_term_string"
-          }
-        }
-      ]
+      "@type": "Organization",
+      "@id": "https://chonggrok.com/#organization",
+      "name": "ChongGrok",
+      "url": "https://chonggrok.com/",
+      "description": "面向中文用户的 AI 会员订阅充值服务平台。"
     }
     </script>
     {% if page.schema_type == 'CollectionPage' %}
@@ -54,7 +42,6 @@
       "name": {{ page.title | jsonify }},
       "description": {{ page.description | jsonify }},
       "url": {{ page.url | absolute_url | jsonify }},
-      "isPartOf": {"@id": "{{ '/' | absolute_url }}#website"},
       "mainEntity": {
         "@type": "ItemList",
         "itemListElement": [
