@@ -67,11 +67,11 @@
     }
     </script>
     {% endif %}
-    {% if page.schema_type == 'Article' %}
+    {% if page.schema_type == 'Article' or page.schema_type == 'TechArticle' %}
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Article",
+      "@type": {{ page.schema_type | jsonify }},
       "headline": {{ page.title | jsonify }},
       "description": {{ page.description | jsonify }},
       "inLanguage": {{ page.lang | default: site.lang | jsonify }},

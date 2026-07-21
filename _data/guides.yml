@@ -1,3 +1,8 @@
+- product: "Technical Lab"
+  title: "Windows Codex Desktop 动态换肤教程"
+  description: "固定上游版本的 Windows 安装、CDP 验证、动态 WebP 导入、安全边界、真实失败记录与完整恢复流程。"
+  url: "https://he20000405-pixel.github.io/labs/codex-dream-skin-windows/"
+  keywords: "Codex Desktop Windows 换肤 皮肤 CDP 127.0.0.1 动态 WebP 安装 恢复 技术教程"
 - product: "ChatGPT"
   title: "ChatGPT Plus / Pro 国内充值指南"
   description: "ChatGPT Plus 自动充值、Pro 客服协助、支付宝微信付款、卡密核销和付款报错知识库。"

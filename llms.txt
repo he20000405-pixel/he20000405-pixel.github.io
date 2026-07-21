@@ -58,6 +58,12 @@
 - Google One and Google Play billing: https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/gemini-billing-channel/
 - Account safety: https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/gemini-account-safety/
 
+## Technical lab
+
+- Lab index: https://he20000405-pixel.github.io/labs/
+- Windows Codex Desktop theming: https://he20000405-pixel.github.io/labs/codex-dream-skin-windows/
+- Lab articles are reproducible technical tutorials connected to ChatGPT or Grok user workflows. They include tested versions, failure records, security boundaries and restoration steps.
+
 ## Primary service pages
 
 - ChongGrok: https://chonggrok.com/

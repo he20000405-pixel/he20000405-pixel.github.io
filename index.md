@@ -150,6 +150,30 @@ faq:
   </div>
 </section>
 
+<section class="home-section" aria-labelledby="lab-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Technical Lab</p>
+      <h2 id="lab-title">可复现的 AI 工具实测教程</h2>
+    </div>
+    <p>只收录与 ChatGPT、Grok 或订阅用户工作流直接相关、经过本地复现并包含失败记录与恢复步骤的技术内容。</p>
+  </div>
+  <article class="lab-feature">
+    <a class="lab-feature-media" href="{{ '/labs/codex-dream-skin-windows/' | relative_url }}">
+      <img src="{{ '/assets/images/labs/codex-dream-skin-windows-social.png' | relative_url }}" alt="Windows Codex Desktop 动态换肤实测教程" width="1200" height="630" loading="lazy">
+    </a>
+    <div class="lab-feature-body">
+      <p class="eyebrow">Windows · Codex Desktop</p>
+      <h3><a href="{{ '/labs/codex-dream-skin-windows/' | relative_url }}">Codex Desktop 动态换肤：安装、CDP 验证与完整恢复</a></h3>
+      <p>基于固定上游提交进行 Windows 实测，公开可复现命令、动态 WebP 验证、安全边界、真实失败记录与恢复流程。</p>
+      <div class="card-actions">
+        <a class="button-link primary" href="{{ '/labs/codex-dream-skin-windows/' | relative_url }}">阅读实测教程</a>
+        <a class="button-link" href="{{ '/labs/' | relative_url }}">进入技术实验室</a>
+      </div>
+    </div>
+  </article>
+</section>
+
 <section class="home-section boundaries" aria-labelledby="boundaries-title">
   <div class="section-heading compact">
     <div>
@@ -193,4 +217,4 @@ faq:
   </div>
 </section>
 
-<p class="meta home-updated">最后更新：2026-07-16</p>
+<p class="meta home-updated">最后更新：2026-07-21</p>

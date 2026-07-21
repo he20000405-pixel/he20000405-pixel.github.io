@@ -329,6 +329,61 @@ li + li { margin-top: 7px; }
 .resource-body p { color: var(--muted); }
 .text-link { font-weight: 750; text-decoration: none; }
 
+.lab-feature {
+  display: grid;
+  grid-template-columns: minmax(320px, .92fr) minmax(0, 1.08fr);
+  align-items: stretch;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.lab-feature-media {
+  min-height: 310px;
+  overflow: hidden;
+  background: #06101f;
+}
+.lab-feature-media img { width: 100%; height: 100%; object-fit: cover; }
+.lab-feature-body { display: flex; flex-direction: column; justify-content: center; padding: 34px; }
+.lab-feature-body h3 { margin: 7px 0 12px; font-size: 1.55rem; }
+.lab-feature-body h3 a { color: var(--ink-strong); text-decoration: none; }
+.lab-feature-body h3 a:hover { color: var(--brand); }
+.lab-feature-body > p:not(.eyebrow) { color: var(--muted); }
+
+.lab-list { margin: 26px 0 42px; border-top: 1px solid var(--line); }
+.lab-list-item {
+  display: grid;
+  grid-template-columns: minmax(260px, .78fr) minmax(0, 1.22fr);
+  gap: 28px;
+  align-items: center;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+.lab-list-media { aspect-ratio: 1200 / 630; overflow: hidden; background: var(--soft); }
+.lab-list-media img { width: 100%; height: 100%; object-fit: cover; }
+.lab-list-item h2 { margin: 7px 0 10px; padding: 0; border: 0; font-size: 1.42rem; }
+.lab-list-item h2 a { color: var(--ink-strong); text-decoration: none; }
+.lab-list-item h2 a:hover { color: var(--brand); }
+
+.lab-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(320px, .88fr);
+  gap: 30px;
+  align-items: center;
+  margin: 8px 0 32px;
+}
+.lab-preview { margin: 0; overflow: hidden; border: 1px solid var(--line); background: var(--soft); }
+.lab-preview img { width: 100%; }
+.lab-preview figcaption { padding: 10px 13px; color: var(--muted); font-size: .82rem; }
+.flow-line {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 22px 0 30px;
+  border: 1px solid var(--line);
+}
+.flow-line > div { min-width: 0; padding: 15px; border-right: 1px solid var(--line); }
+.flow-line > div:last-child { border-right: 0; }
+.flow-line span { display: block; margin-bottom: 4px; color: var(--brand); font-size: .75rem; font-weight: 850; }
+.flow-line strong { overflow-wrap: anywhere; }
+
 .boundary-layout { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 28px; align-items: start; }
 .boundary-list { margin: 0; padding-left: 22px; }
 .home-updated { margin-top: 42px; }
@@ -447,7 +502,9 @@ code { padding: 2px 5px; border-radius: 4px; background: #eef2f1; font-size: .92
   .site-nav a:hover { background: var(--soft); }
   .site-nav .nav-cta { grid-column: 1 / -1; justify-content: center; margin-top: 6px; }
   .section-heading { grid-template-columns: 1fr; gap: 10px; align-items: start; }
-  .resource-hero, .resource-feature { grid-template-columns: 1fr; }
+  .resource-hero, .resource-feature, .lab-feature, .lab-list-item, .lab-hero { grid-template-columns: 1fr; }
+  .lab-feature-media { min-height: 0; aspect-ratio: 1200 / 630; }
+  .lab-feature-body { padding: 26px 0; }
 }
 
 @media (max-width: 720px) {
@@ -487,6 +544,9 @@ code { padding: 2px 5px; border-radius: 4px; background: #eef2f1; font-size: .92
   .focus-column:last-child { border-bottom: 1px solid var(--line); }
   .resource-body { padding: 19px; }
   .boundary-layout { gap: 18px; }
+  .flow-line { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .flow-line > div:nth-child(2) { border-right: 0; }
+  .flow-line > div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .search-form { grid-template-columns: 1fr; }
   .search-form button { width: 100%; }
   table { font-size: .9rem; }
@@ -500,4 +560,8 @@ code { padding: 2px 5px; border-radius: 4px; background: #eef2f1; font-size: .92
   .hero-search button { grid-column: 1 / -1; width: calc(100% - 12px); margin: 0 6px 6px; }
   .site-nav { grid-template-columns: 1fr; }
   .site-nav .nav-cta { grid-column: 1; }
+  .flow-line { grid-template-columns: 1fr; }
+  .flow-line > div,
+  .flow-line > div:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); }
+  .flow-line > div:last-child { border-bottom: 0; }
 }
