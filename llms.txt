@@ -23,6 +23,8 @@
 - Paid but still Free: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-paid-but-still-free/
 - Renewal failed and back to Free: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-renewal-failed-back-to-free/
 - GPT-5.6 update: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/gpt-5-6-update/
+- Subscription associated with another account: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-subscription-associated-with-another-account/
+- English associated-account guide: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/en/guides/chatgpt-subscription-associated-with-another-account/
 
 ## Grok guide
 
@@ -35,6 +37,9 @@
 - Grok Build login and 403: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-build-login-403/
 - SuperGrok vs X Premium+: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-vs-x-premium-plus/
 - Grok 4.5 update: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-4-5-update/
+- Weekly limit vs subscription status: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-weekly-limit-vs-subscription/
+- English Grok User ID / UUID: https://he20000405-pixel.github.io/supergrok-china-guide/en/guides/grok-user-id/
+- English Grok Build 403: https://he20000405-pixel.github.io/supergrok-china-guide/en/guides/grok-build-login-403/
 
 ## Claude guide
 
