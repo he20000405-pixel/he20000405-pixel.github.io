@@ -12,6 +12,7 @@
 - English safety checklist: https://he20000405-pixel.github.io/en/resources/ai-membership-safety-checklist/
 - AI subscription payment troubleshooting decision tree: https://he20000405-pixel.github.io/resources/ai-subscription-payment-troubleshooting/
 - English payment troubleshooting decision tree: https://he20000405-pixel.github.io/en/resources/ai-subscription-payment-troubleshooting/
+- AI membership billing channel and account ownership map: https://he20000405-pixel.github.io/resources/ai-subscription-billing-account-map/
 
 ## ChatGPT guide
 

@@ -9,6 +9,8 @@ collection_items:
     url: "/resources/ai-membership-safety-checklist/"
   - title: "AI 订阅付款排障决策树"
     url: "/resources/ai-subscription-payment-troubleshooting/"
+  - title: "AI 会员购买入口与账号归属对照表"
+    url: "/resources/ai-subscription-billing-account-map/"
 ---
 
 <p class="eyebrow">Reusable Resources</p>
@@ -29,3 +31,9 @@ collection_items:
 面向“已扣款未生效、仍显示 Free、续费失败和重复订阅”的跨产品状态决策树。提供[中文 PDF](../assets/downloads/ai-subscription-payment-troubleshooting-zh.pdf)、[中文决策图](../assets/images/ai-subscription-payment-troubleshooting-zh.png)和[English version](../en/resources/ai-subscription-payment-troubleshooting/)。
 
 > 决策树不把账单成功等同于权益生效，也不会在存在有效订阅、待处理扣款或退款时引导重复购买。
+
+### [AI 会员购买入口与账号归属对照表](ai-subscription-billing-account-map/)
+
+分清 ChatGPT、Grok、Claude 与 Gemini 的收款渠道、渠道账号和产品账号。按照收据找到正确的订阅管理入口，并判断哪个账号应获得会员权益。
+
+> 对照表用于识别账号和计费入口，不替代付款异常排查。已经扣款或存在待处理订单时，应先确认原渠道状态，不要跨平台重复购买。
