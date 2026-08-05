@@ -12,7 +12,7 @@ collection_items:
 <p class="eyebrow">ChongGrok Technical Lab</p>
 # 技术实验室
 
-这里收录与 ChatGPT、Grok、Codex 和 AI 开发工具直接相关的原创实测。每篇内容都应包含真实环境、失败记录、验证方法、安全边界和恢复步骤，不以改写第三方 README 代替实际测试。
+这里提供经过真实环境验证的 ChatGPT、Grok、Codex 与 AI 工具教程。每篇都会说明测试环境、可复现步骤、已知失败和恢复方法，帮助你判断教程是否适合自己的设备，并在出现问题时安全回退。
 
 <div class="lab-list">
   <article class="lab-list-item">
@@ -28,7 +28,7 @@ collection_items:
   </article>
 </div>
 
-## 收录边界
+## 使用前请注意
 
 - 只收录与现有 AI 用户和开发者受众直接相关的实践。
 - 不公开账号、任务、配置备份、认证资料或包含私人内容的截图。

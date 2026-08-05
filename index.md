@@ -4,10 +4,10 @@ description: "面向中文用户的 ChatGPT、Grok、Claude 与 Gemini 会员订
 image_alt: "ChongGrok AI 会员指南：四产品订阅与付款排障知识库"
 permalink: /
 schema_type: CollectionPage
-last_modified_at: 2026-07-21
+last_modified_at: 2026-08-05
 faq:
   - question: "这个网站提供哪些会员订阅指南？"
-    answer: "当前收录 ChatGPT Plus / Pro、Grok / SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套平级知识库，覆盖订阅流程、付款报错、账号状态和资料安全说明。"
+    answer: "当前收录 ChatGPT Plus / Pro、Grok / SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套知识库，覆盖订阅流程、付款报错、账号状态和资料安全说明。"
   - question: "ChongGrok 充值需要账号密码吗？"
     answer: "不需要账号密码。ChatGPT Plus 自动流程使用本次升级所需 session，SuperGrok 使用 Grok User ID，Claude 客服协助流程使用 Claude User ID；Gemini 自有账号升级所需资料由客服逐单确认。任何凭证都不应公开传播。"
   - question: "这个网站提供 API 额度或成品账号吗？"
@@ -18,7 +18,7 @@ faq:
   <div class="hero-copy">
     <p class="eyebrow">ChongGrok Knowledge Hub · 2026</p>
     <h1 id="home-title">ChatGPT、Grok、Claude、Gemini 会员订阅与付款排障指南</h1>
-    <p class="lead">从一个具体问题开始：选择套餐、识别购买入口、排查付款被拒、确认订阅权益，或核对账号资料。四套知识库平级开放，ChatGPT 与 Grok 保持重点更新。</p>
+    <p class="lead">先选择正在使用的产品，再按实际问题查找答案：套餐怎么选、付款为什么被拒、扣款后为何仍显示 Free，或应该怎样核对账号资料。</p>
   </div>
   <form class="hero-search" action="{{ '/search/' | relative_url }}" method="get" role="search">
     <label for="home-search">搜索知识库</label>
@@ -49,7 +49,7 @@ faq:
       <p class="eyebrow">Product Guides</p>
       <h2 id="product-directory-title">选择产品知识库</h2>
     </div>
-    <p>四类业务入口平级展示。套餐、价格、额度和地区可用性以对应官方页面与账号实时展示为准。</p>
+    <p>先确认产品，再进入对应知识库。套餐、价格、额度和地区可用性以官方页面与账号实时展示为准。</p>
   </div>
 
   <div class="product-grid">
@@ -87,15 +87,15 @@ faq:
 <section class="home-section focus-section" aria-labelledby="focus-title">
   <div class="section-heading">
     <div>
-      <p class="eyebrow">Editorial Focus</p>
-      <h2 id="focus-title">近期重点：ChatGPT 与 Grok</h2>
+      <p class="eyebrow">Common Questions</p>
+      <h2 id="focus-title">ChatGPT 与 Grok 常见问题</h2>
     </div>
-    <p>未来三个月优先更新高意向排障、版本变化和会员选择内容；Claude 与 Gemini 继续维护事实和搜索入口。</p>
+    <p>版本名称、订阅状态和工具登录是三类不同问题。先对照症状进入对应专题，避免把升级、额度和账号错误混在一起处理。</p>
   </div>
   <div class="focus-grid">
     <article class="focus-column chatgpt">
       <div class="focus-label"><span>01</span> ChatGPT</div>
-      <h3>从新版本热度进入高意向订阅问题</h3>
+      <h3>分清版本可用性与订阅状态</h3>
       <p>覆盖 GPT-5.6、Plus/Pro 选择、已付款仍显示 Free 与续费失败。</p>
       <ul>
         <li><a href="https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/gpt-5-6-update/">GPT-5.6 更新与付费计划边界</a></li>
@@ -105,7 +105,7 @@ faq:
     </article>
     <article class="focus-column grok">
       <div class="focus-label"><span>02</span> Grok</div>
-      <h3>连接 Grok 4.5、SuperGrok 与开发者排障</h3>
+      <h3>分清模型、会员权益与工具登录</h3>
       <p>覆盖 Grok 4.5、付款状态、Grok User ID 和 Grok Build 403。</p>
       <ul>
         <li><a href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-4-5-update/">Grok 4.5 更新与可用性</a></li>
@@ -122,7 +122,7 @@ faq:
       <p class="eyebrow">Reusable Resources</p>
       <h2 id="resources-title">可引用的双语资源</h2>
     </div>
-    <p>HTML 是唯一 SEO 主页面；PDF 和信息图用于保存、分享和引用，不建立重复正文。</p>
+    <p>可在线阅读完整说明，也可以保存 PDF 或信息图，付款前后按清单逐项核对。</p>
   </div>
   <div class="resource-grid">
     <article class="resource-card">
@@ -143,7 +143,7 @@ faq:
       <div class="resource-body">
         <p class="eyebrow">Payment Decision Tree</p>
         <h3><a href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">AI 订阅付款排障决策树</a></h3>
-        <p>拆分预授权、最终扣款、有效订阅和账号权益，避免已扣款用户重复付款。</p>
+        <p>区分银行仍在处理、平台已经收款、订阅是否有效，以及当前账号是否显示会员，避免重复付款。</p>
         <a class="text-link" href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">打开中英双语决策树 <span aria-hidden="true">→</span></a>
       </div>
     </article>
@@ -156,7 +156,7 @@ faq:
       <p class="eyebrow">Technical Lab</p>
       <h2 id="lab-title">可复现的 AI 工具实测教程</h2>
     </div>
-    <p>只收录与 ChatGPT、Grok 或订阅用户工作流直接相关、经过本地复现并包含失败记录与恢复步骤的技术内容。</p>
+    <p>这些教程记录真实测试环境、可复现步骤、已知失败和恢复方法，便于先判断是否适合自己的设备。</p>
   </div>
   <article class="lab-feature">
     <a class="lab-feature-media" href="{{ '/labs/codex-dream-skin-windows/' | relative_url }}">
@@ -204,7 +204,7 @@ faq:
   <div class="faq-list">
     <details>
       <summary>这个网站提供哪些会员订阅指南？</summary>
-      <p>当前收录 ChatGPT Plus / Pro、Grok / SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套平级知识库。</p>
+      <p>当前收录 ChatGPT Plus / Pro、Grok / SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套知识库。</p>
     </details>
     <details>
       <summary>ChongGrok 充值需要账号密码吗？</summary>
