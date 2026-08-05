@@ -217,4 +217,4 @@ faq:
   </div>
 </section>
 
-<p class="meta home-updated">最后更新：2026-07-21</p>
+<p class="meta home-updated">最后更新：2026-08-05</p>
