@@ -3,7 +3,7 @@ title: "ChongGrok 技术实验室"
 description: "经过真实环境验证的 Codex、Grok Build 与 AI 工具实践，记录安装、失败、验证、安全边界和恢复流程。"
 permalink: /labs/
 schema_type: CollectionPage
-last_modified_at: 2026-07-21
+last_modified_at: 2026-08-06
 collection_items:
   - title: "Windows Codex Desktop 动态换肤教程"
     url: "/labs/codex-dream-skin-windows/"
@@ -30,7 +30,7 @@ collection_items:
 
 ## 使用前请注意
 
-- 只收录与现有 AI 用户和开发者受众直接相关的实践。
+- 先确认教程的系统、软件版本和风险边界与自己的环境一致，再按步骤操作。
 - 不公开账号、任务、配置备份、认证资料或包含私人内容的截图。
 - 不把本机回环调试描述成绝对安全。
 - 不提供 API 额度、接码、批量注册或其他业务范围外教程。

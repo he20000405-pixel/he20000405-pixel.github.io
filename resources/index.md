@@ -1,9 +1,9 @@
 ---
-title: "AI 会员订阅安全资源"
-description: "ChongGrok 可引用、可打印的 AI 会员订阅安全清单、付款验收资料和账号风险说明。"
+title: "AI 会员订阅检查与付款排障"
+description: "面向 ChatGPT、Grok、Claude、Gemini 用户的付款前检查、账号归属核对、已扣款未生效排查和安全验收指南。"
 permalink: /resources/
 schema_type: CollectionPage
-last_modified_at: 2026-08-05
+last_modified_at: 2026-08-06
 collection_items:
   - title: "AI 会员订阅安全与验收清单"
     url: "/resources/ai-membership-safety-checklist/"
@@ -13,10 +13,10 @@ collection_items:
     url: "/resources/ai-subscription-billing-account-map/"
 ---
 
-<p class="eyebrow">Reusable Resources</p>
-# AI 会员订阅安全资源
+<p class="eyebrow">Practical Checklists</p>
+# AI 会员订阅检查与付款排障
 
-这里集中提供可以在线阅读、独立引用和打印的检查清单。先按你现在的问题选择资源，不需要从头阅读全部内容。
+不用先了解复杂的订阅系统。根据你现在看到的状态选择一个入口，按页面顺序完成检查即可。
 
 ## 先选你要解决的问题
 
@@ -27,7 +27,7 @@ collection_items:
   <section class="intent-group gemini"><h3>需要保存或转发检查步骤</h3><p>安全清单和付款决策树均提供中文、英文、PDF 与信息图版本；HTML 页面保留完整解释和官方来源。</p><a class="text-link" href="#resource-formats">查看可用格式 →</a></section>
 </div>
 
-## 可引用资源
+## 按场景选择指南
 
 <div class="directory-grid">
   <article class="directory-card">

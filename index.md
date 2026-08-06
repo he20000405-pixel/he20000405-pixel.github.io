@@ -7,7 +7,7 @@ schema_type: CollectionPage
 last_modified_at: 2026-08-06
 faq:
   - question: "这个网站提供哪些会员订阅指南？"
-    answer: "当前收录 ChatGPT Plus / Pro、Grok / SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套知识库，覆盖订阅流程、付款报错、账号状态和资料安全说明。"
+    answer: "当前提供 ChatGPT Plus / Pro、Grok / SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套知识库，覆盖订阅流程、付款报错、账号状态和资料安全说明。"
   - question: "ChongGrok 充值需要账号密码吗？"
     answer: "不需要账号密码。ChatGPT Plus 自动流程使用本次升级所需 session，SuperGrok 使用 Grok User ID，Claude 客服协助流程使用 Claude User ID；Gemini 自有账号升级所需资料由客服逐单确认。任何凭证都不应公开传播。"
   - question: "这个网站提供 API 额度或成品账号吗？"
@@ -241,7 +241,7 @@ faq:
 <section class="home-section resource-section" aria-labelledby="resources-title">
   <div class="section-heading">
     <div>
-      <p class="eyebrow">Reusable Resources</p>
+      <p class="eyebrow">Practical Checklists</p>
       <h2 id="resources-title">付款前后可直接使用的清单</h2>
     </div>
     <p>在线阅读完整说明，也可以保存 PDF 或信息图，在购买和售后沟通时逐项核对。</p>
@@ -326,7 +326,7 @@ faq:
   <div class="faq-list">
     <details>
       <summary>这个网站提供哪些会员订阅指南？</summary>
-      <p>当前收录 ChatGPT Plus / Pro、Grok / SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套知识库。</p>
+      <p>当前提供 ChatGPT Plus / Pro、Grok / SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套知识库。</p>
     </details>
     <details>
       <summary>ChongGrok 充值需要账号密码吗？</summary>

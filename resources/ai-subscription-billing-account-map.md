@@ -4,7 +4,7 @@ description: "分清 ChatGPT、Grok、Claude、Gemini 的收款渠道、渠道�
 permalink: /resources/ai-subscription-billing-account-map/
 lang: zh-CN
 date_published: 2026-08-04
-last_modified_at: 2026-08-04
+last_modified_at: 2026-08-06
 faq:
   - question: "应用商店显示订阅有效，为什么 AI 产品仍显示 Free？"
     answer: "应用商店的有效订阅只证明 Apple ID 或 Google Play 账号持有这笔订阅。还要使用购买时登录的 AI 产品账号进入 App，才能核对权益是否附着到正确账号。"
@@ -31,7 +31,7 @@ faq:
 
 | 概念 | 它是什么 | 常见例子 | 它决定什么 |
 | --- | --- | --- | --- |
-| 收款渠道 | 实际创建并管理订阅的平台 | 产品官网、Apple App Store、Google Play、X、Google One、ChongGrok | 在哪里查看账单、取消续费或申请退款 |
+| 收款渠道 | 实际创建并管理订阅的平台 | 产品官网、Apple App Store、Google Play、X、Google One、ChongGrok | 在哪里查看账单和取消续费，以及从哪里开始查询退款规则 |
 | 渠道账号 | 登录收款渠道时使用的账号 | Apple ID、Google 账号、X 账号、产品官网账号 | 哪个账号能在收款渠道里看到这笔订阅 |
 | 产品账号 | 实际使用 AI 产品的账号 | ChatGPT、Grok、Claude 或 Gemini 登录账号 | 会员权益最终显示在哪个账号上 |
 
@@ -59,7 +59,7 @@ faq:
 | ChatGPT | chatgpt.com、Apple、Google Play | 原购买平台的订阅管理页面 | 购买时登录的 ChatGPT 账号 |
 | Grok / SuperGrok | grok.com、Apple、Google Play、X Premium+ | grok.com Billing、原应用商店或 X | 原 Grok 账号；X Premium+ 还要核对已连接的 X 账号 |
 | Claude Pro / Max | claude.ai、Apple、Google Play | Claude Settings → Billing 或原应用商店 | 购买时登录的 Claude 账号 |
-| Gemini / Google AI | Google One、Google Play；通过 iPhone 或 iPad 订阅 Google One 时也可能由 Apple 收款 | 从 Gemini 进入 Google One；若收据来自 Google Play 或 Apple，则回原应用商店管理 | 订阅计划所属的个人 Google 账号 |
+| Gemini / Google AI | Google One、Google Play；若收据明确来自 Apple，则 Apple 也是该笔订单的收款渠道 | 从 Gemini 进入 Google One；若收据来自 Google Play 或 Apple，则回收据对应的入口管理 | 订阅计划所属的个人 Google 账号 |
 
 这张表只用于找到正确入口。套餐名称、价格、地区和可用功能会变化，应以对应产品和收款平台的实时页面为准。
 
@@ -113,6 +113,20 @@ faq:
 | Grok / SuperGrok | [SuperGrok 付款成功但仍显示 Free]({{ '/supergrok-china-guide/guides/supergrok-paid-but-still-free/' | relative_url }}) |
 | Claude | [Claude 已付款但仍显示 Free]({{ '/claude-pro-max-china-guide/guides/claude-paid-but-still-free/' | relative_url }}) |
 | Gemini | [Gemini 已付款但权益未生效]({{ '/gemini-google-ai-pro-china-guide/guides/gemini-paid-but-not-active/' | relative_url }}) |
+
+## 取消入口和退款入口可能不是同一个支持方
+
+找到收款渠道后，先在该渠道查看订阅和取消续费。需要退款时，再核对具体产品的官方退款说明，不要把“在 Google Play 购买”直接理解为“所有退款都由 Google Play 处理”。
+
+| 订单类型 | 订阅与取消入口 | 退款应先查哪里 |
+| --- | --- | --- |
+| Apple App Store 订单 | Apple 订阅页面 | Apple 支持和 Apple 退款页面 |
+| ChatGPT Google Play 订单 | Google Play 订阅页面 | OpenAI 当前说明要求登录被扣款的 ChatGPT 账号，通过 OpenAI Help Center 申请 |
+| SuperGrok Google Play 订单 | Google Play 订阅页面 | xAI 当前 FAQ 指向的 xAI 退款表单 |
+| Claude Google Play 订单 | Google Play 订阅页面 | Anthropic 当前帮助页和 Google Play 实时流程 |
+| Gemini / Google AI 订单 | Google One、Google Play 或收据对应入口 | Google 当前支持页面和收据对应入口 |
+
+如果退款入口与上表不一致，以订单页面和产品官方帮助中心的实时说明为准。不要同时向多个平台提交相互矛盾的退款申请。
 
 ## ChatGPT：网页、Apple 和 Google Play
 
@@ -176,7 +190,7 @@ faq:
 
 Google AI 计划属于个人 Google 账号，并通过 Google One 管理。工作或学校账号的规则可能不同，不能直接套用个人账号流程。
 
-1. 先打开付款收据，确认收款方是 Google One、Google Play 还是 Apple。不要只根据购买时使用的设备判断。
+1. 先打开付款收据，确认收款方是 Google、Google Play，还是明确显示为 Apple。不要只根据购买时使用的设备判断。
 2. 登录 Gemini，打开 **Settings & help → View Subscriptions** 或 **Manage subscription**。
 3. 页面进入 Google One 后，核对当前 Google 账号、计划和会员状态。
 4. 如果收据来自 Google Play，使用收据对应的 Google 账号进入 **Google Play → 付款和订阅 → 订阅**。
@@ -246,7 +260,7 @@ ChongGrok 是独立第三方会员订阅协助服务，与 OpenAI、xAI、X、An
 
 套餐、价格、地区、功能、取消和退款规则以各平台实时页面为准。任何线上服务都不是零风险。本页用于帮助识别账号和渠道，不能替代平台客服对具体订单的最终判断。
 
-<p class="meta">官方资料核验日期：2026-08-04。</p>
+<p class="meta">官方资料核验日期：2026-08-06。</p>
 
 <script type="application/ld+json">
 {

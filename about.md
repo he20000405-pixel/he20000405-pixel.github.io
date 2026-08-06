@@ -2,13 +2,13 @@
 title: "关于本站与服务边界"
 description: "说明 ChongGrok AI 会员指南的内容范围、充值业务边界、凭证安全口径和第三方关系。"
 permalink: /about/
-last_modified_at: 2026-07-21
+last_modified_at: 2026-08-06
 ---
 
 <p class="eyebrow">About</p>
 # 关于本站
 
-ChongGrok AI 会员指南是 `chonggrok.com` 的独立服务知识库入口，当前汇总 ChatGPT、Grok、Claude 与 Gemini 四套内容集群。文章用于解释会员订阅流程、付款报错、订阅状态和账号验收，不替代 OpenAI、xAI、X、Anthropic、Google 的官方文档。
+ChongGrok AI 会员指南为 ChatGPT、Grok、Claude 与 Gemini 用户提供订阅流程、付款报错、账号状态和权益验收说明。读者可以先在这里判断问题，再进入对应产品知识库或 ChongGrok 服务页面。本站不能替代 OpenAI、xAI、X、Anthropic 或 Google 的官方支持。
 
 ## 服务范围
 
