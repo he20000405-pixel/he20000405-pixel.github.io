@@ -29,29 +29,31 @@ collection_items:
 
 ## 可引用资源
 
-### [AI 会员订阅安全与验收清单](ai-membership-safety-checklist/)
+<div class="directory-grid">
+  <article class="directory-card">
+    <p class="eyebrow">付款前 · 资料安全</p>
+    <h3>AI 会员订阅安全与验收清单</h3>
+    <p>覆盖购买入口、最小必要资料、扣款状态、官方页面验收和售后证据。</p>
+    <ul class="directory-meta"><li>适合：付款前检查与付款后验收</li><li>预计阅读：约 8 分钟</li></ul>
+    <div class="directory-actions"><a href="{{ '/resources/ai-membership-safety-checklist/' | relative_url }}">阅读全文</a><a href="{{ '/en/resources/ai-membership-safety-checklist/' | relative_url }}" lang="en">English</a></div>
+  </article>
+  <article class="directory-card">
+    <p class="eyebrow">已扣款 · 权益未生效</p>
+    <h3>AI 订阅付款排障决策树</h3>
+    <p>按付款、订阅和账号权益三个状态，排查仍显示 Free、续费失败和重复订阅。</p>
+    <ul class="directory-meta"><li>适合：已经扣款或怀疑重复订阅</li><li>预计阅读：约 10 分钟</li></ul>
+    <div class="directory-actions"><a href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">开始排查</a><a href="{{ '/en/resources/ai-subscription-payment-troubleshooting/' | relative_url }}" lang="en">English</a></div>
+  </article>
+  <article class="directory-card">
+    <p class="eyebrow">购买入口 · 账号归属</p>
+    <h3>AI 会员购买入口与账号归属对照表</h3>
+    <p>根据收据识别网页、Apple、Google Play、X 或第三方计费，并找到应显示权益的账号。</p>
+    <ul class="directory-meta"><li>适合：不知道该找银行还是平台</li><li>预计阅读：约 7 分钟</li></ul>
+    <div class="directory-actions"><a href="{{ '/resources/ai-subscription-billing-account-map/' | relative_url }}">打开对照表</a></div>
+  </article>
+</div>
 
-覆盖 ChatGPT、Grok、Claude 与 Gemini 的购买入口、最小必要资料、扣款状态、官方页面验收和售后证据。提供[中文 PDF](../assets/downloads/ai-membership-safety-checklist-zh.pdf)、[中文信息图](../assets/images/ai-membership-safety-checklist-zh.png)和[English version](../en/resources/ai-membership-safety-checklist/)。
-
-**适合：**付款前检查、资料安全、付款后验收。**预计阅读：**约 8 分钟。
-
-> 清单由 ChongGrok 独立整理。平台规则与套餐会变化，涉及权益、价格和地区可用性时应回到对应官方页面确认。
-
-### [AI 订阅付款排障决策树](ai-subscription-payment-troubleshooting/)
-
-面向“已扣款未生效、仍显示 Free、续费失败和重复订阅”的跨产品状态决策树。提供[中文 PDF](../assets/downloads/ai-subscription-payment-troubleshooting-zh.pdf)、[中文决策图](../assets/images/ai-subscription-payment-troubleshooting-zh.png)和[English version](../en/resources/ai-subscription-payment-troubleshooting/)。
-
-**适合：**已经扣款、仍显示 Free、续费失败或怀疑重复订阅。**预计阅读：**约 10 分钟。
-
-> 决策树不把账单成功等同于权益生效，也不会在存在有效订阅、待处理扣款或退款时引导重复购买。
-
-### [AI 会员购买入口与账号归属对照表](ai-subscription-billing-account-map/)
-
-分清 ChatGPT、Grok、Claude 与 Gemini 的收款渠道、渠道账号和产品账号。按照收据找到正确的订阅管理入口，并判断哪个账号应获得会员权益。
-
-**适合：**不知道订阅由网页、Apple、Google Play、X 或第三方中的谁管理。**预计阅读：**约 7 分钟。
-
-> 对照表用于识别账号和计费入口，不替代付款异常排查。已经扣款或存在待处理订单时，应先确认原渠道状态，不要跨平台重复购买。
+> 这些资源由 ChongGrok 独立整理。平台规则与套餐会变化，涉及权益、价格和地区可用性时，应回到对应官方页面确认。已经扣款或存在待处理订单时，请先确认原渠道状态，不要跨平台重复购买。
 
 ## 可用格式 {#resource-formats}
 

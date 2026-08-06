@@ -17,9 +17,24 @@ last_modified_at: 2026-07-21
     <button type="submit">搜索</button>
   </form>
   <p class="search-status" aria-live="polite" data-search-status>正在载入搜索索引。</p>
+  <div class="search-suggestions" aria-label="热门搜索">
+    <a href="{{ '/search/?q=已扣款' | relative_url }}">已扣款</a>
+    <a href="{{ '/search/?q=Free' | relative_url }}">仍显示 Free</a>
+    <a href="{{ '/search/?q=续费' | relative_url }}">续费失败</a>
+    <a href="{{ '/search/?q=User%20ID' | relative_url }}">User ID</a>
+    <a href="{{ '/search/?q=session' | relative_url }}">session</a>
+    <a href="{{ '/search/?q=Google%20Play' | relative_url }}">Google Play</a>
+  </div>
 </section>
 
 <div class="search-results" data-search-results></div>
+
+<nav class="search-discovery" aria-label="按产品浏览" data-search-discovery>
+  <a href="{{ site.chatgpt_guide_url }}">ChatGPT 指南<span>Plus、Pro、付款与账号状态</span></a>
+  <a href="{{ site.grok_guide_url }}">Grok 指南<span>SuperGrok、User ID 与 Grok Build</span></a>
+  <a href="{{ site.claude_guide_url }}">Claude 指南<span>Pro、Max、User ID 与 Claude Code</span></a>
+  <a href="{{ site.gemini_guide_url }}">Gemini 指南<span>Google AI 套餐、付款与权益验收</span></a>
+</nav>
 
 <noscript>
   <p class="notice">当前浏览器未启用 JavaScript。请直接进入 <a href="{{ site.chatgpt_guide_url }}">ChatGPT 指南</a>、<a href="{{ site.grok_guide_url }}">Grok 指南</a>、<a href="{{ site.claude_guide_url }}">Claude 指南</a>或 <a href="{{ site.gemini_guide_url }}">Gemini 指南</a>。</p>

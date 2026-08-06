@@ -5,6 +5,7 @@
   var input = document.querySelector("[data-search-input]");
   var results = document.querySelector("[data-search-results]");
   var status = document.querySelector("[data-search-status]");
+  var discovery = document.querySelector("[data-search-discovery]");
   if (!form || !input || !results || !status) return;
 
   var index = [];
@@ -34,6 +35,7 @@
 
   function render(items, query) {
     results.replaceChildren();
+    if (discovery) discovery.hidden = Boolean(query);
     if (!query) {
       status.textContent = "输入产品、报错或订阅状态关键词，例如：Free、续费、User ID、session。";
       return;
