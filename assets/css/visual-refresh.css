@@ -554,19 +554,26 @@ body {
 
 .resource-card {
   display: grid;
-  grid-template-columns: minmax(210px, .78fr) minmax(0, 1.22fr);
+  grid-template-columns: minmax(230px, .92fr) minmax(0, 1.08fr);
   min-height: 270px;
   box-shadow: var(--shadow-sm);
 }
 
 .resource-media {
+  display: grid;
+  place-items: center;
   height: 100%;
   aspect-ratio: auto;
   border-right: 1px solid var(--line);
   border-bottom: 0;
+  background: #f4f8f6;
 }
 
 .resource-media img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
   object-position: center;
 }
 
