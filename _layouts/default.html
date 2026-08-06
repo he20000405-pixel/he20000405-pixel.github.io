@@ -23,6 +23,7 @@
     {% endif %}
     <link rel="icon" href="{{ '/assets/images/favicon.svg' | relative_url }}" type="image/svg+xml">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.asset_version }}">
+    <link rel="stylesheet" href="{{ '/assets/css/visual-refresh.css' | relative_url }}?v={{ site.asset_version }}">
     <script src="{{ '/assets/js/navigation.js' | relative_url }}?v={{ site.asset_version }}" defer></script>
     <script type="application/ld+json">
     {
@@ -85,7 +86,7 @@
     </script>
     {% endif %}
   </head>
-  <body>
+  <body class="{% if page.url == '/' %}home-page{% else %}inner-page{% endif %}">
     {% include header.html %}
     <main class="page-shell">
       <article class="content">{{ content }}</article>
