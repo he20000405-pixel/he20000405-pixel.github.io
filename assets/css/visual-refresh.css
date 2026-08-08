@@ -469,8 +469,15 @@ body {
 .issue-grid,
 .editorial-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 16px;
+}
+
+.issue-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.editorial-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .issue-card,
@@ -553,19 +560,19 @@ body {
 }
 
 .resource-card {
-  display: grid;
-  grid-template-columns: minmax(230px, .92fr) minmax(0, 1.08fr);
-  min-height: 270px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
   box-shadow: var(--shadow-sm);
 }
 
 .resource-media {
   display: grid;
   place-items: center;
-  height: 100%;
-  aspect-ratio: auto;
-  border-right: 1px solid var(--line);
-  border-bottom: 0;
+  height: auto;
+  aspect-ratio: 1200 / 630;
+  border-right: 0;
+  border-bottom: 1px solid var(--line);
   background: #f4f8f6;
 }
 
@@ -580,7 +587,7 @@ body {
 .resource-body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 24px;
 }
 

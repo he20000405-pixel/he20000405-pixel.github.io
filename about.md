@@ -2,7 +2,7 @@
 title: "关于本站与服务边界"
 description: "说明 ChongGrok AI 会员指南的内容范围、充值业务边界、凭证安全口径和第三方关系。"
 permalink: /about/
-last_modified_at: 2026-08-06
+last_modified_at: 2026-08-08
 ---
 
 <p class="eyebrow">About</p>
@@ -20,6 +20,19 @@ ChongGrok AI 会员指南为 ChatGPT、Grok、Claude 与 Gemini 用户提供订�
 | Gemini | 用户自有账号会员升级；Gemini 专属一年成品账号 | API 额度、接码或批量注册 |
 
 本站不提供接码、批量注册或规避平台规则的服务。Gemini 是成品账号业务的唯一例外；该例外不适用于 ChatGPT、Grok 或 Claude。Gemini 自有账号升级资料由客服逐单确认，不写固定凭证、固定处理时间或保证结果。
+
+## 出现订单问题时应该找谁
+
+先查看收据上的收款方。银行、应用商店、产品平台和 ChongGrok 只能处理各自负责的环节，找错对象会延长排查时间。
+
+| 你需要解决的问题 | 应先联系谁 | 对方可以核对什么 |
+| --- | --- | --- |
+| 银行卡被拒、交易仍在处理或银行端金额异常 | 发卡银行 | 银行是否批准、拒绝或仍在处理这笔交易 |
+| Apple、Google Play、X 或 Google One 订阅 | 原应用商店或平台 | 订阅状态、取消入口、商店收据和平台退款规则 |
+| 已有正式收据，但会员权益没有显示在正确账号 | OpenAI、xAI、Anthropic 或 Google | 产品账号、订阅归属和权益状态 |
+| ChongGrok 卡密、核销记录或客服协助订单 | ChongGrok 售后 | ChongGrok 订单、提交资料和履约记录 |
+
+不确定原购买渠道时，先查看[购买入口与账号归属对照表]({{ '/resources/ai-subscription-billing-account-map/' | relative_url }})；已经扣款但权益未生效时，使用[付款排障决策树]({{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }})；需要停止续费或申请退款时，查看[取消订阅与退款指南]({{ '/resources/ai-subscription-cancel-refund/' | relative_url }})。
 
 ## 凭证说明
 

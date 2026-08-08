@@ -4,7 +4,7 @@ description: "面向中文用户的 ChatGPT、Grok、Claude 与 Gemini 会员订
 image_alt: "ChongGrok AI 会员指南：四产品订阅与付款排障知识库"
 permalink: /
 schema_type: CollectionPage
-last_modified_at: 2026-08-06
+last_modified_at: 2026-08-08
 faq:
   - question: "这个网站提供哪些会员订阅指南？"
     answer: "当前提供 ChatGPT Plus / Pro、Grok / SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套知识库，覆盖订阅流程、付款报错、账号状态和资料安全说明。"
@@ -187,6 +187,16 @@ faq:
         <a href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">通用决策树</a>
       </div>
     </article>
+    <article class="issue-card">
+      <span class="issue-number">04</span>
+      <p class="eyebrow">Cancel And Refund</p>
+      <h3>取消续费或申请退款</h3>
+      <p>适合想停止下一次扣款，或已经完成付款、需要找到正确退款入口的情况。</p>
+      <div class="issue-links">
+        <a href="{{ '/resources/ai-subscription-cancel-refund/' | relative_url }}">查看操作指南</a>
+        <a href="{{ '/resources/ai-subscription-billing-account-map/' | relative_url }}">确认原购买渠道</a>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -267,6 +277,17 @@ faq:
         <h3><a href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">AI 订阅付款排障决策树</a></h3>
         <p>区分银行交易状态、平台收据、有效订阅和当前账号权益，避免重复付款。</p>
         <a class="text-link" href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">打开中英双语决策树 <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+    <article class="resource-card">
+      <a class="resource-media" href="{{ '/resources/ai-subscription-cancel-refund/' | relative_url }}">
+        <img src="{{ '/assets/images/ai-subscription-cancel-refund-social.png' | relative_url }}" alt="ChatGPT、Grok、Claude、Gemini 取消订阅与退款指南" width="1200" height="630" loading="lazy">
+      </a>
+      <div class="resource-body">
+        <p class="eyebrow">Cancel And Refund</p>
+        <h3><a href="{{ '/resources/ai-subscription-cancel-refund/' | relative_url }}">AI 会员取消订阅与退款指南</a></h3>
+        <p>先识别原购买渠道，再分别处理停止续费和退款申请，避免跨平台重复订阅。</p>
+        <a class="text-link" href="{{ '/resources/ai-subscription-cancel-refund/' | relative_url }}">打开分渠道操作指南 <span aria-hidden="true">→</span></a>
       </div>
     </article>
   </div>

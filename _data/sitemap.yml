@@ -1,21 +1,23 @@
 - url: "/"
-  last_modified_at: 2026-08-06
+  last_modified_at: 2026-08-08
 - url: "/labs/"
   last_modified_at: 2026-08-06
 - url: "/labs/codex-dream-skin-windows/"
   last_modified_at: 2026-07-21
 - url: "/about/"
-  last_modified_at: 2026-08-06
+  last_modified_at: 2026-08-08
 - url: "/search/"
   last_modified_at: 2026-07-21
 - url: "/resources/"
-  last_modified_at: 2026-08-06
+  last_modified_at: 2026-08-08
 - url: "/resources/ai-membership-safety-checklist/"
   last_modified_at: 2026-08-06
 - url: "/resources/ai-subscription-payment-troubleshooting/"
   last_modified_at: 2026-08-06
 - url: "/resources/ai-subscription-billing-account-map/"
   last_modified_at: 2026-08-06
+- url: "/resources/ai-subscription-cancel-refund/"
+  last_modified_at: 2026-08-08
 - url: "/en/"
   last_modified_at: 2026-07-21
 - url: "/en/resources/ai-membership-safety-checklist/"
