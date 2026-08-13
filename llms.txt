@@ -28,6 +28,7 @@
 - Subscription associated with another account: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-subscription-associated-with-another-account/
 - English associated-account guide: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/en/guides/chatgpt-subscription-associated-with-another-account/
 - English paid-but-still-Free guide: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/en/guides/chatgpt-paid-but-still-free/
+- Codex App, CLI and IDE with ChatGPT Plus / Pro: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-codex-app-cli-ide/
 
 ## Grok guide
 
