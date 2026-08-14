@@ -32,6 +32,7 @@
 - ChatGPT login failures, OTP issues and browser verification loops: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-login-verification-loop/
 - ChatGPT duplicate charges across web, Apple and Google Play: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-charged-twice/
 - ChatGPT cancellation and refund by billing channel: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-cancel-subscription-refund/
+- ChatGPT usage limit, model unavailable and reset troubleshooting: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-usage-limit-model-unavailable/
 
 ## Grok guide
 
