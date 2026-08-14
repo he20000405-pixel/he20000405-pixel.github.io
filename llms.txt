@@ -45,6 +45,7 @@
 - Grok 4.5 update: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-4-5-update/
 - Weekly limit vs subscription status: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-weekly-limit-vs-subscription/
 - Renewal failure troubleshooting: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-renewal-failed/
+- Grok Automations schedules, email triggers and notifications: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-automations/
 - English Grok User ID / UUID: https://he20000405-pixel.github.io/supergrok-china-guide/en/guides/grok-user-id/
 - English Grok Build 403: https://he20000405-pixel.github.io/supergrok-china-guide/en/guides/grok-build-login-403/
 - English SuperGrok card declined: https://he20000405-pixel.github.io/supergrok-china-guide/en/guides/supergrok-card-declined/
