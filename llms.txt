@@ -33,6 +33,7 @@
 - ChatGPT duplicate charges across web, Apple and Google Play: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-charged-twice/
 - ChatGPT cancellation and refund by billing channel: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-cancel-subscription-refund/
 - ChatGPT usage limit, model unavailable and reset troubleshooting: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-usage-limit-model-unavailable/
+- ChatGPT Plus multiple devices, account sharing and subscription ownership: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-plus-multiple-devices-account-sharing/
 
 ## Grok guide
 
