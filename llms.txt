@@ -53,6 +53,7 @@
 - Weekly limit vs subscription status: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-weekly-limit-vs-subscription/
 - Renewal failure troubleshooting: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-renewal-failed/
 - Grok Automations schedules, email triggers and notifications: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-automations/
+- Grok Connectors for Gmail, Google Drive, Outlook and GitHub: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-connectors/
 - SuperGrok cancellation, refunds and payment-method management: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-cancel-refund/
 - Grok real-time web and X search source verification: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-real-time-search-verification/
 - Grok Build Mode websites, apps and publishing guide: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-build-mode/
