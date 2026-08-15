@@ -35,6 +35,7 @@
 - ChatGPT Apps, Plugins Directory, Gmail, Google Drive, Outlook and GitHub connections: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-apps-connectors/
 - ChatGPT cloud browser, public-site limits, browser choice and troubleshooting: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-cloud-browser/
 - ChatGPT Images 2.0 generation, editing, text, transparent backgrounds and troubleshooting: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-images-2-guide/
+- ChatGPT Projects creation, files, project instructions, memory, sharing and troubleshooting: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-projects-guide/
 - Codex usage limit, shared allowance and reset troubleshooting: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/codex-usage-limit-reached/
 - ChatGPT login failures, OTP issues and browser verification loops: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-login-verification-loop/
 - ChatGPT duplicate charges across web, Apple and Google Play: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-charged-twice/
