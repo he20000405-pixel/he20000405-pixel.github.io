@@ -33,6 +33,7 @@
 - ChatGPT Deep Research, source controls, research plans, citations and report export: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-deep-research-guide/
 - ChatGPT Memory, memory summary, Temporary Chat and data controls: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-memory-temporary-chat/
 - ChatGPT Apps, Plugins Directory, Gmail, Google Drive, Outlook and GitHub connections: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-apps-connectors/
+- ChatGPT cloud browser, public-site limits, browser choice and troubleshooting: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-cloud-browser/
 - Codex usage limit, shared allowance and reset troubleshooting: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/codex-usage-limit-reached/
 - ChatGPT login failures, OTP issues and browser verification loops: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-login-verification-loop/
 - ChatGPT duplicate charges across web, Apple and Google Play: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-charged-twice/
