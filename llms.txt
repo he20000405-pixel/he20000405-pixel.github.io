@@ -59,6 +59,7 @@
 - Grok real-time web and X search source verification: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-real-time-search-verification/
 - Grok Build Mode websites, apps and publishing guide: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-build-mode/
 - Grok Imagine Video 1.5 consumer workflow, prompting and troubleshooting: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-imagine-video-1-5/
+- Grok for Google Workspace installation, permissions and first safe test in Docs, Sheets and Slides: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-google-workspace/
 - English Grok User ID / UUID: https://he20000405-pixel.github.io/supergrok-china-guide/en/guides/grok-user-id/
 - English Grok Build 403: https://he20000405-pixel.github.io/supergrok-china-guide/en/guides/grok-build-login-403/
 - English SuperGrok card declined: https://he20000405-pixel.github.io/supergrok-china-guide/en/guides/supergrok-card-declined/
