@@ -30,6 +30,7 @@
 - English paid-but-still-Free guide: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/en/guides/chatgpt-paid-but-still-free/
 - Codex App, CLI and IDE with ChatGPT Plus / Pro: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-codex-app-cli-ide/
 - ChatGPT Work, Projects, files, Scheduled Tasks and app permissions: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-work-guide/
+- ChatGPT Deep Research, source controls, research plans, citations and report export: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-deep-research-guide/
 - Codex usage limit, shared allowance and reset troubleshooting: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/codex-usage-limit-reached/
 - ChatGPT login failures, OTP issues and browser verification loops: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-login-verification-loop/
 - ChatGPT duplicate charges across web, Apple and Google Play: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-charged-twice/
