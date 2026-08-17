@@ -3,7 +3,7 @@ title: "AI 会员订阅检查与付款排障"
 description: "面向 ChatGPT、Grok、Claude、Gemini 用户的付款前检查、账号归属核对、已扣款未生效排查和安全验收指南。"
 permalink: /resources/
 schema_type: CollectionPage
-last_modified_at: 2026-08-08
+last_modified_at: 2026-08-17
 collection_items:
   - title: "AI 会员订阅安全与验收清单"
     url: "/resources/ai-membership-safety-checklist/"
@@ -13,6 +13,8 @@ collection_items:
     url: "/resources/ai-subscription-billing-account-map/"
   - title: "AI 会员取消订阅与退款指南"
     url: "/resources/ai-subscription-cancel-refund/"
+  - title: "AI 订阅客服证据清单"
+    url: "/resources/ai-subscription-support-evidence/"
 ---
 
 <p class="eyebrow">Practical Checklists</p>
@@ -27,6 +29,7 @@ collection_items:
   <section class="intent-group grok"><h3>已经扣款但会员没有生效</h3><p>先停止重复付款，再确认银行是否仍在处理、平台是否已经收款、订阅是否有效，以及当前账号是否显示会员。</p><a class="text-link" href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">打开付款排障决策树 →</a></section>
   <section class="intent-group claude"><h3>不知道该找银行还是平台</h3><p>根据收据和订阅页面识别原购买入口、计费账号、产品账号和正确责任方。</p><a class="text-link" href="{{ '/resources/ai-subscription-billing-account-map/' | relative_url }}">打开购买入口与账号对照表 →</a></section>
   <section class="intent-group gemini"><h3>想停止续费或申请退款</h3><p>先根据收据找到原购买渠道，再分别完成取消未来续费和退款申请。两项操作不能互相替代。</p><a class="text-link" href="{{ '/resources/ai-subscription-cancel-refund/' | relative_url }}">打开取消与退款指南 →</a></section>
+  <section class="intent-group"><h3>需要联系官方或售后</h3><p>整理订单、收据、账号、错误截图和时间线，遮住敏感信息，再把材料交给正确责任方。</p><a class="text-link" href="{{ '/resources/ai-subscription-support-evidence/' | relative_url }}">打开客服证据清单 →</a></section>
 </div>
 
 ## 按场景选择指南
@@ -60,6 +63,13 @@ collection_items:
     <ul class="directory-meta"><li>适合：停止下次扣款或处理已完成付款</li><li>预计阅读：约 12 分钟</li></ul>
     <div class="directory-actions"><a href="{{ '/resources/ai-subscription-cancel-refund/' | relative_url }}">查看操作步骤</a></div>
   </article>
+  <article class="directory-card">
+    <p class="eyebrow">联系支持 · 证据脱敏</p>
+    <h3>AI 订阅客服证据清单</h3>
+    <p>整理订单、收据、产品账号、错误截图和操作时间线，并按责任方提交最少必要资料。</p>
+    <ul class="directory-meta"><li>适合：准备联系银行、平台或 ChongGrok 售后</li><li>预计阅读：约 10 分钟</li></ul>
+    <div class="directory-actions"><a href="{{ '/resources/ai-subscription-support-evidence/' | relative_url }}">准备支持材料</a></div>
+  </article>
 </div>
 
 > 这些资源由 ChongGrok 独立整理。平台规则与套餐会变化，涉及权益、价格和地区可用性时，应回到对应官方页面确认。已经扣款或存在待处理订单时，请先确认原渠道状态，不要跨平台重复购买。
@@ -72,5 +82,6 @@ collection_items:
 | 付款排障决策树 | 完整流程与责任方 | 可打印 | 竖版速查 | 有 |
 | 购买入口与账号对照表 | 完整说明与表格 | 暂无 | 暂无 | 暂无 |
 | 取消订阅与退款指南 | 完整分渠道步骤 | 暂无 | 暂无 | 暂无 |
+| 客服证据清单 | 完整清单与可复制模板 | 暂无 | 暂无 | 暂无 |
 
 HTML 页面是完整版本。PDF 和信息图适合保存或分享，但遇到套餐、入口和规则变化时，应回到 HTML 页面和对应官方来源重新确认。

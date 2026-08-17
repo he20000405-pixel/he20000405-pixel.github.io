@@ -9,12 +9,12 @@ alternate_en: /en/resources/ai-subscription-payment-troubleshooting/
 image: "https://he20000405-pixel.github.io/assets/images/ai-subscription-payment-troubleshooting-social-en.png"
 image_alt: "AI subscription payment troubleshooting decision tree for ChatGPT, Grok, Claude and Gemini"
 date_published: 2026-07-15
-last_modified_at: 2026-08-06
+last_modified_at: 2026-08-17
 faq:
   - question: "Should I pay again if an AI subscription was charged but the account still shows Free?"
     answer: "No. First determine whether the charge is pending or complete, identify the original billing channel and purchasing account, and check paid access on the official product page."
   - question: "Can I use Restore purchases on both iOS and Android?"
-    answer: "Do not assume so. OpenAI documents Restore purchases for ChatGPT on iOS. On Android, check the original Google Play account and subscription state, then follow the product provider's current instructions."
+    answer: "Do not apply one product's control to every service. OpenAI currently documents Restore purchases in both the ChatGPT iOS and Android apps. Grok, Claude and Gemini users should follow their own provider's current instructions."
   - question: "Does a receipt prove that the current AI account has the paid plan?"
     answer: "No. A receipt proves that a billing provider recorded a transaction. The subscription must still be associated with the correct product account and recognized on the official product page."
   - question: "Who handles a Google Play refund?"
@@ -90,7 +90,7 @@ Redact full email addresses, order numbers, card details, session credentials, U
 
 **Expected result:** Apple and the product app show the same active plan.
 
-**If they differ:** save the Apple receipt and product-account screen. OpenAI documents **Settings → Account → Restore purchases** for ChatGPT on iOS. Do not generalize that option to Android or every AI product.
+**If they differ:** save the Apple receipt and product-account screen. OpenAI currently documents **Settings → Restore purchases** in the ChatGPT app. Do not generalize that control to Grok, Claude or Gemini.
 
 ### Google Play
 
@@ -100,7 +100,7 @@ Redact full email addresses, order numbers, card details, session credentials, U
 
 **Expected result:** Play and the product account show the same active plan.
 
-**If they differ:** do not search for a universal iOS-style restore button. Confirm the product account and follow that product provider's current support instructions.
+**If they differ:** verify the product account first. ChatGPT users can follow OpenAI's current Android instruction and open **Settings → Restore purchases**. For other products, use a restore control only when that provider documents it; otherwise save the receipt and contact the product's support route.
 
 **Refund boundary:** Google Play provides the store subscription record and cancellation entry, but refund ownership differs by product. xAI currently directs SuperGrok Google Play refunds to xAI. Follow the current official guidance for ChatGPT, Claude or Gemini instead of assuming one refund route covers every product.
 
@@ -155,6 +155,7 @@ Gemini own-account assistance and the separate ready-made annual account are dif
 ## Official references
 
 - [OpenAI: avoid duplicate subscriptions across web, iOS and Android](https://help.openai.com/en/articles/20001043-how-do-i-avoid-being-charged-twice-if-i-subscribe-to-chatgpt-on-ios-android-and-the-web)
+- [OpenAI: ChatGPT Plus and charged-but-Free troubleshooting](https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus)
 - [OpenAI: restore an Apple App Store purchase](https://help.openai.com/en/articles/8346573)
 - [OpenAI: request a ChatGPT refund](https://help.openai.com/en/articles/7232895-how-do-i-request-a-refund-for-chatgpt-plus)
 - [xAI: Grok consumer FAQ](https://docs.x.ai/grok/faq)
@@ -169,4 +170,4 @@ ChongGrok is an independent membership-assistance service and is not affiliated 
 
 <div class="download-band"><p><strong>Save or share:</strong> the decision graphic is useful for a quick check. This HTML page contains the complete branches, support boundaries and current corrections.</p><a class="button-link primary" href="{{ '/assets/downloads/ai-subscription-payment-troubleshooting-en.pdf' | relative_url }}">Download A4 PDF</a></div>
 
-<p class="meta">Official sources checked: 2026-08-06.</p>
+<p class="meta">Official sources checked: 2026-08-17.</p>

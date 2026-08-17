@@ -9,12 +9,12 @@ alternate_en: /en/resources/ai-subscription-payment-troubleshooting/
 image: "https://he20000405-pixel.github.io/assets/images/ai-subscription-payment-troubleshooting-social-zh.png"
 image_alt: "ChatGPT、Grok、Claude、Gemini AI 订阅付款排障决策树"
 date_published: 2026-07-15
-last_modified_at: 2026-08-06
+last_modified_at: 2026-08-17
 faq:
   - question: "AI 会员已经扣款但仍显示 Free，可以再买一次吗？"
     answer: "不要再次购买。先确认这笔交易是待处理还是已经完成，再确认原购买入口、购买时使用的产品账号，以及官方产品页面是否显示有效计划。"
   - question: "App Store 和 Google Play 都能使用 Restore purchases 吗？"
-    answer: "不能一概而论。OpenAI 为 ChatGPT iOS 提供 Restore purchases；Android 应检查原 Google Play 账号和订阅状态。其他产品应遵循各自官方说明。"
+    answer: "不能把一个产品的入口套用到所有产品。OpenAI 当前说明 ChatGPT 的 iOS 和 Android App 都可在 Settings 中使用 Restore purchases；Grok、Claude 和 Gemini 应遵循各自官方说明。"
   - question: "收到付款收据是否代表会员一定已经生效？"
     answer: "不代表。收据说明账单平台记录了交易，但还要确认订单绑定的产品账号，并在官方产品页面核对会员计划。"
   - question: "Google Play 扣款后应该向谁申请退款？"
@@ -92,7 +92,7 @@ faq:
 
 **预期结果：**Apple 显示有效订阅，App 中的原产品账号也显示会员。
 
-**异常分支：**Apple 有订阅但产品账号没有权益时，保存 Apple 收据和产品账号页面。ChatGPT iOS 可以按 OpenAI 当前说明使用 **Settings → Account → Restore purchases**；不要把这个入口套用到 Android 或其他产品。
+**异常分支：**Apple 有订阅但产品账号没有权益时，保存 Apple 收据和产品账号页面。ChatGPT 可以按 OpenAI 当前说明在 App 中进入 **Settings → Restore purchases** 同步订阅；Grok、Claude 和 Gemini 不应直接照搬这个入口。
 
 ### Google Play
 
@@ -102,7 +102,7 @@ faq:
 
 **预期结果：**Google Play 和产品账号显示同一份有效计划。
 
-**异常分支：**Google Play 有订阅但产品仍显示 Free 时，不要寻找虚构的统一“恢复购买”按钮。先核对产品账号，再按该产品官方帮助页联系支持。
+**异常分支：**Google Play 有订阅但产品仍显示 Free 时，先核对产品账号。ChatGPT 用户可按 OpenAI 当前说明在 Android App 中进入 **Settings → Restore purchases**；其他产品只有在各自官方文档明确提供恢复入口时才使用，找不到入口时不要自行猜测按钮。
 
 **退款边界：**Google Play 负责商店订阅记录和取消入口，但退款路径会因产品不同而变化。xAI 当前说明要求 SuperGrok 的 Google Play 退款提交给 xAI；其他产品应按各自官方帮助页和 Google Play 实时页面处理。
 
@@ -159,6 +159,7 @@ Gemini 的用户自有账号升级与专属一年成品账号是两种不同交�
 ## 官方参考
 
 - [OpenAI：避免网页、iOS 与 Android 重复订阅](https://help.openai.com/en/articles/20001043-how-do-i-avoid-being-charged-twice-if-i-subscribe-to-chatgpt-on-ios-android-and-the-web)
+- [OpenAI：ChatGPT Plus 与已扣款仍显示 Free 排查](https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus)
 - [OpenAI：恢复 Apple App Store 购买](https://help.openai.com/en/articles/8346573)
 - [OpenAI：ChatGPT 退款说明](https://help.openai.com/en/articles/7232895-how-do-i-request-a-refund-for-chatgpt-plus)
 - [xAI：Grok 消费者常见问题](https://docs.x.ai/grok/faq)
@@ -173,4 +174,4 @@ ChongGrok 是独立第三方会员订阅协助服务，与 OpenAI、xAI、X、An
 
 <div class="download-band"><p><strong>保存与分享：</strong>决策图适合快速查看，HTML 页面包含完整分支、责任边界和最新修订。</p><a class="button-link primary" href="{{ '/assets/downloads/ai-subscription-payment-troubleshooting-zh.pdf' | relative_url }}">下载 A4 PDF</a></div>
 
-<p class="meta">官方资料核验日期：2026-08-06。</p>
+<p class="meta">官方资料核验日期：2026-08-17。</p>
