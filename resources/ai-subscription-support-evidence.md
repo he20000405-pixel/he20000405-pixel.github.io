@@ -119,7 +119,7 @@ faq:
 ```text
 1. 2026-08-17 10:20，使用原 Google 账号检查 Google Play，订阅显示有效。
 2. 10:25，ChatGPT 使用原购买账号登录，仍显示 Free。
-3. 10:28，在 ChatGPT Settings 中执行一次 Restore purchases，结果没有变化。
+3. 10:28，在 ChatGPT iOS App 中依次打开 Settings → Account → Restore purchases，结果没有变化。
 4. 此后没有再次付款。
 ```
 
@@ -163,7 +163,7 @@ faq:
 - grok.com 订阅和账号权益：xAI；
 - Apple 退款：Apple；
 - Google Play 取消：Google Play；Google Play 购买的 SuperGrok 退款按 xAI 当前 FAQ 走 xAI Refund Request；
-- X Premium+：X 或原商店计费渠道；
+- X Premium+：X，或最初购买订阅的应用商店；
 - ChongGrok 订单：ChongGrok 原订单渠道。
 
 ### Claude
