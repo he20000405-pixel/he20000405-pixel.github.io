@@ -14,7 +14,7 @@ faq:
   - question: "Should I pay again if an AI subscription was charged but the account still shows Free?"
     answer: "No. First determine whether the charge is pending or complete, identify the original billing channel and purchasing account, and check paid access on the official product page."
   - question: "Can I use Restore purchases on both iOS and Android?"
-    answer: "Do not apply one product's control to every service. OpenAI currently documents Restore purchases in both the ChatGPT iOS and Android apps. Grok, Claude and Gemini users should follow their own provider's current instructions."
+    answer: "No. OpenAI currently documents Restore purchases for ChatGPT subscriptions bought through the Apple App Store, using the ChatGPT iOS app. On Android, verify the original Google Play account, the Play subscription and the ChatGPT account used at purchase; do not assume the same button exists without official documentation."
   - question: "Does a receipt prove that the current AI account has the paid plan?"
     answer: "No. A receipt proves that a billing provider recorded a transaction. The subscription must still be associated with the correct product account and recognized on the official product page."
   - question: "Who handles a Google Play refund?"
@@ -90,7 +90,7 @@ Redact full email addresses, order numbers, card details, session credentials, U
 
 **Expected result:** Apple and the product app show the same active plan.
 
-**If they differ:** save the Apple receipt and product-account screen. OpenAI currently documents **Settings → Restore purchases** in the ChatGPT app. Do not generalize that control to Grok, Claude or Gemini.
+**If they differ:** save the Apple receipt and product-account screen. For a ChatGPT subscription bought through the Apple App Store, OpenAI documents **Settings → Account → Restore purchases** in the ChatGPT iOS app. Do not generalize that control to Grok, Claude or Gemini.
 
 ### Google Play
 
@@ -100,7 +100,7 @@ Redact full email addresses, order numbers, card details, session credentials, U
 
 **Expected result:** Play and the product account show the same active plan.
 
-**If they differ:** verify the product account first. ChatGPT users can follow OpenAI's current Android instruction and open **Settings → Restore purchases**. For other products, use a restore control only when that provider documents it; otherwise save the receipt and contact the product's support route.
+**If they differ:** first confirm that Google Play is using the Google account that paid for the subscription, then confirm that the product app is signed in to the account used at purchase. OpenAI does not currently document an Android control equivalent to the iOS `Restore purchases` path. If ChatGPT still shows Free, save the Play receipt, subscription screen and ChatGPT account screen, then contact OpenAI Support. Use a restore control for other products only when their provider documents it.
 
 **Refund boundary:** Google Play provides the store subscription record and cancellation entry, but refund ownership differs by product. xAI currently directs SuperGrok Google Play refunds to xAI. Follow the current official guidance for ChatGPT, Claude or Gemini instead of assuming one refund route covers every product.
 
@@ -152,10 +152,20 @@ Re-evaluate purchase options only after confirming that no active subscription, 
 
 Gemini own-account assistance and the separate ready-made annual account are different fulfillment paths. Choose only after the old billing state is closed.
 
+<section class="faq-list" aria-labelledby="payment-faq-heading">
+  <h2 id="payment-faq-heading">Frequently asked questions</h2>
+  {% for item in page.faq %}
+  <details>
+    <summary>{{ item.question }}</summary>
+    <p>{{ item.answer }}</p>
+  </details>
+  {% endfor %}
+</section>
+
 ## Official references
 
 - [OpenAI: avoid duplicate subscriptions across web, iOS and Android](https://help.openai.com/en/articles/20001043-how-do-i-avoid-being-charged-twice-if-i-subscribe-to-chatgpt-on-ios-android-and-the-web)
-- [OpenAI: ChatGPT Plus and charged-but-Free troubleshooting](https://help.openai.com/en/articles/6950777-what-is-chatgpt-plus)
+- [OpenAI: subscription associated with another ChatGPT account](https://help.openai.com/en/articles/20001056-why-am-i-seeing-a-message-that-my-subscription-is-associated-with-another-account)
 - [OpenAI: restore an Apple App Store purchase](https://help.openai.com/en/articles/8346573)
 - [OpenAI: request a ChatGPT refund](https://help.openai.com/en/articles/7232895-how-do-i-request-a-refund-for-chatgpt-plus)
 - [xAI: Grok consumer FAQ](https://docs.x.ai/grok/faq)
