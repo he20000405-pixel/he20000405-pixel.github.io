@@ -46,6 +46,11 @@
 
 ## Grok guide
 
+- [Grok 联合会员（The X Subscription）怎么选？2026 四档价格、Grok Bot 权限与国内开通指南](https://he20000405-pixel.github.io/supergrok-china-guide/guides/x-subscription-overview/): 四档价格、Grok Bot 权限与国内开通流程。
+- [为什么开了 Grok 会员还是用不了 Grok Bot？2026 权限解锁、每周额度池（Weekly Pool）与 Top-ups 指南](https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-bot-weekly-pool-guide/): 无权限排查、Weekly Pool 与 Top-ups 使用说明。
+- [老版 SuperGrok 与 Cursor 要不要合并（Unify）？2026 X 联合会员迁移避坑、苹果退费与旧版保留指南](https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-unify-migration-guide/): Unify 迁移、苹果退费与旧版订阅保留说明。
+- [X 联合会员下使用 Cursor 编程怎么计费？2026 Grok 第一方额度池与 Claude / GPT 扣费规则解析](https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-cursor-shared-billing/): Grok 第一方额度池与 Claude、GPT 扣费规则。
+
 - X Subscription, Grok Bot, shared weekly usage and legacy migration: https://he20000405-pixel.github.io/supergrok-china-guide/guides/x-subscription-grok-bot-guide/
 
 - Main guide: https://he20000405-pixel.github.io/supergrok-china-guide/
