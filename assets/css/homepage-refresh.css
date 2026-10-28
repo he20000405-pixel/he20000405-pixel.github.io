@@ -2,7 +2,7 @@
 .home-page {
   --home-ink: #101b2b;
   --home-muted: #627286;
-  --home-green: #008b77;
+  --home-green: #007969;
   --home-line: #e3ecef;
   background: #fff;
 }
@@ -249,3 +249,15 @@
 @media (prefers-reduced-motion: reduce) {
   .home-page { scroll-behavior: auto; }
 }
+
+/* Keep small labels legible on the existing pale surfaces. */
+.home-page .content .eyebrow,.home-page .issue-card .eyebrow,.home-page .popular-searches a,.home-page .issue-number{color:#586b7d}
+.home-page .status-badge,.home-page .status-badge.focus{color:#3f7163}
+.home-page .product-grok .status-badge{color:#526375}
+.home-page .product-claude .status-badge{color:#965439}
+.home-page .product-gemini .status-badge{color:#3f5da3}
+.home-page .hero-value{color:#586b7d}
+.home-page .hero-search-row input::placeholder{color:#586b7d;opacity:1}
+.home-page .product-kicker .eyebrow,.home-page .status-badge,.home-page .status-badge.focus,.home-page .issue-card .eyebrow,.home-page .resource-body .eyebrow{font-size:11px}
+
+.home-page .home-updated{color:#586b7d}

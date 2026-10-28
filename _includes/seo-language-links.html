@@ -1,0 +1,9 @@
+{% if page.alternate_zh and page.alternate_en %}
+<link rel="alternate" hreflang="zh-CN" href="{{ page.alternate_zh | absolute_url }}">
+<link rel="alternate" hreflang="en" href="{{ page.alternate_en | absolute_url }}">
+<link rel="alternate" hreflang="x-default" href="{{ page.alternate_zh | absolute_url }}">
+{% elsif page.url == '/' or page.url == '/en/' %}
+<link rel="alternate" hreflang="zh-CN" href="{{ '/' | absolute_url }}">
+<link rel="alternate" hreflang="en" href="{{ '/en/' | absolute_url }}">
+<link rel="alternate" hreflang="x-default" href="{{ '/' | absolute_url }}">
+{% endif %}

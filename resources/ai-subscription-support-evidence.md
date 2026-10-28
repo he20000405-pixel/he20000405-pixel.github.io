@@ -5,16 +5,17 @@ permalink: /resources/ai-subscription-support-evidence/
 lang: zh-CN
 schema_type: Article
 date_published: 2026-08-17
-last_modified_at: 2026-08-17
+last_modified_at: 2026-10-28
+faq_schema: false
 faq:
   - question: "联系 AI 产品客服前需要准备什么？"
-    answer: "至少准备产品与套餐、问题发生时间、原购买渠道、订单号或收据、当前产品账号、订阅页面状态、错误原文和已经尝试过的步骤。截图前应遮住密码、验证码、恢复码、完整卡号、session 和完整 User ID。"
+    answer: "至少准备产品与套餐、问题发生时间、原购买渠道、订单号或收据、当前产品账号、订阅页面状态、错误原文和已经尝试过的步骤。截图前应遮住密码、验证码、恢复码、完整卡号、session、SSO 和完整 User ID。"
   - question: "客服需要完整银行卡号或密码吗？"
     answer: "不需要。正常排查通常只需卡号末四位、付款时间、金额、币种、订单号和脱敏截图。不要向任何人提供密码、短信或邮箱验证码、恢复码和完整银行卡资料。"
   - question: "只有银行扣款截图，没有收据，可以证明订阅成功吗？"
     answer: "不能。银行记录只能说明发生了付款请求或扣款，还要确认交易是否最终完成、哪个平台生成了订单，以及会员是否附着到正确产品账号。没有收据时应先找原收款平台核对。"
   - question: "ChongGrok 订单应该把资料交给谁？"
-    answer: "卡密订单先进入 ChongGrok 核销页查看状态；客服协助订单使用原订单号联系原售后渠道。不要把 ChongGrok 订单提交给 OpenAI、xAI、Anthropic、Google、Apple 或 Google Play。"
+    answer: "卡密订单按产品进入 ChatGPT、旧版 SuperGrok 或新版 X 联合会员核销入口查看状态；客服协助订单使用原订单号联系原售后渠道。不要把 ChongGrok 订单提交给 OpenAI、xAI、Anthropic、Google、Apple 或 Google Play。"
 ---
 
 <p class="eyebrow">Support evidence and privacy</p>
@@ -117,7 +118,7 @@ faq:
 只列实际完成过的操作和结果。例如：
 
 ```text
-1. 2026-08-17 10:20，使用原 Google 账号检查 Google Play，订阅显示有效。
+1. 2026-08-17 10:20，使用原 Apple 账户检查 Apple 订阅，订阅显示有效。
 2. 10:25，ChatGPT 使用原购买账号登录，仍显示 Free。
 3. 10:28，在 ChatGPT iOS App 中依次打开 Settings → Account → Restore purchases，结果没有变化。
 4. 此后没有再次付款。
@@ -144,7 +145,8 @@ faq:
 | 产品账号 | 部分遮蔽的邮箱、登录方式 | 密码、验证码、恢复码 |
 | 订单 | 对应支持方需要的订单号 | 在公开帖子中展示完整订单资料 |
 | ChatGPT | 必要的账号状态截图 | session、访问令牌、完整会话凭证 |
-| Grok / Claude | 必要时向原履约方提交 User ID | 在评论区或论坛公开完整 User ID |
+| 新版 X 联合会员 | 按订单要求在已确认的核销入口提交 Grok SSO | 公开 SSO 或发送给身份不明的人 |
+| 旧版 SuperGrok / Claude | 旧版 Grok 使用 User ID；Claude 是否需要 User ID 以当前订单说明为准 | 在评论区或论坛公开完整 User ID |
 | 错误截图 | 错误原文、时间、页面名称 | 其他人的聊天、邮件或私人文件 |
 
 脱敏后再放大检查一次图片四角、浏览器标签、地址栏、通知区域和背景窗口。敏感信息经常不在截图中心。
@@ -178,7 +180,7 @@ faq:
 
 - Google One、Google Payments 或 Google Play 订单：收据对应的 Google 支持入口；
 - 账号权益：先确认当前 Gemini 与订阅属于同一个个人 Google 账号；
-- ChongGrok 自有账号升级或 Gemini 专属一年成品账号：按原订单的交付方式联系 ChongGrok。
+- ChongGrok 自有账号升级、Gemini 专属成品账号或家庭组方案：按原订单的交付方式联系 ChongGrok。
 
 ## 第六步：使用可复制的支持请求模板
 
@@ -217,7 +219,7 @@ faq:
 - [ ] 在问题查清前没有再次购买；
 - [ ] 完成后回官方产品页面核对计划和到期日。
 
-如果是 ChongGrok 卡密订单，先进入[卡密核销页](https://chonggrok.com/verify?utm_source=github_pages&utm_medium=referral&utm_campaign=support_evidence&utm_content=existing_order)查询。客服协助订单应使用原订单号联系原售后渠道。
+如果是 ChongGrok 卡密订单，先进入[ChatGPT 核销](https://chonggrok.com/verify?utm_source=github_pages&utm_medium=referral&utm_campaign=support_evidence&utm_content=existing_order)、[旧版 SuperGrok 核销](https://chonggrok.com/verify-grok?utm_source=github_pages&utm_medium=referral&utm_campaign=support_evidence&utm_content=existing_order)或[新版 X 联合会员核销](https://chonggrok.com/verify-x?utm_source=github_pages&utm_medium=referral&utm_campaign=support_evidence&utm_content=existing_order)查询。客服协助订单应使用原订单号联系原售后渠道。
 
 只有确认没有有效订阅、待处理付款、退款申请或未完成订单后，才重新选择购买方式。需要国内支付时，可再查看 ChongGrok 的 [ChatGPT](https://chonggrok.com/chatgpt?utm_source=github_pages&utm_medium=referral&utm_campaign=support_evidence&utm_content=chatgpt)、[SuperGrok](https://chonggrok.com/supergrok?utm_source=github_pages&utm_medium=referral&utm_campaign=support_evidence&utm_content=grok)、[Claude](https://chonggrok.com/claude?utm_source=github_pages&utm_medium=referral&utm_campaign=support_evidence&utm_content=claude)或 [Gemini](https://chonggrok.com/gemini?utm_source=github_pages&utm_medium=referral&utm_campaign=support_evidence&utm_content=gemini)实时方案。
 

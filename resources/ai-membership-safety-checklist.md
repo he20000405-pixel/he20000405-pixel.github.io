@@ -8,12 +8,13 @@ alternate_en: /en/resources/ai-membership-safety-checklist/
 image: "https://he20000405-pixel.github.io/assets/images/ai-membership-safety-checklist-social.png"
 image_alt: "ChatGPT、Grok、Claude、Gemini AI 会员订阅安全与验收清单"
 date_published: 2026-07-15
-last_modified_at: 2026-08-06
+last_modified_at: 2026-10-28
+faq_schema: false
 faq:
   - question: "AI 会员付款后没有立即生效，可以再买一次吗？"
     answer: "不要再次购买。先确认交易是否已经完成、订阅由哪个入口管理，以及当前登录账号是否就是购买时使用的账号。已有成功扣款或待处理交易时，应先联系对应账单方或产品支持。"
   - question: "不要密码是否等于没有风险？"
-    answer: "不等于。session 和账号标识的敏感程度不同，但都不应公开，也只能提交到确认的履约页面。任何线上订阅协助都不是零风险。"
+    answer: "不等于。session、SSO 与账号标识的敏感程度不同，但都不应公开，也只能提交到确认的履约页面。任何线上订阅协助都不是零风险。"
   - question: "ChongGrok 是 OpenAI、Google、Anthropic 或 xAI 的官方合作方吗？"
     answer: "不是。ChongGrok 是独立第三方订阅协助服务，与这些公司不存在隶属、授权或官方合作关系。"
 ---
@@ -50,11 +51,12 @@ faq:
 | 产品 | ChongGrok 流程可能使用的资料 | 绝对不要提交 | 付款后在哪里验收 |
 | --- | --- | --- | --- |
 | ChatGPT | Plus 自动流程会使用本次升级所需的 session；session 是敏感会话凭证 | 密码、邮箱验证码、恢复码 | 回 ChatGPT 官方设置检查计划；完成后退出并重新登录，刷新原 session |
-| Grok | Grok User ID，用于识别目标账号；它不是登录密码 | X/Grok 密码、验证码、恢复码 | 回 grok.com 或原订阅入口检查计划与账号 |
-| Claude | Claude User ID，用于 ChongGrok 履约时核对目标账号；它不是 Anthropic 官方订阅要求 | 密码、验证码、恢复码 | 回 Claude 官方设置或 Billing 页面检查计划 |
-| Gemini | 自有账号升级资料由客服逐单确认；专属一年成品账号是另一种交付方式 | 自有 Google 账号的密码、两步验证码、恢复码 | 自有账号回 Gemini、Google One 和原账单入口检查；成品账号按商品页说明验收账号归属、计划和售后范围 |
+| Grok 新版 X 联合会员 | 本次履约使用 Grok SSO；它是敏感登录凭证，不是 User ID | X/Grok 密码、验证码、恢复码；不要公开 SSO | 回 grok.com 检查计划与权益，并按订单核对绑定权益 |
+| 旧版 SuperGrok | Grok User ID，用于识别目标账号；它不是登录密码，也不能代替 SSO | X/Grok 密码、验证码、恢复码 | 回 grok.com 或原订阅入口检查计划与账号 |
+| Claude | 当前为个人 Pro 月度人工 iOS 内购；必要账号资料逐单确认，若需 User ID，先确认用途 | 密码、验证码、恢复码、完整会话令牌 | 回 Claude 官方设置或 Billing 页面检查 Pro 状态与有效期 |
+| Gemini | 区分自有账号升级、专属成品账号与家庭组方案；资料和资格由客服逐单确认 | 自有 Google 账号的密码、两步验证码、恢复码 | 自有账号查 Gemini、Google One 与原账单；成品账号查交付与安全信息；家庭成员查入组状态和共享权益 |
 
-<div class="notice warning"><strong>“不需要密码”不等于“没有风险”。</strong>session 和 User ID 的用途不同，但都不应公开发布，也不要发送给身份和用途不明确的个人或页面。</div>
+<div class="notice warning"><strong>“不需要密码”不等于“没有风险”。</strong>session、SSO 与 User ID 的敏感程度和用途不同，但都不应公开发布，也不要发送给身份和用途不明确的个人或页面。</div>
 
 ## 付款后先判断交易处于哪一步
 
@@ -116,7 +118,7 @@ faq:
 - 官方计划页面或完整错误提示；
 - 已经完成的排查步骤。
 
-截图时遮住完整 session、User ID、邮箱、订单号、银行卡信息、验证码和恢复码。公开论坛或评论区不适合提交这些资料。
+截图时遮住完整 session、SSO、User ID、邮箱、订单号、银行卡信息、验证码和恢复码。公开论坛或评论区不适合提交这些资料。
 
 ## 进一步排查
 
@@ -143,4 +145,4 @@ ChongGrok 是独立第三方会员订阅协助服务，与 OpenAI、xAI、X、An
 
 <div class="download-band"><p><strong>保存与分享：</strong>PDF 适合打印，HTML 页面包含完整解释和最新修订。转发给他人时，优先分享当前页面。</p><a class="button-link primary" href="{{ '/assets/downloads/ai-membership-safety-checklist-zh.pdf' | relative_url }}">下载 PDF</a></div>
 
-<p class="meta">官方资料核验日期：2026-08-06。</p>
+<p class="meta">官方通用资料核验日期：2026-08-06；ChongGrok 服务资料边界更新：2026-10-28。当前流程见 <a href="https://chonggrok.com/x-subscription">X 联合会员</a>、<a href="https://chonggrok.com/claude">Claude</a> 与 <a href="https://chonggrok.com/gemini">Gemini</a> 服务页。</p>

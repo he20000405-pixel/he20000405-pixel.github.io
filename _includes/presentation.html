@@ -1,0 +1,21 @@
+{% include prepare-presentation.html source=include.source site_key=include.site_key %}
+<div class="source-content" data-static-presentation>
+  <div class="preview-hero" data-page-hero{% if presentation_hero == '' and brand_label == '' %} hidden{% endif %}>
+    {% if brand_label != '' %}
+    <div class="hero-brand"><span class="product-symbol"><img src="{{ '/assets/images/brands/' | append: include.site_key | append: '.svg' | relative_url }}" alt="" width="36" height="36"></span><span>{{ brand_label }}</span></div>
+    {% endif %}
+    {{ presentation_hero }}
+    {% if page_kind == 'landing' %}
+      {% unless include.source contains 'class="product-search"' %}
+      <form class="product-search added-search" action="{{ site.portal_url }}search/" method="get" role="search">
+        <label for="product-search-extra">{% if page.lang == 'en' %}Search all product guides{% else %}搜索 ChatGPT、Grok、Claude、Gemini 知识库{% endif %}</label>
+        <div class="search-control"><input id="product-search-extra" name="q" type="search" placeholder="{% if page.lang == 'en' %}For example: payment failed, still Free{% else %}例如：付款失败、仍显示 Free{% endif %}"><button type="submit">{% if page.lang == 'en' %}Search{% else %}搜索{% endif %}</button></div>
+      </form>
+      {% endunless %}
+    {% endif %}
+  </div>
+  <div class="content-layout{% if presentation_has_rail %} reading-layout{% endif %}">
+    <article class="content inner-content preview-body" data-article-content>{{ presentation_body }}</article>
+    {% if presentation_has_rail %}{% include reading-rail.html %}{% endif %}
+  </div>
+</div>

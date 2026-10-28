@@ -4,7 +4,7 @@ description: "按原购买渠道取消 ChatGPT、SuperGrok、Claude、Gemini 会
 permalink: /resources/ai-subscription-cancel-refund/
 lang: zh-CN
 date_published: 2026-08-08
-last_modified_at: 2026-08-08
+last_modified_at: 2026-10-28
 image: "https://he20000405-pixel.github.io/assets/images/ai-subscription-cancel-refund-social.png"
 image_alt: "ChatGPT、Grok、Claude、Gemini 取消订阅与退款操作指南"
 faq:
@@ -15,7 +15,7 @@ faq:
   - question: "找不到原购买渠道怎么办？"
     answer: "先查看付款收据、银行卡交易详情和应用商店订阅记录。找到网页、Apple、Google Play、X、Google One 或 ChongGrok 中的原收款方后，再进入对应流程；不要通过新订单测试。"
   - question: "已有 ChongGrok 订单应该在哪里处理？"
-    answer: "已有卡密先进入 ChongGrok 核销页查询，客服协助订单使用原订单号联系 ChongGrok 售后。Apple、Google Play 或产品官网订单的取消与退款仍由原收款渠道处理。"
+    answer: "已有卡密按产品进入 ChatGPT、旧版 SuperGrok 或新版 X 联合会员核销入口查询；客服协助订单凭原订单号联系 ChongGrok 售后。其他渠道订单应回原购买入口取消续费；退款另按具体产品的官方说明申请，不能一概交给原收款渠道。"
 ---
 
 <p class="eyebrow">Cancel, refund and billing ownership</p>
@@ -157,11 +157,11 @@ Gemini / Google AI 计划通常由个人 Google 账号和 Google One 管理。�
 
 ChongGrok 只能查询和处理由 ChongGrok 创建的订单，不能替 Apple、Google、X 或产品官网决定退款结果。
 
-- 已经持有卡密：进入 [ChongGrok 卡密核销页面](https://chonggrok.com/verify?utm_source=github_pages&utm_medium=referral&utm_campaign=cancel_refund&utm_content=verify_existing_order)查看或继续原订单。
+- 已经持有卡密：进入 [ChatGPT 核销](https://chonggrok.com/verify?utm_source=github_pages&utm_medium=referral&utm_campaign=cancel_refund&utm_content=verify_existing_order)、[旧版 SuperGrok 核销](https://chonggrok.com/verify-grok?utm_source=github_pages&utm_medium=referral&utm_campaign=cancel_refund&utm_content=verify_existing_order)或[新版 X 联合会员核销](https://chonggrok.com/verify-x?utm_source=github_pages&utm_medium=referral&utm_campaign=cancel_refund&utm_content=verify_existing_order)查看或继续原订单。
 - 客服协助订单：准备原订单号，通过原售后渠道联系 ChongGrok。
 - 订单状态尚未确认：停止再次购买，先让售后核对付款、资料和处理记录。
 
-不要向售后发送账号密码、验证码或恢复码。ChatGPT session、Grok User ID 和 Claude User ID 仍属于敏感资料，只能提交到确认的履约入口。
+不要向售后发送账号密码、验证码或恢复码。ChatGPT session 与 Grok SSO 是敏感会话凭证；旧版 Grok User ID 和按订单需要的 Claude User ID 也不应公开。只向确认的履约入口提交本次订单必需的资料。
 
 ## 完成后如何验收
 
@@ -199,7 +199,7 @@ ChongGrok 只能查询和处理由 ChongGrok 创建的订单，不能替 Apple�
 
 ### 已有 ChongGrok 订单应该在哪里处理？
 
-已有卡密先进入 ChongGrok 核销页查询，客服协助订单使用原订单号联系 ChongGrok 售后。Apple、Google Play 或产品官网订单的取消与退款仍由原收款渠道处理。
+已有卡密按产品进入 ChatGPT、旧版 SuperGrok 或新版 X 联合会员核销入口查询；客服协助订单凭原订单号联系 ChongGrok 售后。其他渠道订单应回原购买入口取消续费；退款另按具体产品的官方说明申请，不能一概交给原收款渠道。
 
 ## 官方参考
 

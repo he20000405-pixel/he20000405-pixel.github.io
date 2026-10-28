@@ -1,0 +1,88 @@
+{%- comment -%}
+Build the reading layout before first paint. Only presentation wrappers move;
+article wording, links and original heading IDs remain unchanged.
+{%- endcomment -%}
+{%- assign presentation_body = include.source | strip -%}
+{%- assign presentation_hero = '' -%}
+{%- assign presentation_preview = '' -%}
+{%- assign presentation_toc = '' -%}
+{%- assign presentation_has_rail = false -%}
+{%- assign brand_label = '' -%}
+{%- case include.site_key -%}
+  {%- when 'chatgpt' -%}{%- assign brand_label = 'OpenAI / ChatGPT' -%}
+  {%- when 'grok' -%}{%- assign brand_label = 'xAI / Grok' -%}
+  {%- when 'claude' -%}{%- assign brand_label = 'Anthropic / Claude' -%}
+  {%- when 'gemini' -%}{%- assign brand_label = 'Google / Gemini' -%}
+{%- endcase -%}
+{%- if page_kind == 'landing' and presentation_body contains '<section class="product-hero">' -%}
+  {%- assign hero_inner = presentation_body | split: '<section class="product-hero">' | last | split: '</section>' | first -%}
+  {%- capture presentation_hero -%}<section class="product-hero">{{ hero_inner }}</section>{%- endcapture -%}
+  {%- assign presentation_body = presentation_body | remove_first: presentation_hero -%}
+  {%- if include.site_key == 'chatgpt' -%}
+    {%- assign heading_inner = presentation_hero | split: '<h1>' | last | split: '</h1>' | first -%}
+    {%- if heading_inner contains ' 国内' -%}
+      {%- capture heading_old -%}<h1>{{ heading_inner }}</h1>{%- endcapture -%}
+      {%- capture heading_new -%}<h1><span class="title-line">{{ heading_inner | split: '国内' | first }}</span><span class="title-line">国内{{ heading_inner | split: '国内' | last }}</span></h1>{%- endcapture -%}
+      {%- assign presentation_hero = presentation_hero | replace_first: heading_old, heading_new -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- elsif page_kind == 'article' -%}
+  {%- if presentation_body contains '<h1' -%}
+    {%- assign heading_fragment = presentation_body | split: '<h1' | last | split: '</h1>' | first -%}
+    {%- capture heading_markup -%}<h1{{ heading_fragment }}</h1>{%- endcapture -%}
+    {%- assign presentation_body = presentation_body | remove_first: heading_markup -%}
+    {%- assign presentation_hero = heading_markup -%}
+  {%- endif -%}
+  {%- assign article_start = presentation_body | strip | slice: 0, 160 -%}
+  {%- if article_start contains '<p class="eyebrow">' or article_start contains 'class="resource-hero"' or article_start contains 'class="lab-hero"' -%}
+    {%- if presentation_body contains '<p class="eyebrow">' -%}
+      {%- assign eyebrow_text = presentation_body | split: '<p class="eyebrow">' | last | split: '</p>' | first -%}
+      {%- capture eyebrow_markup -%}<p class="eyebrow">{{ eyebrow_text }}</p>{%- endcapture -%}
+      {%- assign presentation_body = presentation_body | remove_first: eyebrow_markup -%}
+      {%- assign presentation_hero = eyebrow_markup | append: presentation_hero -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- else -%}
+  {%- comment -%}The existing collection hero is its leading heading and paragraphs.{%- endcomment -%}
+  {%- assign presentation_hero = presentation_body -%}
+  {%- assign hero_stops = '<h2|<blockquote|<div|<section|<ul|<ol|<table|<figure|<form|<hr' | split: '|' -%}
+  {%- for hero_stop in hero_stops -%}
+    {%- assign hero_prefix = presentation_body | split: hero_stop | first -%}
+    {%- if hero_prefix.size < presentation_hero.size -%}{%- assign presentation_hero = hero_prefix -%}{%- endif -%}
+  {%- endfor -%}
+  {%- assign presentation_body = presentation_body | remove_first: presentation_hero -%}
+{%- endif -%}
+{%- if page_kind == 'article' -%}
+  {%- assign heading_parts = presentation_body | split: '<h2' -%}
+  {%- if heading_parts.size > 2 -%}
+    {%- assign presentation_has_rail = true -%}
+    {%- for heading_part in heading_parts offset: 1 -%}
+      {%- assign heading_open = heading_part | split: '>' | first -%}
+      {%- assign heading_contents = heading_part | split: '</h2>' | first | remove_first: heading_open | remove_first: '>' -%}
+      {%- if heading_open contains 'id="' -%}
+        {%- assign heading_id = heading_open | split: 'id="' | last | split: '"' | first -%}
+      {%- else -%}
+        {%- capture heading_id -%}page-section-{{ forloop.index }}{%- endcapture -%}
+        {%- capture heading_old -%}<h2{{ heading_open }}>{%- endcapture -%}
+        {%- capture heading_new -%}<h2{{ heading_open }} id="{{ heading_id }}">{%- endcapture -%}
+        {%- assign presentation_body = presentation_body | replace_first: heading_old, heading_new -%}
+      {%- endif -%}
+      {%- capture toc_item -%}<li><a href="#{{ heading_id | uri_escape }}">{{ heading_contents | strip_html | strip }}</a></li>{%- endcapture -%}
+      {%- assign presentation_toc = presentation_toc | append: toc_item -%}
+    {%- endfor -%}
+    {%- assign preview_types = 'resource-preview|lab-preview' | split: '|' -%}
+    {%- for preview_type in preview_types -%}
+      {%- capture preview_start -%}<figure class="{{ preview_type }}">{%- endcapture -%}
+      {%- if presentation_body contains preview_start -%}
+        {%- assign preview_inner = presentation_body | split: preview_start | last | split: '</figure>' | first -%}
+        {%- capture preview_markup -%}{{ preview_start }}{{ preview_inner }}</figure>{%- endcapture -%}
+        {%- assign presentation_body = presentation_body | remove_first: preview_markup -%}
+        {%- assign preview_inner = preview_inner | replace: '<img ', '<img loading="lazy" decoding="async" ' | replace: '/assets/images/labs/codex-dream-skin-windows-social.png', '/assets/images/labs/codex-dream-skin-windows-preview.webp' -%}
+        {%- capture presentation_preview -%}{{ presentation_preview }}<figure class="{{ preview_type }} rail-preview">{{ preview_inner }}</figure>{%- endcapture -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endif -%}
+{%- if page.lang == 'en' -%}{%- assign table_label = 'Scrollable comparison table' -%}{%- else -%}{%- assign table_label = '可横向滚动的对照表' -%}{%- endif -%}
+{%- capture table_start -%}<div class="table-scroll" tabindex="0" role="region" aria-label="{{ table_label }}"><table{%- endcapture -%}
+{%- assign presentation_body = presentation_body | replace: '<table', table_start | replace: '</table>', '</table></div>' | replace: '<details>', '<details open>' -%}

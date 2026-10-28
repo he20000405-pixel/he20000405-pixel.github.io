@@ -12,79 +12,12 @@
     <meta property="og:image:alt" content="{{ page.image_alt | default: page.title | default: site.title | escape }}">
     <meta name="twitter:image:alt" content="{{ page.image_alt | default: page.title | default: site.title | escape }}">
     {% if page.canonical %}<link rel="canonical" href="{{ page.canonical }}">{% endif %}
-    {% if page.alternate_zh and page.alternate_en %}
-    <link rel="alternate" hreflang="zh-CN" href="{{ page.alternate_zh | absolute_url }}">
-    <link rel="alternate" hreflang="en" href="{{ page.alternate_en | absolute_url }}">
-    <link rel="alternate" hreflang="x-default" href="{{ page.alternate_zh | absolute_url }}">
-    {% elsif page.url == '/' or page.url == '/en/' %}
-    <link rel="alternate" hreflang="zh-CN" href="{{ '/' | absolute_url }}">
-    <link rel="alternate" hreflang="en" href="{{ '/en/' | absolute_url }}">
-    <link rel="alternate" hreflang="x-default" href="{{ '/' | absolute_url }}">
-    {% endif %}
+    {% include seo-language-links.html %}
     <link rel="icon" href="{{ '/assets/images/favicon.svg' | relative_url }}" type="image/svg+xml">
     <link rel="stylesheet" href="{{ "/assets/css/knowledge-ui.css" | relative_url }}?v={{ site.asset_version }}">
     {% if page.url == "/" %}<link rel="stylesheet" href="{{ "/assets/css/homepage-refresh.css" | relative_url }}?v={{ site.asset_version }}">{% endif %}
     <script src="{{ "/assets/js/knowledge-ui.js" | relative_url }}?v={{ site.asset_version }}" defer></script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": "https://chonggrok.com/#organization",
-      "name": "ChongGrok",
-      "url": "https://chonggrok.com/",
-      "description": "面向中文用户的 AI 会员订阅充值服务平台。"
-    }
-    </script>
-    {% if page.schema_type == 'CollectionPage' %}
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": {{ page.title | jsonify }},
-      "description": {{ page.description | jsonify }},
-      "url": {{ page.url | absolute_url | jsonify }},
-      "mainEntity": {
-        "@type": "ItemList",
-        "itemListElement": [
-          {% assign collection_items = page.collection_items | default: site.data.products %}
-          {% for item in collection_items %}
-          {"@type":"ListItem","position":{{ forloop.index }},"name":{{ item.title | jsonify }},"url":{{ item.url | default: item.guide_url | absolute_url | jsonify }}}{% unless forloop.last %},{% endunless %}
-          {% endfor %}
-        ]
-      }
-    }
-    </script>
-    {% endif %}
-    {% if page.faq %}
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {% for item in page.faq %}
-        {"@type":"Question","name":{{ item.question | jsonify }},"acceptedAnswer":{"@type":"Answer","text":{{ item.answer | jsonify }}}}{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ]
-    }
-    </script>
-    {% endif %}
-    {% if page.schema_type == 'Article' or page.schema_type == 'TechArticle' %}
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": {{ page.schema_type | jsonify }},
-      "headline": {{ page.title | jsonify }},
-      "description": {{ page.description | jsonify }},
-      "inLanguage": {{ page.lang | default: site.lang | jsonify }},
-      "datePublished": {{ page.date_published | jsonify }},
-      "dateModified": {{ page.last_modified_at | jsonify }},
-      "image": {{ page.image | jsonify }},
-      "author": {"@type":"Organization","name":"ChongGrok","url":"https://chonggrok.com/"},
-      "publisher": {"@id":"https://chonggrok.com/#organization"},
-      "mainEntityOfPage": {{ page.url | absolute_url | jsonify }}
-    }
-    </script>
-    {% endif %}
+    {% include seo-structured-data.html %}
   </head>
   {% assign section_key = 'guide' %}
   {% assign section_label = '指南' %}
@@ -124,6 +57,7 @@
   {% elsif page.url == '/404.html' %}{% assign page_kind = 'error' %}
   {% elsif page.url == '/resources/' or page.url == '/labs/' or page.url == '/en/' %}{% assign page_kind = 'collection' %}{% endif %}
   <body class="{% if page.url == '/' %}home-page{% else %}inner-page section-{{ section_key }} {{ page_kind }}{% endif %}" data-site="portal" data-page-kind="{{ page_kind }}" data-search-url="{{ '/search/' | relative_url }}">
+    <script>document.body.classList.add("js-ready");</script>
     <a class="skip-link" href="#main-content">{% if page.lang == 'en' %}Skip to content{% else %}跳至正文{% endif %}</a>
     {% include header.html %}
     {% unless page.url == '/' %}
@@ -138,13 +72,8 @@
       {% if page.url == '/' %}
       <article class="content">{{ content }}</article>
       {% else %}
-      <div class="source-content">
-        <div class="preview-hero" data-page-hero hidden></div>
-        <div class="content-layout">
-          <article class="content inner-content preview-body" data-article-content>{{ content }}</article>
-          {% include reading-rail.html %}
-        </div>
-      </div>
+      {% capture presentation_source %}{{ content }}{% endcapture %}
+      {% include presentation.html source=presentation_source site_key="portal" %}
       {% endif %}
     </main>
     {% include footer.html %}

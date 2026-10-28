@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | escape }} | ChongGrok</title>
+  <meta name="description" content="Continue to the current ChongGrok guide for a ChatGPT subscription associated with another account.">
+  <link rel="stylesheet" href="{{ '/assets/css/knowledge-ui.css' | relative_url }}?v={{ site.asset_version }}">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="{{ page.redirect_target | escape }}">
+  <meta http-equiv="refresh" content="0; url={{ page.redirect_target | escape }}">
+</head>
+<body>
+  <main class="page-shell content">
+    <h1>{{ page.title | escape }}</h1>
+    <p>Continue to the current guide: <a href="{{ page.redirect_target | escape }}">Check the original ChatGPT account and subscription</a>.</p>
+  </main>
+</body>
+</html>

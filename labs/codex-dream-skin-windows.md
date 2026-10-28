@@ -8,17 +8,16 @@ image: "https://he20000405-pixel.github.io/assets/images/labs/codex-dream-skin-w
 image_alt: "Windows Codex Desktop 动态星河换肤教程"
 date_published: 2026-07-21
 last_modified_at: 2026-07-21
+faq_markdown: true
 faq:
-  - question: "Codex Dream Skin 会修改 WindowsApps 或 app.asar 吗？"
-    answer: "本次审核的固定版本通过本机 Chromium DevTools Protocol 注入 CSS 和装饰 DOM，不修改 WindowsApps、app.asar、官方二进制或应用签名。"
-  - question: "只监听 127.0.0.1 是否代表完全安全？"
-    answer: "不是。loopback 可以阻止局域网直接访问，但 CDP 不对同一 Windows 用户下的其他本地进程提供独立认证。主题运行期间应只运行可信软件，不用时执行恢复关闭调试会话。"
-  - question: "为什么安装后没有马上出现主题？"
-    answer: "普通方式启动 Codex 不会打开主题需要的调试会话。应从 Dream Skin 启动入口打开；Store 应用较慢时，CDP 端点也可能晚于默认检测窗口出现。"
-  - question: "Codex 更新后主题失效怎么办？"
-    answer: "先退出 Codex 和托盘，再更新或重新下载上游源码，重新运行安装和启动脚本。脚本会重新发现当前注册的官方 Store 包。"
-  - question: "如何完整恢复官方外观？"
-    answer: "运行 restore-dream-skin.ps1 的 RestoreBaseTheme 模式。它会关闭已保存的 CDP 会话、移除注入并选择性恢复由主题管理的外观设置。"
+  - question: "端口 9335 被占用怎么办？"
+    answer: "未显式指定端口时，上游启动器会从默认端口向后寻找空闲端口。显式端口被占用时换一个端口，不要终止身份不明的监听进程。"
+  - question: "更新 Codex 后主题消失正常吗？"
+    answer: "可能发生。重新退出托盘和 Codex，更新上游源码后运行测试与安装。不要直接复用旧版本 WindowsApps 路径。"
+  - question: "动态 WebP 不播放怎么办？"
+    answer: "先换用静态 JPEG，确认注入和交互本身正常，再检查 WebP 文件、大小限制和当前 renderer 兼容性。"
+  - question: "会影响 ChatGPT 会员或 API 配置吗？"
+    answer: "主题工具与会员订阅是不同层面。审核版本不应写入 API Key、Base URL 或认证内容；ChatGPT 会员状态仍以官方账号页面为准。"
 ---
 
 <section class="lab-hero">
@@ -239,21 +238,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass `
 
 ## 常见问题
 
-### 端口 9335 被占用怎么办？
-
-未显式指定端口时，上游启动器会从默认端口向后寻找空闲端口。显式端口被占用时换一个端口，不要终止身份不明的监听进程。
-
-### 更新 Codex 后主题消失正常吗？
-
-可能发生。重新退出托盘和 Codex，更新上游源码后运行测试与安装。不要直接复用旧版本 WindowsApps 路径。
-
-### 动态 WebP 不播放怎么办？
-
-先换用静态 JPEG，确认注入和交互本身正常，再检查 WebP 文件、大小限制和当前 renderer 兼容性。
-
-### 会影响 ChatGPT 会员或 API 配置吗？
-
-主题工具与会员订阅是不同层面。审核版本不应写入 API Key、Base URL 或认证内容；ChatGPT 会员状态仍以官方账号页面为准。
+{% include faq-prose.html %}
 
 ## 来源与延伸阅读
 

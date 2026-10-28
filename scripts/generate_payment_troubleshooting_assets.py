@@ -157,7 +157,7 @@ def make_infographic(language):
         ]),
         ("02  找到购买入口" if zh else "02  TRACE THE BILLING CHANNEL", [
             "官网、App Store、Google Play、X、Google One 或第三方" if zh else "Website, App Store, Google Play, X, Google One or third party",
-            "由实际账单方处理取消、退款和交易状态" if zh else "The billing owner handles charges, cancellations and refunds",
+            "取消回原账单入口；退款按具体产品官方规则" if zh else "Cancel through billing; follow product-specific refund rules",
         ]),
         ("03  核对原购买账号" if zh else "03  CONFIRM THE ORIGINAL ACCOUNT", [
             "商店账号、付款资料和产品账号可能不同" if zh else "Store, billing profile and product account can be different",
@@ -269,7 +269,7 @@ def make_pdf(language):
         ]),
         ("02 找到购买入口" if zh else "02 TRACE THE BILLING CHANNEL", [
             "官网、App Store、Google Play、X、Google One 或第三方。" if zh else "Website, App Store, Google Play, X, Google One or third party.",
-            "实际账单方负责取消、退款和交易状态。" if zh else "The billing owner handles charges, cancellations and refunds.",
+            "取消回原账单入口；退款按具体产品官方规则。" if zh else "Cancel through billing; follow product-specific refund rules.",
         ]),
         ("03 核对原购买账号" if zh else "03 CONFIRM THE ORIGINAL ACCOUNT", [
             "商店账号、付款资料和产品账号可能不同。" if zh else "Store, billing profile and product account may be different.",
@@ -310,7 +310,7 @@ def make_pdf(language):
 
     owners = [
         ("银行" if zh else "Bank", "预授权、拒付、卡片限制" if zh else "Authorizations, declines and card restrictions"),
-        ("Apple / Google Play", "应用商店扣款、取消和退款" if zh else "Store charges, cancellation and refunds"),
+        ("Apple / Google Play", "商店订阅与取消；退款按产品官方规则" if zh else "Store billing and cancellation; refunds vary by product"),
         ("X / Google One", "对应平台的账单和续费" if zh else "Billing and renewals on that platform"),
         ("AI 产品支持" if zh else "AI provider", "账单完成但账号权益缺失" if zh else "Completed billing with missing entitlement"),
         ("ChongGrok", "ChongGrok 订单、卡密或履约记录" if zh else "ChongGrok orders and fulfillment records"),

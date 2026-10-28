@@ -1,0 +1,60 @@
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://chonggrok.com/#organization",
+      "name": "ChongGrok",
+      "url": "https://chonggrok.com/",
+      "description": "面向中文用户的 AI 会员订阅充值服务平台。"
+    }
+    </script>
+    {% if page.schema_type == 'CollectionPage' %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": {{ page.title | jsonify }},
+      "description": {{ page.description | jsonify }},
+      "url": {{ page.url | absolute_url | jsonify }},
+      "mainEntity": {
+        "@type": "ItemList",
+        "itemListElement": [
+          {% assign collection_items = page.collection_items | default: site.data.products %}
+          {% for item in collection_items %}
+          {"@type":"ListItem","position":{{ forloop.index }},"name":{{ item.title | jsonify }},"url":{{ item.url | default: item.guide_url | absolute_url | jsonify }}}{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ]
+      }
+    }
+    </script>
+    {% endif %}
+    {% if page.faq and page.faq_schema != false %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {% for item in page.faq %}
+        {"@type":"Question","name":{% if page.faq_markdown %}{{ item.question | markdownify | strip_html | strip | jsonify }}{% else %}{{ item.question | strip_html | strip | jsonify }}{% endif %},"acceptedAnswer":{"@type":"Answer","text":{% if page.faq_markdown %}{{ item.answer | markdownify | strip_html | strip | jsonify }}{% else %}{{ item.answer | strip_html | strip | jsonify }}{% endif %}}}{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ]
+    }
+    </script>
+    {% endif %}
+    {% if page.schema_type == 'Article' or page.schema_type == 'TechArticle' %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": {{ page.schema_type | jsonify }},
+      "headline": {{ page.title | jsonify }},
+      "description": {{ page.description | jsonify }},
+      "inLanguage": {{ page.lang | default: site.lang | jsonify }},
+      {% if page.date_published %}"datePublished": {{ page.date_published | jsonify }},{% endif %}
+      {% if page.last_modified_at or page.date_modified %}"dateModified": {{ page.last_modified_at | jsonify }},{% endif %}
+      {% if page.image %}"image": {{ page.image | absolute_url | jsonify }},{% endif %}
+      "author": {"@type":"Organization","name":"ChongGrok","url":"https://chonggrok.com/"},
+      "publisher": {"@id":"https://chonggrok.com/#organization"},
+      "mainEntityOfPage": {{ page.url | absolute_url | jsonify }}
+    }
+    </script>
+    {% endif %}

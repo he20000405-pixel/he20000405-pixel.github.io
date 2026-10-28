@@ -9,7 +9,7 @@ alternate_en: /en/resources/ai-subscription-payment-troubleshooting/
 image: "https://he20000405-pixel.github.io/assets/images/ai-subscription-payment-troubleshooting-social-en.png"
 image_alt: "AI subscription payment troubleshooting decision tree for ChatGPT, Grok, Claude and Gemini"
 date_published: 2026-07-15
-last_modified_at: 2026-08-17
+last_modified_at: 2026-10-28
 faq:
   - question: "Should I pay again if an AI subscription was charged but the account still shows Free?"
     answer: "No. First determine whether the charge is pending or complete, identify the original billing channel and purchasing account, and check paid access on the official product page."
@@ -48,7 +48,7 @@ faq:
 5. product account and sign-in method used at purchase;
 6. the plan or error currently shown by the official product.
 
-Redact full email addresses, order numbers, card details, session credentials, User IDs, verification codes and recovery data in screenshots. If any channel already shows an active plan, completed charge or pending transaction, stop before creating another order.
+Redact full email addresses, order numbers, card details, session credentials, SSO, User IDs, verification codes and recovery data in screenshots. If any channel already shows an active plan, completed charge or pending transaction, stop before creating another order.
 
 ## First decision: what state do you actually have?
 
@@ -112,9 +112,9 @@ For Google AI plans, confirm the personal Google account in Google One and the a
 
 ### ChongGrok order
 
-Use the original order, card key or support record. Existing ChatGPT card-key orders can continue through the [verification page](https://chonggrok.com/verify?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting_en&utm_content=verify_existing_order). For assisted orders, provide the original order ID and a redacted product-account state to the original support channel.
+Use the original order, card key or support record. Use the entry matching the card-key order: [ChatGPT](https://chonggrok.com/verify?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting_en&utm_content=verify_existing_order), [legacy SuperGrok](https://chonggrok.com/verify-grok?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting_en&utm_content=verify_existing_order) or [new X joint subscription](https://chonggrok.com/verify-x?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting_en&utm_content=verify_existing_order). For assisted orders, provide the original order ID and a redacted product-account state to the original support channel.
 
-Stop while the order is still processing. Never post a session credential, User ID, card key or full order details publicly.
+Stop while the order is still processing. Never post a session credential, SSO, User ID, card key or full order details publicly.
 
 ## Product-specific routes
 
@@ -150,7 +150,7 @@ Stop while the order is still processing. Never post a session credential, User 
 
 Re-evaluate purchase options only after confirming that no active subscription, pending charge, pending refund or unresolved ChongGrok order exists. If a user needs a domestic payment route, ChongGrok has separate pages for [ChatGPT](https://chonggrok.com/chatgpt?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting_en&utm_content=chatgpt_repurchase_boundary), [SuperGrok](https://chonggrok.com/supergrok?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting_en&utm_content=grok_repurchase_boundary), [Claude](https://chonggrok.com/claude?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting_en&utm_content=claude_repurchase_boundary) and [Gemini](https://chonggrok.com/gemini?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting_en&utm_content=gemini_repurchase_boundary).
 
-Gemini own-account assistance and the separate ready-made annual account are different fulfillment paths. Choose only after the old billing state is closed.
+Gemini own-account upgrades, delivered accounts and family sharing have separate eligibility, delivery and benefit checks. Choose only after the old billing state is closed.
 
 <section class="faq-list" aria-labelledby="payment-faq-heading">
   <h2 id="payment-faq-heading">Frequently asked questions</h2>

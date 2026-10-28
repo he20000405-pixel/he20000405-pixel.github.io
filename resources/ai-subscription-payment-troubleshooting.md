@@ -9,7 +9,7 @@ alternate_en: /en/resources/ai-subscription-payment-troubleshooting/
 image: "https://he20000405-pixel.github.io/assets/images/ai-subscription-payment-troubleshooting-social-zh.png"
 image_alt: "ChatGPT、Grok、Claude、Gemini AI 订阅付款排障决策树"
 date_published: 2026-07-15
-last_modified_at: 2026-08-17
+last_modified_at: 2026-10-28
 faq:
   - question: "AI 会员已经扣款但仍显示 Free，可以再买一次吗？"
     answer: "不要再次购买。先确认这笔交易是待处理还是已经完成，再确认原购买入口、购买时使用的产品账号，以及官方产品页面是否显示有效计划。"
@@ -41,7 +41,7 @@ faq:
 
 ## 开始前准备 6 项信息
 
-先保存下面的信息。截图时遮住完整邮箱、订单号、卡号、session、User ID、验证码和恢复码。
+先保存下面的信息。截图时遮住完整邮箱、订单号、卡号、session、SSO、User ID、验证码和恢复码。
 
 1. 产品名称、套餐和购买周期；
 2. 付款时间、金额和币种；
@@ -114,11 +114,11 @@ faq:
 
 ### ChongGrok 订单
 
-**已有卡密：**进入 [ChongGrok 卡密核销页](https://chonggrok.com/verify?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting&utm_content=verify_existing_order)继续原订单或查询状态。
+**已有卡密：**进入 [ChatGPT 核销](https://chonggrok.com/verify?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting&utm_content=verify_existing_order)、[旧版 SuperGrok 核销](https://chonggrok.com/verify-grok?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting&utm_content=verify_existing_order)或[新版 X 联合会员核销](https://chonggrok.com/verify-x?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting&utm_content=verify_existing_order)继续原订单或查询状态。
 
 **客服协助订单：**准备原订单号、付款时间和脱敏后的目标账号状态，联系原售后渠道。
 
-**停止条件：**订单仍在处理时不要再次购买。不要在公开位置提交 session、User ID、卡密或完整订单资料。
+**停止条件：**订单仍在处理时不要再次购买。不要在公开位置提交 session、SSO、User ID、卡密或完整订单资料。
 
 ## 按产品继续排查
 
@@ -154,7 +154,7 @@ faq:
 
 只有在确认没有有效订阅、没有待处理扣款或退款、也没有未完成的 ChongGrok 订单后，才重新评估购买方式。需要国内支付时，可查看 ChongGrok 的 [ChatGPT](https://chonggrok.com/chatgpt?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting&utm_content=chatgpt_repurchase_boundary)、[SuperGrok](https://chonggrok.com/supergrok?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting&utm_content=grok_repurchase_boundary)、[Claude](https://chonggrok.com/claude?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting&utm_content=claude_repurchase_boundary)或 [Gemini](https://chonggrok.com/gemini?utm_source=github_pages&utm_medium=referral&utm_campaign=payment_troubleshooting&utm_content=gemini_repurchase_boundary)会员页面。
 
-Gemini 的用户自有账号升级与专属一年成品账号是两种不同交付方式。选择前应先确认自己的需求，不能用新订单处理已有官方扣款或权益未同步问题。
+Gemini 的用户自有账号升级、专属成品账号与家庭组方案应分别核对资格、交付和权益。选择前应先确认自己的需求，不能用新订单处理已有官方扣款或权益未同步问题。
 
 <section class="faq-list" aria-labelledby="payment-faq-heading">
   <h2 id="payment-faq-heading">常见问题</h2>

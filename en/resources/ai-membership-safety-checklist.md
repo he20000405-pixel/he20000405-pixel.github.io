@@ -9,12 +9,13 @@ alternate_en: /en/resources/ai-membership-safety-checklist/
 image: "https://he20000405-pixel.github.io/assets/images/ai-membership-safety-checklist-social-en.png"
 image_alt: "AI membership safety checklist for ChatGPT, Grok, Claude and Gemini"
 date_published: 2026-07-15
-last_modified_at: 2026-08-06
+last_modified_at: 2026-10-28
+faq_schema: false
 faq:
   - question: "Should I subscribe again if the paid plan does not appear immediately?"
     answer: "No. First confirm whether the transaction is pending or complete, which billing channel manages it, and whether you are signed in to the account used for the purchase."
   - question: "Does passwordless subscription assistance mean zero risk?"
-    answer: "No. Session credentials and account identifiers have different sensitivity, but neither should be posted publicly. Submit them only through a confirmed fulfillment flow."
+    answer: "No. Session credentials, SSO and account identifiers have different sensitivity, but none should be posted publicly. Submit them only through a confirmed fulfillment flow."
 ---
 
 <section class="resource-hero">
@@ -49,11 +50,12 @@ faq:
 | Product | Data that may be used in a ChongGrok flow | Never provide | Verify on |
 | --- | --- | --- | --- |
 | ChatGPT | The automated Plus flow uses a sensitive session credential for that upgrade | Password, email code, recovery code | ChatGPT plan settings; sign out and back in afterwards to refresh the old session |
-| Grok | Grok User ID identifies the target account; it is not a login password | X/Grok password, codes, recovery data | grok.com or the original subscription channel |
-| Claude | Claude User ID may identify the target account; it is not an Anthropic billing requirement | Password, codes, recovery data | Claude settings or Billing |
-| Gemini | Own-account requirements are confirmed case by case; a ready-made annual account is a separate fulfillment path | The user's Google password, two-step code or recovery code | For an own account, verify in Gemini, Google One and the original billing channel; for a delivered account, follow the stated ownership, plan and support terms |
+| New X joint subscription | Grok SSO is a sensitive sign-in credential used for fulfillment; it is not a User ID | X/Grok password, codes, recovery data; never publish SSO | grok.com plan and access, plus the linked benefits stated in the order |
+| Legacy SuperGrok | Grok User ID identifies the target account; it is not a password or an SSO substitute | X/Grok password, codes, recovery data | grok.com or the original subscription channel |
+| Claude | Personal Pro monthly activation uses manual iOS in-app purchase; account details are confirmed per order, including a User ID only when needed | Password, codes, recovery data, complete session tokens | Pro status and expiry in Claude settings or Billing |
+| Gemini | Own-account upgrades, delivered accounts and family sharing are separate options; eligibility and required data are confirmed per order | The user's Google password, two-step code or recovery code | Own account: Gemini, Google One and billing; delivered account: handover and security; family member: group membership and shared benefits |
 
-<div class="notice warning"><strong>Passwordless does not mean risk-free.</strong> A session credential and a User ID have different sensitivity, but neither should be posted publicly or sent to an unverified person or page.</div>
+<div class="notice warning"><strong>Passwordless does not mean risk-free.</strong> Session credentials, SSO and User IDs have different sensitivity, but none should be posted publicly or sent to an unverified person or page.</div>
 
 ## Read the payment state correctly
 
@@ -91,7 +93,7 @@ Open the Plan, Billing, Subscription or account page. The process is complete on
 - official plan screen or complete error message;
 - steps already attempted.
 
-Redact complete session credentials, User IDs, email addresses, order numbers, card details, verification codes and recovery data before sharing a screenshot.
+Redact complete session credentials, SSO, User IDs, email addresses, order numbers, card details, verification codes and recovery data before sharing a screenshot.
 
 ## Completion checklist
 
@@ -123,4 +125,4 @@ ChongGrok is an independent membership-assistance service and is not affiliated 
 
 <div class="download-band"><p><strong>Save or share:</strong> the PDF is convenient for printing. This HTML page contains the full explanation and current corrections.</p><a class="button-link primary" href="{{ '/assets/downloads/ai-membership-safety-checklist-en.pdf' | relative_url }}">Download PDF</a></div>
 
-<p class="meta">Official sources checked: 2026-08-06.</p>
+<p class="meta">General official sources checked: 2026-08-06. ChongGrok service boundaries updated: 2026-10-28; see the current <a href="https://chonggrok.com/x-subscription">X joint-subscription</a>, <a href="https://chonggrok.com/claude">Claude</a> and <a href="https://chonggrok.com/gemini">Gemini</a> service pages.</p>

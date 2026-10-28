@@ -1,0 +1,6 @@
+{% capture faq_markdown %}{% for item in page.faq %}
+### {{ item.question }}
+
+{{ item.answer }}
+{% endfor %}{% endcapture %}
+{{ faq_markdown | markdownify }}

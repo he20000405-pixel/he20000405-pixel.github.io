@@ -4,7 +4,7 @@ description: "分清 ChatGPT、Grok、Claude、Gemini 的收款渠道、渠道�
 permalink: /resources/ai-subscription-billing-account-map/
 lang: zh-CN
 date_published: 2026-08-04
-last_modified_at: 2026-08-06
+last_modified_at: 2026-10-28
 faq:
   - question: "应用商店显示订阅有效，为什么 AI 产品仍显示 Free？"
     answer: "应用商店的有效订阅只证明 Apple ID 或 Google Play 账号持有这笔订阅。还要使用购买时登录的 AI 产品账号进入 App，才能核对权益是否附着到正确账号。"
@@ -13,7 +13,7 @@ faq:
   - question: "可以在另一个平台取消当前订阅吗？"
     answer: "通常不可以。网页、Apple、Google Play、X 和 Google One 分别管理各自创建的订阅，应回到原收款渠道取消或更改续费。"
   - question: "已经有 ChongGrok 订单时应该去哪里查询？"
-    answer: "已有卡密的订单先在 ChongGrok 核销页面查询；客服协助订单应使用原订单号联系 ChongGrok 售后。不要在订单状态未确认前再次购买。"
+    answer: "已有卡密的订单按产品进入 ChatGPT、旧版 SuperGrok 或新版 X 联合会员核销入口查询；客服协助订单应使用原订单号联系 ChongGrok 售后。不要在订单状态未确认前再次购买。"
 ---
 
 <p class="eyebrow">Billing channel and account ownership</p>
@@ -202,10 +202,10 @@ Google AI 计划属于个人 Google 账号，并通过 Google One 管理。工�
 
 ChongGrok 订单由 ChongGrok 负责查询和售后，会员权益仍要回对应产品的官方页面验收。
 
-- 已持有卡密时，先进入 [卡密核销页面](https://chonggrok.com/verify?utm_source=github_pages&utm_medium=referral&utm_campaign=billing_account_map&utm_content=verify_existing_order)查询或继续原流程。
+- 已持有卡密时，先进入 [ChatGPT 核销](https://chonggrok.com/verify?utm_source=github_pages&utm_medium=referral&utm_campaign=billing_account_map&utm_content=verify_existing_order)、[旧版 SuperGrok 核销](https://chonggrok.com/verify-grok?utm_source=github_pages&utm_medium=referral&utm_campaign=billing_account_map&utm_content=verify_existing_order)或[新版 X 联合会员核销](https://chonggrok.com/verify-x?utm_source=github_pages&utm_medium=referral&utm_campaign=billing_account_map&utm_content=verify_existing_order)查询或继续原流程。
 - 客服协助订单应保留原订单号，并使用原售后渠道查询。
-- 使用自己账号升级时，不需要提交密码、验证码或恢复码。session 和 User ID 仍属于敏感资料，只能提交到确认的履约入口。
-- Gemini 的用户自有账号升级与专属一年成品账号是两种不同业务。成品账号的账号归属、交付和售后边界应以 Gemini 产品页实时说明为准，不能套用“自有账号升级”的验收方法。
+- 使用自己账号升级时，不需要提交密码、验证码或恢复码。session、SSO 与 User ID 的敏感程度不同，但都不应公开，只能按当前订单要求提交到确认的履约入口。
+- Gemini 的用户自有账号升级、专属成品账号与家庭组方案是不同业务。成品账号按交付与安全设置验收；家庭成员核对入组状态和共享权益，不应要求成员账号显示一份独立个人订阅账单。周期与售后边界以 Gemini 产品页和原订单说明为准。
 
 ## 什么时候必须停止操作
 
@@ -239,7 +239,7 @@ ChongGrok 订单由 ChongGrok 负责查询和售后，会员权益仍要回对�
 
 ### 已经有 ChongGrok 订单时应该去哪里查询？
 
-已有卡密的订单先在 ChongGrok 核销页面查询；客服协助订单应使用原订单号联系 ChongGrok 售后。不要在订单状态未确认前再次购买。
+已有卡密的订单按产品进入 ChatGPT、旧版 SuperGrok 或新版 X 联合会员核销入口查询；客服协助订单应使用原订单号联系 ChongGrok 售后。不要在订单状态未确认前再次购买。
 
 ## 官方参考
 
