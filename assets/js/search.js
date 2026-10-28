@@ -16,6 +16,11 @@
     "的", "了", "是", "已", "还", "仍", "仍是", "还是", "仍然", "我", "我的", "请问", "怎么", "怎么办", "如何", "为什么", "有", "在", "与", "和",
     "a", "an", "the", "is", "are", "was", "were", "be", "been", "to", "of", "for", "with", "and", "or", "i", "my", "you", "your", "this", "that", "how", "do", "does"
   ]);
+  // A product or plan alone is not enough evidence for a relaxed result.
+  var productTerms = new Set([
+    "chatgpt", "grok", "supergrok", "claude", "gemini", "openai", "xai", "google", "ai",
+    "plus", "pro", "max", "ultra", "premium", "5x", "20x", "x"
+  ]);
   var params = new URLSearchParams(window.location.search);
   var initialQuery = params.get("q") || "";
   input.value = initialQuery;
@@ -27,7 +32,7 @@
 
   function queryTerms(query) {
     // Remove conversational phrases before segmentation; keep error and product terms.
-    var text = query.replace(/怎么办|为什么|请问|如何|仍然是|仍是|还是/g, " ");
+    var text = query.replace(/怎么办|为什么|请问|如何|怎么|我想要|我想|仍然是|仍是|还是/g, " ");
     var parts = segmenter ? Array.from(segmenter.segment(text), function (part) { return part.segment; })
       : (text.match(/[a-z0-9]+|[\u3400-\u9fff]+/g) || []);
     var terms = [];
@@ -74,11 +79,34 @@
     }, 0));
   }
 
+  function findMatches(query, terms) {
+    return index
+      .map(function (item) { return { item: item, score: score(item, query, terms) }; })
+      .filter(function (entry) { return entry.score >= 0; })
+      .sort(function (a, b) {
+        // Exact phrases outrank separated words. Within the same match tier, show Chinese first.
+        return Math.floor(b.score / 200) - Math.floor(a.score / 200)
+          || Number(/\/en\//.test(a.item.url)) - Number(/\/en\//.test(b.item.url))
+          || b.score - a.score || a.item.title.localeCompare(b.item.title, "zh-CN");
+      })
+      .map(function (entry) { return entry.item; });
+  }
+
+  function relatedTerms(query) {
+    // The index summarizes topics, so it may omit the question's action or inability words.
+    // Only relax this bounded vocabulary; unknown words and every product/topic stay required.
+    var terms = queryTerms(query.replace(/无法|不能|没法|加入/g, " "));
+    var hasTopic = terms.some(function (term) {
+      return !productTerms.has(term) && Array.from(term).length >= 2;
+    });
+    return hasTopic ? terms : [];
+  }
+
   function appendText(element, text) {
     element.appendChild(document.createTextNode(text));
   }
 
-  function render(items, query) {
+  function render(items, query, related) {
     results.replaceChildren();
     if (discovery) discovery.hidden = Boolean(query && items.length);
     if (!query) {
@@ -90,9 +118,11 @@
       return;
     }
     var onlyEnglish = items.every(function (item) { return /\/en\//.test(item.url); });
-    status.textContent = onlyEnglish
-      ? "未找到匹配的中文专题，以下是 " + items.length + " 个相关英文专题。"
-      : "找到 " + items.length + " 个相关专题。";
+    status.textContent = related
+      ? "未找到完全匹配的专题，以下是 " + items.length + " 个相关" + (onlyEnglish ? "英文" : "") + "专题。"
+      : onlyEnglish
+        ? "未找到匹配的中文专题，以下是 " + items.length + " 个相关英文专题。"
+        : "找到 " + items.length + " 个相关专题。";
     items.forEach(function (item) {
       var article = document.createElement("article");
       article.className = "search-result";
@@ -128,17 +158,16 @@
       return;
     }
     var terms = queryTerms(query);
-    var matches = index
-      .map(function (item) { return { item: item, score: score(item, query, terms) }; })
-      .filter(function (entry) { return entry.score >= 0; })
-      .sort(function (a, b) {
-        // Exact phrases outrank separated words. Within the same match tier, show Chinese first.
-        return Math.floor(b.score / 200) - Math.floor(a.score / 200)
-          || Number(/\/en\//.test(a.item.url)) - Number(/\/en\//.test(b.item.url))
-          || b.score - a.score || a.item.title.localeCompare(b.item.title, "zh-CN");
-      })
-      .map(function (entry) { return entry.item; });
-    render(matches, query);
+    var matches = findMatches(query, terms);
+    var related = false;
+    if (!matches.length && query) {
+      var fallbackTerms = relatedTerms(query);
+      if (fallbackTerms.length && fallbackTerms.join(" ") !== terms.join(" ")) {
+        matches = findMatches(query, fallbackTerms);
+        related = matches.length > 0;
+      }
+    }
+    render(matches, query, related);
   }
 
   fetch("/search-index.json", { credentials: "same-origin" })

@@ -31,8 +31,8 @@ last_modified_at: 2026-10-28
 
 <nav class="search-discovery" aria-label="按产品浏览" data-search-discovery>
   <a href="{{ site.chatgpt_guide_url }}">ChatGPT 指南<span>Plus、Pro、付款与账号状态</span></a>
-  <a href="{{ site.grok_guide_url }}">Grok 指南<span>SuperGrok、User ID 与 Grok Build</span></a>
-  <a href="{{ site.claude_guide_url }}">Claude 指南<span>Pro、Max、User ID 与 Claude Code</span></a>
+  <a href="{{ site.grok_guide_url }}">Grok 指南<span>X 联合会员、Grok Bot 与旧版 SuperGrok</span></a>
+  <a href="{{ site.claude_guide_url }}">Claude 指南<span>Pro、Max、订阅排障与 Claude Code</span></a>
   <a href="{{ site.gemini_guide_url }}">Gemini 指南<span>Google AI 套餐、付款与权益验收</span></a>
 </nav>
 
@@ -40,4 +40,4 @@ last_modified_at: 2026-10-28
   <p class="notice">当前浏览器未启用 JavaScript。请直接进入 <a href="{{ site.chatgpt_guide_url }}">ChatGPT 指南</a>、<a href="{{ site.grok_guide_url }}">Grok 指南</a>、<a href="{{ site.claude_guide_url }}">Claude 指南</a>或 <a href="{{ site.gemini_guide_url }}">Gemini 指南</a>。</p>
 </noscript>
 
-<script src="{{ '/assets/js/search.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/search.js' | relative_url }}?v={{ site.asset_version }}" defer></script>

@@ -23,6 +23,7 @@ body:not(.js-ready) .nav-toggle{display:none}
 .eyebrow,.card-label,.route-label,.meta,.catalog-meta,.brand-copy small,.breadcrumbs,.breadcrumbs a,.search-status,.hero-brand,.product-search label,.intent-label,.catalog-number,.rail-label,.toc-list a,.toc-list li:first-child a,.search-suggestions a,.site-footer,.footer-link-group a{color:#586b7d}
 .toc-list li.is-active a{color:var(--green)}
 :focus-visible{outline-color:#007969}
+.search-control input:focus-visible,.search-form input:focus-visible{outline:3px solid var(--green);outline-offset:1px}
 input::placeholder{color:#586b7d;opacity:1}
 .faq-section details:not([open])>summary:after,.faq-list details:not([open])>summary:after{content:'+'}
 /* Match the compact directory before deferred interaction code runs. */

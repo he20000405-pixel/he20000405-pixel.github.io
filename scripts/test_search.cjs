@@ -83,6 +83,25 @@ async function main() {
   page.search("grok 403");
   assert.ok(!page.urls()[0].includes("/en/"), "Chinese should lead comparable matches");
   assert.ok(page.urls().some(url => url.includes("/en/")), "English matches must remain accessible");
+  page.search("Gemini 家庭组");
+  const familyTopics = page.urls();
+  assert.ok(familyTopics.some(url => url.includes("gemini-own-account-upgrade")));
+  assert.ok(familyTopics.length < items.filter(item => item.product === "Gemini").length, "A topic query must not return every Gemini page");
+  for (const query of [
+    "Gemini 加入家庭组", "Gemini 家庭组无法加入", "Gemini 家庭组不能加入",
+    "请问 Gemini 家庭组为什么没法加入", "我想加入 Gemini 家庭组怎么办"
+  ]) {
+    page.search(query);
+    assert.deepEqual([...page.urls()].sort(), [...familyTopics].sort(), query + " must preserve the family-group topic");
+    assert.match(page.nodes.status.textContent, /未找到完全匹配/);
+    assert.equal(page.savedUrl().searchParams.get("q"), query, "Keep the user's original question in the URL");
+    console.log(query + " -> " + page.urls().length + " related results");
+  }
+  for (const query of ["Gemini 无法加入", "无法加入", "Gemini Pro 不能加入", "Gemini 家庭组无法加入 火星求职"]) {
+    page.search(query);
+    assert.equal(page.urls().length, 0, query + " must not relax away the product or unknown topic");
+    assert.match(page.nodes.status.textContent, /没有找到/);
+  }
   page.search("量子土豆不存在 abcxyzqwerty987");
   assert.equal(page.urls().length, 0);
   assert.equal(page.nodes.discovery.hidden, false);
@@ -113,6 +132,22 @@ async function main() {
   assert.equal(rendered.children[1].children[0].children[0].textContent, fixtures[4].title);
   assert.equal(rendered.children[2].children[0].textContent, fixtures[4].description);
 
+  const familyFixtures = [
+    { title: "Gemini 家庭组", product: "Gemini", keywords: "家庭组", description: "资格核对", url: "/gemini/family/" },
+    { title: "Grok 家庭组无法加入", product: "Grok", keywords: "家庭组", description: "", url: "/grok/family/" },
+    { title: "Gemini Pro", product: "Gemini", keywords: "套餐", description: "", url: "/gemini/plan/" }
+  ];
+  const topicPage = await browser(familyFixtures);
+  topicPage.search("Gemini 家庭组无法加入");
+  assert.deepEqual(topicPage.urls(), ["/gemini/family/"], "Related search must retain the explicit product and topic");
+  const exactFamily = await browser([
+    ...familyFixtures,
+    { title: "Gemini 家庭组无法加入", product: "Gemini", keywords: "", description: "", url: "/gemini/exact/" }
+  ]);
+  exactFamily.search("Gemini 家庭组无法加入");
+  assert.deepEqual(exactFamily.urls(), ["/gemini/exact/"], "Do not introduce relaxed results when an exact answer exists");
+  assert.doesNotMatch(exactFamily.nodes.status.textContent, /未找到完全匹配/);
+
   for (const options of [{ failed: true }, { httpError: true }, { invalid: true }]) {
     const broken = await browser(items, { ...options, query: "grok" });
     assert.match(broken.nodes.status.textContent, /暂时不可用/);
@@ -126,11 +161,11 @@ async function main() {
   assert.match(loading.nodes.status.textContent, /正在载入/);
   assert.equal(loading.nodes.discovery.hidden, false);
   const fallback = await browser(items, { noSegmenter: true });
-  for (const query of ["Grok Bot 额度", "grok 403", "已扣款仍是 Free"]) {
+  for (const query of ["Grok Bot 额度", "grok 403", "已扣款仍是 Free", "Gemini 加入家庭组", "Gemini 家庭组无法加入", "我想加入 Gemini 家庭组怎么办"]) {
     fallback.search(query);
     assert.ok(fallback.urls().length > 0, query + " must work without Intl.Segmenter");
   }
-  console.log("PASS: real index queries, phrase ranking, language retention, no matches, empty input, safe text rendering, loading and three failure modes; " + items.length + " index entries.");
+  console.log("PASS: real index queries, conservative natural-question fallback, product/topic constraints, exact-match priority, language retention, no matches, empty input, safe text rendering, loading and three failure modes; " + items.length + " index entries.");
 }
 
 main().catch(error => { console.error(error); process.exitCode = 1; });
