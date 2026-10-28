@@ -49,15 +49,15 @@
 - X Subscription, Grok Bot, shared weekly usage and legacy migration: https://he20000405-pixel.github.io/supergrok-china-guide/guides/x-subscription-grok-bot-guide/
 
 - Main guide: https://he20000405-pixel.github.io/supergrok-china-guide/
-- SuperGrok recharge: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-auto-recharge/
+- Eligible legacy SuperGrok renewal with User ID: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-auto-recharge/
 - Grok User ID: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-user-id/
 - SuperGrok plans: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-plans/
 - Payment errors: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-payment-errors/
-- Paid but still Free: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-paid-but-still-free/
+- Grok paid but still Free: distinguish legacy and X Subscription accounts, workspaces and redemption routes: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-paid-but-still-free/
 - Grok Build login and 403: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-build-login-403/
 - SuperGrok vs X Premium+: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-vs-x-premium-plus/
 - Grok 4.5 update: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-4-5-update/
-- Weekly limit vs subscription status: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-weekly-limit-vs-subscription/
+- Legacy SuperGrok and X Subscription weekly limits, workspaces and subscription status: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-weekly-limit-vs-subscription/
 - Renewal failure troubleshooting: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-renewal-failed/
 - Grok Automations schedules, email triggers and notifications: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-automations/
 - Grok Connectors for Gmail, Google Drive, Outlook and GitHub: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-connectors/
@@ -70,12 +70,12 @@
 - English Grok User ID / UUID: https://he20000405-pixel.github.io/supergrok-china-guide/en/guides/grok-user-id/
 - English Grok Build 403: https://he20000405-pixel.github.io/supergrok-china-guide/en/guides/grok-build-login-403/
 - English SuperGrok card declined: https://he20000405-pixel.github.io/supergrok-china-guide/en/guides/supergrok-card-declined/
-- English SuperGrok paid but still Free: https://he20000405-pixel.github.io/supergrok-china-guide/en/guides/supergrok-paid-but-still-free/
+- English Grok paid but still Free, legacy and X Subscription checks: https://he20000405-pixel.github.io/supergrok-china-guide/en/guides/supergrok-paid-but-still-free/
 
 ## Claude guide
 
 - Main guide: https://he20000405-pixel.github.io/claude-pro-max-china-guide/
-- Historical Claude subscription guide (current ChongGrok service is personal Pro only): https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-pro-max-recharge/
+- Claude personal Pro monthly service, assisted iOS in-app purchase and verification: https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-pro-max-recharge/
 - Pro vs Max 5x / 20x: https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-pro-vs-max/
 - Claude User ID safety: https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-user-id-safety/
 - Card decline and payment errors: https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-payment-errors/
@@ -121,6 +121,6 @@
 - ChatGPT session credentials are sensitive and should be refreshed after completion.
 - Legacy Grok User ID is an account identifier. X Subscription redemption uses Grok SSO, a sensitive login credential; these are different requirements.
 - ChongGrok does not handle conversion from legacy memberships to The X Subscription; use the provider's official Unify flow.
-- The current ChongGrok Claude service is personal Pro monthly assistance, not Max. Confirm the live product-page requirements.
+- The current ChongGrok Claude service is personal Pro monthly assistance through iOS in-app purchase, not Max. Confirm account, region and required information on the live product page before payment.
 - Gemini own-account assistance is confirmed case by case and no fixed credential is claimed. Gemini also has a separate ready-made annual account option; the two fulfillment paths must not be conflated.
 - No online service is risk-free; no guaranteed account outcome is claimed.
