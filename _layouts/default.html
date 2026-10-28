@@ -22,10 +22,9 @@
     <link rel="alternate" hreflang="x-default" href="{{ '/' | absolute_url }}">
     {% endif %}
     <link rel="icon" href="{{ '/assets/images/favicon.svg' | relative_url }}" type="image/svg+xml">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}?v={{ site.asset_version }}">
-    <link rel="stylesheet" href="{{ '/assets/css/visual-refresh.css' | relative_url }}?v={{ site.asset_version }}">
-    <script src="{{ '/assets/js/navigation.js' | relative_url }}?v={{ site.asset_version }}" defer></script>
-    {% unless page.url == '/' %}<script src="{{ '/assets/js/content-nav.js' | relative_url }}?v={{ site.asset_version }}" defer></script>{% endunless %}
+    <link rel="stylesheet" href="{{ "/assets/css/knowledge-ui.css" | relative_url }}?v={{ site.asset_version }}">
+    {% if page.url == "/" %}<link rel="stylesheet" href="{{ "/assets/css/homepage-refresh.css" | relative_url }}?v={{ site.asset_version }}">{% endif %}
+    <script src="{{ "/assets/js/knowledge-ui.js" | relative_url }}?v={{ site.asset_version }}" defer></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -119,47 +118,33 @@
     {% assign section_label = '页面未找到' %}
     {% assign section_url = '/404.html' %}
   {% endif %}
-  <body class="{% if page.url == '/' %}home-page{% else %}inner-page section-{{ section_key }}{% endif %}">
+  {% assign page_kind = 'article' %}
+  {% if page.url == '/' %}{% assign page_kind = 'home' %}
+  {% elsif page.url == '/search/' %}{% assign page_kind = 'search' %}
+  {% elsif page.url == '/404.html' %}{% assign page_kind = 'error' %}
+  {% elsif page.url == '/resources/' or page.url == '/labs/' or page.url == '/en/' %}{% assign page_kind = 'collection' %}{% endif %}
+  <body class="{% if page.url == '/' %}home-page{% else %}inner-page section-{{ section_key }} {{ page_kind }}{% endif %}" data-site="portal" data-page-kind="{{ page_kind }}" data-search-url="{{ '/search/' | relative_url }}">
+    <a class="skip-link" href="#main-content">{% if page.lang == 'en' %}Skip to content{% else %}跳至正文{% endif %}</a>
     {% include header.html %}
-    <main class="page-shell">
+    {% unless page.url == '/' %}
+    <nav class="breadcrumbs" aria-label="{% if page.lang == 'en' %}Breadcrumb{% else %}面包屑导航{% endif %}">
+      <a href="{{ '/' | relative_url }}">{% if page.lang == 'en' %}Home{% else %}首页{% endif %}</a><span aria-hidden="true">/</span>
+      {% if page.url == section_url %}<span aria-current="page">{{ section_label }}</span>{% else %}
+      <a href="{{ section_url | relative_url }}">{{ section_label }}</a><span aria-hidden="true">/</span>
+      <span class="breadcrumb-current" aria-current="page">{{ page.title }}</span>{% endif %}
+    </nav>
+    {% endunless %}
+    <main id="main-content" class="page-shell preview-main">
       {% if page.url == '/' %}
-        <article class="content">{{ content }}</article>
+      <article class="content">{{ content }}</article>
       {% else %}
-        <div class="inner-toolbar">
-          <nav class="breadcrumbs" aria-label="{% if page.lang == 'en' %}Breadcrumb{% else %}面包屑导航{% endif %}">
-            <a href="{{ '/' | relative_url }}">{% if page.lang == 'en' %}Home{% else %}首页{% endif %}</a>
-            <span aria-hidden="true">/</span>
-            {% if page.url == section_url %}
-              <span aria-current="page">{{ section_label }}</span>
-            {% else %}
-              <a href="{{ section_url | relative_url }}">{{ section_label }}</a>
-              <span aria-hidden="true">/</span>
-              <span class="breadcrumb-current" aria-current="page">{{ page.title }}</span>
-            {% endif %}
-          </nav>
-          <a class="toolbar-search" href="{{ '/search/' | relative_url }}">{% if page.lang == 'en' %}Search all guides{% else %}搜索全部指南{% endif %}<span aria-hidden="true">→</span></a>
+      <div class="source-content">
+        <div class="preview-hero" data-page-hero hidden></div>
+        <div class="content-layout">
+          <article class="content inner-content preview-body" data-article-content>{{ content }}</article>
+          {% include reading-rail.html %}
         </div>
-        <div class="inner-layout">
-          <article class="content inner-content" data-article-content>{{ content }}</article>
-          <aside class="reading-rail" aria-label="{% if page.lang == 'en' %}Page navigation{% else %}页面导航{% endif %}">
-            <details class="rail-panel toc-panel" data-page-toc open hidden>
-              <summary>{% if page.lang == 'en' %}On this page{% else %}本页目录{% endif %}</summary>
-              <ol class="toc-list" data-toc-list></ol>
-            </details>
-            <section class="rail-panel discovery-panel">
-              <p class="rail-label">{% if page.lang == 'en' %}Find another answer{% else %}继续查找答案{% endif %}</p>
-              <a class="rail-primary-link" href="{{ '/search/' | relative_url }}">{% if page.lang == 'en' %}Search the full knowledge base{% else %}搜索完整知识库{% endif %}<span aria-hidden="true">→</span></a>
-              <div class="rail-link-list">
-                <a href="{{ site.chatgpt_guide_url }}">ChatGPT</a>
-                <a href="{{ site.grok_guide_url }}">Grok</a>
-                <a href="{{ site.claude_guide_url }}">Claude</a>
-                <a href="{{ site.gemini_guide_url }}">Gemini</a>
-                <a href="{{ '/resources/' | relative_url }}">{% if page.lang == 'en' %}Practical checklists{% else %}实用资源{% endif %}</a>
-                <a href="{{ '/labs/' | relative_url }}">{% if page.lang == 'en' %}Technical lab{% else %}技术实验室{% endif %}</a>
-              </div>
-            </section>
-          </aside>
-        </div>
+      </div>
       {% endif %}
     </main>
     {% include footer.html %}

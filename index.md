@@ -17,44 +17,14 @@ faq:
 <section class="commercial-hero" aria-labelledby="home-title">
   <div class="hero-main">
     <p class="eyebrow">ChongGrok Knowledge Hub · 2026</p>
-    <h1 id="home-title">ChatGPT、Grok、Claude、Gemini 会员订阅与付款排障指南</h1>
+    <h1 id="home-title"><span>ChatGPT、Grok、Claude、Gemini</span> <span>会员订阅与付款排障指南</span></h1>
     <p class="hero-value">国内支付路径、账号升级与付款问题，一站查清。</p>
     <p class="hero-summary">选择你正在使用的产品，查看会员方案、升级流程和真实报错处理。已有扣款或待处理订单时，先排查，不要重复购买。</p>
     <div class="hero-actions">
       <a class="button-link primary" href="#product-directory-title">选择产品与方案 <span aria-hidden="true">↓</span></a>
       <a class="button-link" href="#issue-title">按问题找答案</a>
     </div>
-    <div class="hero-facts" aria-label="服务说明">
-      <span>支付宝 / 微信</span>
-      <span>不索要密码</span>
-      <span>按产品确认交付方式</span>
-      <span>售后有人对接</span>
-    </div>
   </div>
-
-  <aside class="hero-product-panel" aria-label="四项产品知识库">
-    <div class="hero-panel-head">
-      <div>
-        <p class="eyebrow">Product Access</p>
-        <h2>选择正在使用的产品</h2>
-      </div>
-      <a href="{{ '/search/' | relative_url }}" aria-label="搜索全部知识库">搜索全部 <span aria-hidden="true">→</span></a>
-    </div>
-    <div class="hero-product-grid">
-    {% for product in site.data.products %}
-      <a class="hero-product-item product-{{ product.id }}" href="{{ product.guide_url }}">
-        <span class="hero-product-icon" aria-hidden="true">
-          {% case product.id %}{% when 'chatgpt' %}GPT{% when 'grok' %}G{% when 'claude' %}C{% when 'gemini' %}Gm{% endcase %}
-        </span>
-        <span class="hero-product-copy">
-          <strong>{{ product.name }}</strong>
-          <small>{% case product.id %}{% when 'chatgpt' %}Plus / Pro 与付款排障{% when 'grok' %}联合会员、Bot 与旧版续费{% when 'claude' %}Pro / Max 与 Claude Code{% when 'gemini' %}Google AI 与权益核对{% endcase %}</small>
-        </span>
-        <span class="hero-product-arrow" aria-hidden="true">→</span>
-      </a>
-    {% endfor %}
-    </div>
-  </aside>
 </section>
 
 <section class="assurance-strip" aria-label="ChongGrok 服务特点">
@@ -123,15 +93,17 @@ faq:
   <div class="product-grid">
   {% for product in site.data.products %}
     <article class="product-card product-{{ product.id }}">
-      <a class="product-media" href="{{ product.guide_url }}" aria-label="进入 {{ product.title }}">
-        <img src="{{ product.image | relative_url }}" alt="{{ product.image_alt }}" width="1200" height="630" loading="{% if forloop.index <= 2 %}eager{% else %}lazy{% endif %}">
-      </a>
       <div class="product-body">
-        <div class="product-kicker">
-          <p class="eyebrow">{{ product.eyebrow }}</p>
-          <span class="status-badge{% if product.focus %} focus{% endif %}">{{ product.status }}</span>
+        <div class="product-heading">
+          <img class="product-brand-icon" src="{{ '/assets/images/brands/' | append: product.id | append: '.svg' | relative_url }}" alt="" width="40" height="40">
+          <div class="product-heading-copy">
+            <div class="product-kicker">
+              <p class="eyebrow">{{ product.eyebrow }}</p>
+              <span class="status-badge{% if product.focus %} focus{% endif %}">{{ product.status }}</span>
+            </div>
+            <h3><a href="{{ product.guide_url }}">{{ product.title }}</a></h3>
+          </div>
         </div>
-        <h3><a href="{{ product.guide_url }}">{{ product.title }}</a></h3>
         <p>{{ product.description }}</p>
         <ul class="product-links">
         {% for link in product.quick_links %}
@@ -158,6 +130,7 @@ faq:
   </div>
   <div class="issue-grid">
     <article class="issue-card">
+      <span class="issue-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h5M8 16h5"/></svg></span>
       <span class="issue-number">01</span>
       <p class="eyebrow">Payment Declined</p>
       <h3>付款被拒或无法验证</h3>
@@ -168,6 +141,7 @@ faq:
       </div>
     </article>
     <article class="issue-card">
+      <span class="issue-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6V3Z"/><path d="M14 3v5h4M9 12h6M9 16h4"/></svg></span>
       <span class="issue-number">02</span>
       <p class="eyebrow">Paid But Free</p>
       <h3>已经扣款，仍显示 Free</h3>
@@ -178,6 +152,7 @@ faq:
       </div>
     </article>
     <article class="issue-card">
+      <span class="issue-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M4 22v-2a8 8 0 0 1 16 0v2"/></svg></span>
       <span class="issue-number">03</span>
       <p class="eyebrow">Renewal And Account</p>
       <h3>续费失败或登录错账号</h3>
@@ -188,6 +163,7 @@ faq:
       </div>
     </article>
     <article class="issue-card">
+      <span class="issue-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 8 4v6c0 5-8 10-8 10S4 17 4 12V6l8-4Z"/></svg></span>
       <span class="issue-number">04</span>
       <p class="eyebrow">Cancel And Refund</p>
       <h3>取消续费或申请退款</h3>
@@ -258,9 +234,7 @@ faq:
   </div>
   <div class="resource-grid">
     <article class="resource-card">
-      <a class="resource-media" href="{{ '/resources/ai-membership-safety-checklist/' | relative_url }}">
-        <img src="{{ '/assets/images/ai-membership-safety-checklist-social.png' | relative_url }}" alt="AI 会员订阅安全与验收清单" width="1200" height="630" loading="lazy">
-      </a>
+      <span class="resource-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></span>
       <div class="resource-body">
         <p class="eyebrow">Safety Checklist</p>
         <h3><a href="{{ '/resources/ai-membership-safety-checklist/' | relative_url }}">AI 会员订阅安全与验收清单</a></h3>
@@ -269,9 +243,7 @@ faq:
       </div>
     </article>
     <article class="resource-card">
-      <a class="resource-media" href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">
-        <img src="{{ '/assets/images/ai-subscription-payment-troubleshooting-social-zh.png' | relative_url }}" alt="AI 订阅付款排障决策树" width="1200" height="630" loading="lazy">
-      </a>
+      <span class="resource-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="16" y="16" width="6" height="6" rx="1"/><path d="M12 8v4M5 16v-4h14v4"/></svg></span>
       <div class="resource-body">
         <p class="eyebrow">Payment Decision Tree</p>
         <h3><a href="{{ '/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">AI 订阅付款排障决策树</a></h3>
@@ -280,9 +252,7 @@ faq:
       </div>
     </article>
     <article class="resource-card">
-      <a class="resource-media" href="{{ '/resources/ai-subscription-cancel-refund/' | relative_url }}">
-        <img src="{{ '/assets/images/ai-subscription-cancel-refund-social.png' | relative_url }}" alt="ChatGPT、Grok、Claude、Gemini 取消订阅与退款指南" width="1200" height="630" loading="lazy">
-      </a>
+      <span class="resource-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 8 4v6c0 5-8 10-8 10S4 17 4 12V6l8-4Z"/><path d="m8 12 3 3 5-6"/></svg></span>
       <div class="resource-body">
         <p class="eyebrow">Cancel And Refund</p>
         <h3><a href="{{ '/resources/ai-subscription-cancel-refund/' | relative_url }}">AI 会员取消订阅与退款指南</a></h3>
@@ -345,15 +315,15 @@ faq:
     </div>
   </div>
   <div class="faq-list">
-    <details>
+    <details open>
       <summary>这个网站提供哪些会员订阅指南？</summary>
       <p>当前提供 ChatGPT Plus / Pro、Grok 联合会员 / 旧 SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套知识库。</p>
     </details>
-    <details>
+    <details open>
       <summary>不同产品需要哪些账号资料？</summary>
       <p>不同产品所需资料不同：ChatGPT 使用 session，新版 X 联合会员使用 Grok SSO，旧 SuperGrok 使用 User ID。session 和 SSO 是敏感登录凭据，不等同于 User ID；Claude、Gemini 按当前产品页确认具体资料。</p>
     </details>
-    <details>
+    <details open>
       <summary>这个网站提供 API 额度或成品账号吗？</summary>
       <p>不提供 API 额度、接码或批量注册。ChatGPT、Grok、Claude 不提供成品账号；Gemini 是唯一提供专属一年成品账号的例外产品。</p>
     </details>
