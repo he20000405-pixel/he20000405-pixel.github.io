@@ -46,6 +46,8 @@
 
 ## Grok guide
 
+- X Subscription, Grok Bot, shared weekly usage and legacy migration: https://he20000405-pixel.github.io/supergrok-china-guide/guides/x-subscription-grok-bot-guide/
+
 - Main guide: https://he20000405-pixel.github.io/supergrok-china-guide/
 - SuperGrok recharge: https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-auto-recharge/
 - Grok User ID: https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-user-id/
@@ -73,7 +75,7 @@
 ## Claude guide
 
 - Main guide: https://he20000405-pixel.github.io/claude-pro-max-china-guide/
-- Assisted Pro / Max subscription: https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-pro-max-recharge/
+- Historical Claude subscription guide (current ChongGrok service is personal Pro only): https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-pro-max-recharge/
 - Pro vs Max 5x / 20x: https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-pro-vs-max/
 - Claude User ID safety: https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-user-id-safety/
 - Card decline and payment errors: https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-payment-errors/
@@ -105,7 +107,11 @@
 - SuperGrok membership: https://chonggrok.com/supergrok
 - Claude membership: https://chonggrok.com/claude
 - Gemini membership: https://chonggrok.com/gemini
-- Card-key verification: https://chonggrok.com/verify
+- ChatGPT card-key verification: https://chonggrok.com/verify
+- X Subscription service: https://chonggrok.com/x-subscription
+- X Subscription redemption (card key and Grok SSO): https://chonggrok.com/verify-x
+- Legacy SuperGrok redemption (card key and User ID): https://chonggrok.com/verify-grok
+- Service guide portal: https://guides.chonggrok.com/
 
 ## Scope and safety
 
@@ -113,6 +119,8 @@
 - No SMS verification or bulk registration. ChatGPT, Grok and Claude do not offer ready-made accounts; Gemini is the only product with a separate ready-made annual account option.
 - Passwords, email verification codes and recovery codes are not requested.
 - ChatGPT session credentials are sensitive and should be refreshed after completion.
-- Grok and Claude User IDs are account identifiers, not passwords, but they should still be handled carefully.
+- Legacy Grok User ID is an account identifier. X Subscription redemption uses Grok SSO, a sensitive login credential; these are different requirements.
+- ChongGrok does not handle conversion from legacy memberships to The X Subscription; use the provider's official Unify flow.
+- The current ChongGrok Claude service is personal Pro monthly assistance, not Max. Confirm the live product-page requirements.
 - Gemini own-account assistance is confirmed case by case and no fixed credential is claimed. Gemini also has a separate ready-made annual account option; the two fulfillment paths must not be conflated.
 - No online service is risk-free; no guaranteed account outcome is claimed.

@@ -27,14 +27,14 @@
 - id: grok
   name: "Grok"
   eyebrow: "xAI / Grok"
-  title: "SuperGrok 充值与使用指南"
-  description: "卡密核销、Grok User ID、付款报错、Grok Build 403 和 Grok 4.5。"
+  title: "Grok 联合会员与旧版订阅指南"
+  description: "X 联合会员、Grok Bot、每周共享额度、旧 SuperGrok 续费与付款排障。"
   focus: true
   status: "重点更新"
   guide_url: "https://he20000405-pixel.github.io/supergrok-china-guide/"
   topics_url: "https://he20000405-pixel.github.io/supergrok-china-guide/guides/"
-  service_url: "https://chonggrok.com/supergrok?utm_source=github_pages&utm_medium=referral&utm_campaign=knowledge_hub&utm_content=grok_product_card"
-  service_label: "查看 SuperGrok 方案"
+  service_url: "https://chonggrok.com/x-subscription?utm_source=github_pages&utm_medium=referral&utm_campaign=knowledge_hub&utm_content=grok_product_card"
+  service_label: "查看联合会员服务"
   image: "/assets/images/product-preview-grok.png"
   image_alt: "SuperGrok 充值、Grok User ID、付款报错与 Grok 4.5 知识库"
   guide_count: 8
@@ -44,7 +44,9 @@
     - "Grok Build 403"
     - "Grok 4.5"
   quick_links:
-    - label: "SuperGrok 自助充值"
+    - label: "联合会员与 Grok Bot 怎么选"
+      url: "https://he20000405-pixel.github.io/supergrok-china-guide/guides/x-subscription-grok-bot-guide/"
+    - label: "旧版 SuperGrok 续费"
       url: "https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-auto-recharge/"
     - label: "Grok User ID 核对"
       url: "https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-user-id/"

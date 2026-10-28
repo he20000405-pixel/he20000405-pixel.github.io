@@ -2,7 +2,7 @@
 title: "关于本站与服务边界"
 description: "说明 ChongGrok AI 会员指南的内容范围、充值业务边界、凭证安全口径和第三方关系。"
 permalink: /about/
-last_modified_at: 2026-08-08
+last_modified_at: 2026-10-28
 ---
 
 <p class="eyebrow">About</p>
@@ -15,8 +15,8 @@ ChongGrok AI 会员指南为 ChatGPT、Grok、Claude 与 Gemini 用户提供订�
 | 产品 | 当前服务 | 不提供 |
 | --- | --- | --- |
 | ChatGPT | Plus、5x Pro、20x Pro 会员订阅协助 | API 额度、成品账号 |
-| Grok | SuperGrok 会员订阅协助 | API 额度、X 成品账号 |
-| Claude | Pro、Max 5x、Max 20x 会员订阅协助 | API 额度、成品账号、Team/Enterprise 批量业务 |
+| Grok | 新版 X 联合会员订阅协助；符合条件的旧 SuperGrok 续费 | 旧会员转联合会员、API 额度、X 成品账号 |
+| Claude | 个人 Pro 月付订阅协助，当前采用人工 iOS 内购流程 | Max、API 额度、成品账号、Team/Enterprise 业务 |
 | Gemini | 用户自有账号会员升级；Gemini 专属一年成品账号 | API 额度、接码或批量注册 |
 
 本站不提供接码、批量注册或规避平台规则的服务。Gemini 是成品账号业务的唯一例外；该例外不适用于 ChatGPT、Grok 或 Claude。Gemini 自有账号升级资料由客服逐单确认，不写固定凭证、固定处理时间或保证结果。
@@ -37,14 +37,16 @@ ChongGrok AI 会员指南为 ChatGPT、Grok、Claude 与 Gemini 用户提供订�
 ## 凭证说明
 
 - ChatGPT Plus 自动充值不需要密码，但会按核销页要求使用本次升级所需 session。session 属于敏感凭证，完成后建议退出并重新登录刷新。
-- SuperGrok 不需要密码，使用 Grok User ID 定位目标账号。User ID 不能单独登录账号，但仍不应公开传播。
-- Claude 客服协助流程不需要密码，使用 Claude User ID 核对目标账号。User ID 是 ChongGrok 履约所需账号标识，不是 Anthropic 官方订阅要求，也不应公开传播。
+- 旧 SuperGrok 兑换使用卡密和 Grok User ID；新版 X 联合会员兑换使用卡密和 Grok SSO。SSO 属于敏感登录凭据，不等同于 User ID，不应公开传播。
+- Claude 当前为人工协助的个人 Pro 月付服务。先按产品页和客服指引确认账号、所需资料及交付方式，不沿用旧版 User ID 充值说明。
 - Gemini 自有账号升级的具体资料由客服逐单确认，不声明固定凭证，不索要 Google 密码、两步验证码或恢复码；Gemini 专属一年成品账号属于单独交付路径，购买前应确认账号归属和售后边界。
 - 不应提交邮箱密码、短信验证码、邮箱验证码或恢复码。
 
 ## 第三方声明
 
 ChongGrok 与 OpenAI、xAI、X、Anthropic、Google 不存在隶属、授权或官方合作关系。套餐、价格、额度、模型名称和可用性以对应产品官方页面与账号内实时展示为准。
+
+xAI 的[当前购买政策](https://x.ai/pricing)说明未授权第三方销售，并提示相关账号可能被暂停或终止。本站的商业服务说明不代表厂商认可。旧会员转换应自行按官方 Unify 流程办理，ChongGrok 不提供该项转换服务。
 
 ## 联系入口
 
@@ -54,4 +56,9 @@ ChongGrok 与 OpenAI、xAI、X、Anthropic、Google 不存在隶属、授权或�
 - [Claude 会员页面](https://chonggrok.com/claude?utm_source=github_pages&utm_medium=referral&utm_campaign=knowledge_hub&utm_content=about_claude)
 - [Gemini / Google AI 会员页面](https://chonggrok.com/gemini?utm_source=github_pages&utm_medium=referral&utm_campaign=knowledge_hub&utm_content=about_gemini)
 - [Gemini / Google AI 知识库](https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/)
-- [卡密核销](https://chonggrok.com/verify?utm_source=github_pages&utm_medium=referral&utm_campaign=knowledge_hub&utm_content=about_verify)
+- [ChatGPT 卡密核销](https://chonggrok.com/verify?utm_source=github_pages&utm_medium=referral&utm_campaign=knowledge_hub&utm_content=about_verify)
+
+- [X 联合会员服务](https://chonggrok.com/x-subscription?utm_source=github_pages&utm_medium=referral&utm_campaign=knowledge_hub&utm_content=about_x_subscription)
+- [X 联合会员兑换](https://chonggrok.com/verify-x)
+- [旧 SuperGrok 兑换](https://chonggrok.com/verify-grok)
+- [订阅服务说明门户](https://guides.chonggrok.com/)

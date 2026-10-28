@@ -4,12 +4,12 @@ description: "面向中文用户的 ChatGPT、Grok、Claude 与 Gemini 会员订
 image_alt: "ChongGrok AI 会员指南：四产品订阅与付款排障知识库"
 permalink: /
 schema_type: CollectionPage
-last_modified_at: 2026-08-08
+last_modified_at: 2026-10-28
 faq:
   - question: "这个网站提供哪些会员订阅指南？"
-    answer: "当前提供 ChatGPT Plus / Pro、Grok / SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套知识库，覆盖订阅流程、付款报错、账号状态和资料安全说明。"
-  - question: "ChongGrok 充值需要账号密码吗？"
-    answer: "不需要账号密码。ChatGPT Plus 自动流程使用本次升级所需 session，SuperGrok 使用 Grok User ID，Claude 客服协助流程使用 Claude User ID；Gemini 自有账号升级所需资料由客服逐单确认。任何凭证都不应公开传播。"
+    answer: "当前提供 ChatGPT Plus / Pro、Grok 联合会员 / 旧 SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套知识库，覆盖订阅流程、付款报错、账号状态和资料安全说明。"
+  - question: "不同产品需要哪些账号资料？"
+    answer: "不同产品所需资料不同：ChatGPT 使用 session，新版 X 联合会员使用 Grok SSO，旧 SuperGrok 使用 User ID。session 和 SSO 是敏感登录凭据，不等同于 User ID；Claude、Gemini 按当前产品页确认具体资料。"
   - question: "这个网站提供 API 额度或成品账号吗？"
     answer: "不提供 API 额度、接码或批量注册。ChatGPT、Grok、Claude 不提供成品账号；Gemini 是唯一例外，同时提供用户自有账号升级与 Gemini 专属一年成品账号。"
 ---
@@ -27,7 +27,7 @@ faq:
     <div class="hero-facts" aria-label="服务说明">
       <span>支付宝 / 微信</span>
       <span>不索要密码</span>
-      <span>使用自己的账号</span>
+      <span>按产品确认交付方式</span>
       <span>售后有人对接</span>
     </div>
   </div>
@@ -48,7 +48,7 @@ faq:
         </span>
         <span class="hero-product-copy">
           <strong>{{ product.name }}</strong>
-          <small>{% case product.id %}{% when 'chatgpt' %}Plus / Pro 与付款排障{% when 'grok' %}SuperGrok 与 User ID{% when 'claude' %}Pro / Max 与 Claude Code{% when 'gemini' %}Google AI 与权益核对{% endcase %}</small>
+          <small>{% case product.id %}{% when 'chatgpt' %}Plus / Pro 与付款排障{% when 'grok' %}联合会员、Bot 与旧版续费{% when 'claude' %}Pro / Max 与 Claude Code{% when 'gemini' %}Google AI 与权益核对{% endcase %}</small>
         </span>
         <span class="hero-product-arrow" aria-hidden="true">→</span>
       </a>
@@ -74,7 +74,7 @@ faq:
     <span class="assurance-icon" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21a8 8 0 0 0-16 0"/><circle cx="12" cy="7" r="4"/><path d="m16 11 2 2 3-3"/></svg>
     </span>
-    <div><strong>账号归用户</strong><small>使用自己的账号完成服务</small></div>
+    <div><strong>账号归用户</strong><small>先核对账号与交付方式</small></div>
   </div>
   <div class="assurance-item">
     <span class="assurance-icon" aria-hidden="true">
@@ -228,10 +228,10 @@ faq:
       <a class="text-link" href="https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-renewal-failed-back-to-free/">阅读指南 <span aria-hidden="true">→</span></a>
     </article>
     <article class="editorial-card grok">
-      <p class="eyebrow">Grok · Version</p>
-      <h3><a href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-4-5-update/">Grok 4.5 更新与可用性</a></h3>
-      <p>按官方入口和账号状态确认当前能否使用，不保证所有账号同时开放。</p>
-      <a class="text-link" href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-4-5-update/">阅读指南 <span aria-hidden="true">→</span></a>
+      <p class="eyebrow">Grok · 联合会员</p>
+      <h3><a href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/x-subscription-grok-bot-guide/">X 联合会员、Grok Bot 与每周额度</a></h3>
+      <p>分清新购、旧版续费与官方 Unify 转换，核对 Bot 权限和共享额度。</p>
+      <a class="text-link" href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/x-subscription-grok-bot-guide/">阅读指南 <span aria-hidden="true">→</span></a>
     </article>
     <article class="editorial-card grok">
       <p class="eyebrow">Grok · Billing</p>
@@ -326,7 +326,7 @@ faq:
   </div>
   <div class="boundary-layout">
     <div class="notice warning">
-      <strong>不要密码不等于零风险。</strong>ChatGPT session、Grok User ID 与 Claude User ID 的敏感程度不同；任何凭证和账号标识都不应公开传播。
+      <strong>不要密码不等于零风险。</strong>ChatGPT session、Grok SSO 与 User ID 的敏感程度不同；任何凭证和账号标识都不应公开传播。
     </div>
     <ul class="boundary-list">
       <li>ChatGPT、Grok、Claude 均使用用户自己的账号，不提供成品号。</li>
@@ -347,11 +347,11 @@ faq:
   <div class="faq-list">
     <details>
       <summary>这个网站提供哪些会员订阅指南？</summary>
-      <p>当前提供 ChatGPT Plus / Pro、Grok / SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套知识库。</p>
+      <p>当前提供 ChatGPT Plus / Pro、Grok 联合会员 / 旧 SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套知识库。</p>
     </details>
     <details>
-      <summary>ChongGrok 充值需要账号密码吗？</summary>
-      <p>不需要账号密码。ChatGPT Plus 自动流程使用本次升级所需 session，Grok 与 Claude 使用各自 User ID；Gemini 自有账号升级资料由客服逐单确认。任何凭证都应谨慎处理。</p>
+      <summary>不同产品需要哪些账号资料？</summary>
+      <p>不同产品所需资料不同：ChatGPT 使用 session，新版 X 联合会员使用 Grok SSO，旧 SuperGrok 使用 User ID。session 和 SSO 是敏感登录凭据，不等同于 User ID；Claude、Gemini 按当前产品页确认具体资料。</p>
     </details>
     <details>
       <summary>这个网站提供 API 额度或成品账号吗？</summary>
@@ -360,4 +360,4 @@ faq:
   </div>
 </section>
 
-<p class="meta home-updated">最后更新：2026-08-06</p>
+<p class="meta home-updated">最后更新：2026-10-28</p>

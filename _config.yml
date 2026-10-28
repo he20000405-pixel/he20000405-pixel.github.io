@@ -5,13 +5,14 @@ url: "https://he20000405-pixel.github.io"
 baseurl: ""
 repository: "he20000405-pixel/he20000405-pixel.github.io"
 lang: "zh-CN"
+bing_site_verification: "72D6CE65871F1043EB25F4C0C3651640"
 timezone: "Asia/Shanghai"
 portal_url: "https://he20000405-pixel.github.io/"
 chatgpt_guide_url: "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/"
 grok_guide_url: "https://he20000405-pixel.github.io/supergrok-china-guide/"
 claude_guide_url: "https://he20000405-pixel.github.io/claude-pro-max-china-guide/"
 gemini_guide_url: "https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/"
-asset_version: "20260808-cancel-refund-1"
+asset_version: "20261028-search-subscriptions-1"
 
 markdown: kramdown
 highlighter: rouge

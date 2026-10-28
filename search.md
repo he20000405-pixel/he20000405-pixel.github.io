@@ -2,7 +2,7 @@
 title: "AI 会员订阅指南搜索"
 description: "搜索 ChongGrok 四套知识库和跨产品资源中的订阅流程、付款失败、Free 状态、续费、User ID、session 与权益排障专题。"
 permalink: /search/
-last_modified_at: 2026-07-21
+last_modified_at: 2026-10-28
 ---
 
 <p class="eyebrow">Search</p>
