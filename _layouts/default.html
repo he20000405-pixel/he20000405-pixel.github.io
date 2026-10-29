@@ -61,12 +61,20 @@
     <a class="skip-link" href="#main-content">{% if page.lang == 'en' %}Skip to content{% else %}跳至正文{% endif %}</a>
     {% include header.html %}
     {% unless page.url == '/' %}
+    {% if page.lang == 'en' %}
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      {% if page.url == '/en/' %}<span aria-current="page">Home</span>{% else %}
+      <a href="{{ '/en/' | relative_url }}">Home</a><span aria-hidden="true">/</span>
+      <span class="breadcrumb-current" aria-current="page">{{ page.title }}</span>{% endif %}
+    </nav>
+    {% else %}
     <nav class="breadcrumbs" aria-label="{% if page.lang == 'en' %}Breadcrumb{% else %}面包屑导航{% endif %}">
       <a href="{{ '/' | relative_url }}">{% if page.lang == 'en' %}Home{% else %}首页{% endif %}</a><span aria-hidden="true">/</span>
       {% if page.url == section_url %}<span aria-current="page">{{ section_label }}</span>{% else %}
       <a href="{{ section_url | relative_url }}">{{ section_label }}</a><span aria-hidden="true">/</span>
       <span class="breadcrumb-current" aria-current="page">{{ page.title }}</span>{% endif %}
     </nav>
+    {% endif %}
     {% endunless %}
     <main id="main-content" class="page-shell preview-main">
       {% if page.url == '/' %}

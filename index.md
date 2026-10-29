@@ -273,7 +273,7 @@ faq:
   </div>
   <article class="lab-feature">
     <a class="lab-feature-media" href="{{ '/labs/codex-dream-skin-windows/' | relative_url }}">
-      <img src="{{ '/assets/images/labs/codex-dream-skin-windows-social.png' | relative_url }}" alt="Windows Codex Desktop 动态换肤实测教程" width="1200" height="630" loading="lazy">
+      <img src="{{ '/assets/images/labs/codex-dream-skin-windows-preview.webp' | relative_url }}" alt="Windows Codex Desktop 动态换肤实测教程" width="1200" height="630" loading="lazy">
     </a>
     <div class="lab-feature-body">
       <p class="eyebrow">Windows · Codex Desktop</p>

@@ -4,35 +4,35 @@
       <div class="footer-intro">
         <span class="brand-mark" aria-hidden="true">CG</span>
         <div>
-          <p class="footer-title">ChongGrok AI 会员指南</p>
-          <p>用清楚、可执行的步骤，解决 AI 会员选择、付款和账号状态问题。</p>
-          <a class="footer-main-link" href="https://chonggrok.com/?utm_source=github_pages&amp;utm_medium=referral&amp;utm_campaign=knowledge_hub&amp;utm_content=footer_main_site">访问 chonggrok.com <span aria-hidden="true">→</span></a>
+          <p class="footer-title">{% if page.lang == 'en' %}ChongGrok AI Guides{% else %}ChongGrok AI 会员指南{% endif %}</p>
+          <p>{% if page.lang == 'en' %}Clear, practical steps for choosing an AI plan and resolving payment and account-status problems.{% else %}用清楚、可执行的步骤，解决 AI 会员选择、付款和账号状态问题。{% endif %}</p>
+          <a class="footer-main-link" href="https://chonggrok.com/?utm_source=github_pages&amp;utm_medium=referral&amp;utm_campaign=knowledge_hub&amp;utm_content=footer_main_site">{% if page.lang == 'en' %}Visit chonggrok.com (Chinese){% else %}访问 chonggrok.com{% endif %} <span aria-hidden="true">→</span></a>
         </div>
       </div>
-      <nav class="footer-link-group" aria-label="产品知识库">
-        <strong>产品知识库</strong>
-        <a href="{{ site.chatgpt_guide_url }}">ChatGPT</a>
-        <a href="{{ site.grok_guide_url }}">Grok</a>
-        <a href="{{ site.claude_guide_url }}">Claude</a>
-        <a href="{{ site.gemini_guide_url }}">Gemini</a>
+      <nav class="footer-link-group" aria-label="{% if page.lang == 'en' %}Product guides{% else %}产品知识库{% endif %}">
+        <strong>{% if page.lang == 'en' %}Product guides{% else %}产品知识库{% endif %}</strong>
+        <a href="{{ site.chatgpt_guide_url }}{% if page.lang == 'en' %}en/{% endif %}">ChatGPT</a>
+        <a href="{{ site.grok_guide_url }}{% if page.lang == 'en' %}en/{% endif %}">Grok</a>
+        <a href="{{ site.claude_guide_url }}{% if page.lang == 'en' %}en/{% endif %}">Claude</a>
+        <a href="{{ site.gemini_guide_url }}{% if page.lang == 'en' %}en/{% endif %}">Gemini</a>
       </nav>
-      <nav class="footer-link-group" aria-label="站内资源">
-        <strong>查找答案</strong>
-        <a href="{{ '/search/' | relative_url }}">搜索指南</a>
-        <a href="{{ '/resources/' | relative_url }}">实用资源</a>
-        <a href="{{ '/labs/' | relative_url }}">技术实验室</a>
-        <a href="{{ '/about/' | relative_url }}">关于本站</a>
+      <nav class="footer-link-group" aria-label="{% if page.lang == 'en' %}Resources{% else %}站内资源{% endif %}">
+        <strong>{% if page.lang == 'en' %}Find an answer{% else %}查找答案{% endif %}</strong>
+        <a href="{{ '/search/' | relative_url }}">{% if page.lang == 'en' %}Search (Chinese){% else %}搜索指南{% endif %}</a>
+        <a href="{{ '/resources/' | relative_url }}">{% if page.lang == 'en' %}Resources (Chinese){% else %}实用资源{% endif %}</a>
+        <a href="{{ '/labs/' | relative_url }}">{% if page.lang == 'en' %}Technical lab (Chinese){% else %}技术实验室{% endif %}</a>
+        <a href="{{ '/about/' | relative_url }}">{% if page.lang == 'en' %}About (Chinese){% else %}关于本站{% endif %}</a>
       </nav>
-      <nav class="footer-link-group" aria-label="更多入口">
-        <strong>更多入口</strong>
-        <a href="{{ site.guide_portal_url }}">指南门户</a>
-        <a href="{{ '/en/' | relative_url }}" lang="en">English</a>
+      <nav class="footer-link-group" aria-label="{% if page.lang == 'en' %}More links{% else %}更多入口{% endif %}">
+        <strong>{% if page.lang == 'en' %}More links{% else %}更多入口{% endif %}</strong>
+        <a href="{{ site.guide_portal_url }}">{% if page.lang == 'en' %}Guide portal (Chinese){% else %}指南门户{% endif %}</a>
+        {% if page.lang == 'en' %}<a href="{{ page.alternate_zh | default: '/' | relative_url }}" lang="zh-CN" hreflang="zh-CN" aria-label="Read the Chinese guide">中文</a>{% else %}<a href="{{ '/en/' | relative_url }}" lang="en">English</a>{% endif %}
         <a href="{{ '/llms.txt' | relative_url }}">llms.txt</a>
-        <a href="https://chonggrok.com/blog?utm_source=github_pages&amp;utm_medium=referral&amp;utm_campaign=knowledge_hub&amp;utm_content=footer_blog">主站博客</a>
+        <a href="https://chonggrok.com/blog?utm_source=github_pages&amp;utm_medium=referral&amp;utm_campaign=knowledge_hub&amp;utm_content=footer_blog">{% if page.lang == 'en' %}Main-site blog (Chinese){% else %}主站博客{% endif %}</a>
       </nav>
     </div>
     <div class="footer-bottom">
-      <p class="footer-note">ChongGrok 与 OpenAI、xAI、X、Anthropic、Google 不存在隶属、授权或官方合作关系。套餐、权益、价格与模型可用性以对应产品官方页面实时展示为准。</p>
+      <p class="footer-note">{% if page.lang == 'en' %}ChongGrok is not affiliated with, endorsed by or officially partnered with OpenAI, xAI, X, Anthropic or Google. Refer to the relevant official product pages for current plans, benefits, prices and model availability.{% else %}ChongGrok 与 OpenAI、xAI、X、Anthropic、Google 不存在隶属、授权或官方合作关系。套餐、权益、价格与模型可用性以对应产品官方页面实时展示为准。{% endif %}</p>
       <p>© 2026 ChongGrok</p>
     </div>
   </div>
