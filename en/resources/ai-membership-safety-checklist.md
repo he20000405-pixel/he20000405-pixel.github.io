@@ -9,7 +9,7 @@ alternate_en: /en/resources/ai-membership-safety-checklist/
 image: "https://he20000405-pixel.github.io/assets/images/ai-membership-safety-checklist-social-en.png"
 image_alt: "AI membership safety checklist for ChatGPT, Grok, Claude and Gemini"
 date_published: 2026-07-15
-last_modified_at: 2026-10-28
+last_modified_at: 2026-10-30
 faq_schema: false
 faq:
   - question: "Should I subscribe again if the paid plan does not appear immediately?"
@@ -106,10 +106,10 @@ Redact complete session credentials, SSO, User IDs, email addresses, order numbe
 
 ## Detailed guides
 
-- [ChatGPT membership guide]({{ site.chatgpt_guide_url }})
-- [SuperGrok membership guide]({{ site.grok_guide_url }})
-- [Claude Pro / Max guide]({{ site.claude_guide_url }})
-- [Gemini / Google AI guide]({{ site.gemini_guide_url }})
+- [ChatGPT membership guide]({{ site.chatgpt_guide_url | append: 'en/' }})
+- [SuperGrok membership guide]({{ site.grok_guide_url | append: 'en/' }})
+- [Claude Pro / Max guide]({{ site.claude_guide_url | append: 'en/' }})
+- [Gemini / Google AI guide]({{ site.gemini_guide_url | append: 'en/' }})
 
 ## Official references
 

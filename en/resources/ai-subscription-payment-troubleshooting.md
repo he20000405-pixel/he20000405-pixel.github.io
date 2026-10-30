@@ -9,7 +9,7 @@ alternate_en: /en/resources/ai-subscription-payment-troubleshooting/
 image: "https://he20000405-pixel.github.io/assets/images/ai-subscription-payment-troubleshooting-social-en.png"
 image_alt: "AI subscription payment troubleshooting decision tree for ChatGPT, Grok, Claude and Gemini"
 date_published: 2026-07-15
-last_modified_at: 2026-10-28
+last_modified_at: 2026-10-30
 faq:
   - question: "Should I pay again if an AI subscription was charged but the account still shows Free?"
     answer: "No. First determine whether the charge is pending or complete, identify the original billing channel and purchasing account, and check paid access on the official product page."
@@ -120,8 +120,8 @@ Stop while the order is still processing. Never post a session credential, SSO, 
 
 | Product | Payment failed | Charged but not active | Renewal or downgrade |
 | --- | --- | --- | --- |
-| ChatGPT | [Card and authentication errors](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-payment-errors/) | [Paid but still Free](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-paid-but-still-free/) | [Renewal failed](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-renewal-failed-back-to-free/) |
-| Grok | [SuperGrok payment errors](https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-payment-errors/) | [Paid but still Free](https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-paid-but-still-free/) | Check the original channel and [subscription route](https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-vs-x-premium-plus/) |
+| ChatGPT | [Card and authentication errors](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-payment-errors/) | [Paid but still Free](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/en/guides/chatgpt-paid-but-still-free/) | [Renewal failed](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-renewal-failed-back-to-free/) |
+| Grok | [SuperGrok payment errors](https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-payment-errors/) | [Paid but still Free](https://he20000405-pixel.github.io/supergrok-china-guide/en/guides/supergrok-paid-but-still-free/) | Check the original channel and [subscription route](https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-vs-x-premium-plus/) |
 | Claude | [Card decline and 3DS](https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-payment-errors/) | [Paid but still Free](https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-paid-but-still-free/) | [Renewal failed or downgraded](https://he20000405-pixel.github.io/claude-pro-max-china-guide/guides/claude-renewal-failed-back-to-free/) |
 | Gemini | [Card and billing profile errors](https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/gemini-payment-errors/) | [Paid but plan is missing](https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/gemini-paid-but-not-active/) | [Renewal failed or downgraded](https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/gemini-renewal-failed/) |
 
