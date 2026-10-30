@@ -18,6 +18,11 @@
 
 ## ChatGPT guide
 
+- [GPT-6.1 (Terra / Sol) 与 GPT-6 Astra、Codex 额度详解：2026 年 10 月 Plus 与 Pro 怎么选？](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/gpt-6-1-codex-work-limits-guide/): 比较模型入口、Codex 与 ChatGPT Work 用量，以及 Plus / Pro 的选择。
+- [ChatGPT Plus / Pro 免密码代充安全吗？2026 AuthSession 凭证边界与充后刷新验收指南](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-session-security-verification-guide/): 说明 Plus 自助兑换的凭证要求、安全边界与充值后验收。
+- [苹果 App Store / Google Play 内购的 ChatGPT Plus 怎么转网页端直充？2026 防掉号与防重复扣费指南](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-apple-google-to-web-migration/): 区分 Apple、Google Play 与网页订阅，避免重复扣费和充错账号。
+- [2026 主流 AI 会员选型总表：ChatGPT (Plus / Pro) vs Grok (X 联合会员 / SuperGrok) 国内用户该开哪一个？](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-vs-grok-2026-comparison/): 对比两套订阅体系、编程工具、自动化能力与国内办理方式。
+
 - Main guide: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/
 - Plus automated recharge: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-plus-auto-recharge/
 - 5x / 20x Pro: https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-pro-100-200/
