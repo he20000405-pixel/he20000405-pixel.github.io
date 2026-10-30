@@ -15,7 +15,7 @@
     {% endif %}
   </div>
   <div class="content-layout{% if presentation_has_rail %} reading-layout{% endif %}">
-    <article class="content inner-content preview-body" data-article-content>{{ presentation_body }}</article>
+    <article class="content inner-content preview-body" data-article-content>{% include accessible-checklists.html source=presentation_body %}</article>
     {% if presentation_has_rail %}{% include reading-rail.html %}{% endif %}
   </div>
 </div>

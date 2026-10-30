@@ -1,0 +1,15 @@
+{%- comment -%}
+Give Kramdown's disabled task-list checkboxes a name from their existing item
+text. This runs at build time; the visible text, checked state and disabled
+behavior stay unchanged. escape_once preserves entities in the rendered text.
+{%- endcomment -%}
+{%- assign checklist_input_start = '<input type="checkbox" class="task-list-item-checkbox"' -%}
+{%- assign checklist_parts = include.source | split: checklist_input_start -%}
+{{- checklist_parts | first -}}
+{%- for checklist_part in checklist_parts offset: 1 -%}
+  {%- assign checklist_attributes = checklist_part | split: '>' | first -%}
+  {%- assign checklist_label = checklist_part | remove_first: checklist_attributes | remove_first: '>' | split: '</li>' | first | strip_html | normalize_whitespace | strip -%}
+  {{- checklist_input_start -}}
+  {%- unless checklist_attributes contains 'aria-label=' or checklist_attributes contains 'aria-labelledby=' or checklist_label == '' %} aria-label="{{ checklist_label | escape_once }}"{% endunless -%}
+  {{- checklist_part -}}
+{%- endfor -%}

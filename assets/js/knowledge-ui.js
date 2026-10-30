@@ -73,29 +73,64 @@
   if (links.length !== headings.length) return;
   toc.open = !mobile.matches;
   toc.dataset.tocReady = 'true';
-  const activate = (id) => links.forEach((link) => {
-    const active = decodeURIComponent(link.hash.slice(1)) === id;
-    link.parentElement.classList.toggle('is-active', active);
-    if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
-  });
-  activate(headings[0].id);
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-      if (visible.length) activate(visible[0].target.id);
-    }, { rootMargin: '-10% 0px -75% 0px' });
-    headings.forEach((heading) => observer.observe(heading));
-  }
+  let activeId = null;
+  const activate = (id) => {
+    if (id === activeId) return;
+    activeId = id;
+    links.forEach((link) => {
+      const active = decodeURIComponent(link.hash.slice(1)) === id;
+      link.parentElement.classList.toggle('is-active', active);
+      if (active) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current');
+    });
+  };
+  const updateCurrentSection = () => {
+    let current = headings[0];
+    // Read every candidate from the same scroll position, including when scrolling up.
+    for (const heading of headings) {
+      const margin = Math.max(0, parseFloat(getComputedStyle(heading).scrollMarginTop) || 0);
+      if (heading.getBoundingClientRect().top > margin + 1) break;
+      current = heading;
+    }
+    const scrolling = document.scrollingElement || document.documentElement;
+    // The last heading may never reach the top when its section is shorter than the viewport.
+    if (scrolling.scrollTop > 0 && scrolling.scrollTop + window.innerHeight >= scrolling.scrollHeight - 1) {
+      current = headings[headings.length - 1];
+    }
+    activate(current.id);
+  };
+  let updatePending = false;
+  const scheduleCurrentSection = () => {
+    if (updatePending) return;
+    updatePending = true;
+    requestAnimationFrame(() => {
+      updatePending = false;
+      updateCurrentSection();
+    });
+  };
+  window.addEventListener('scroll', scheduleCurrentSection, { passive: true });
+  window.addEventListener('resize', scheduleCurrentSection);
+  window.addEventListener('hashchange', scheduleCurrentSection);
+  window.addEventListener('load', scheduleCurrentSection);
+  toc.addEventListener('toggle', scheduleCurrentSection);
   links.forEach((link) => link.addEventListener('click', () => {
-    activate(decodeURIComponent(link.hash.slice(1)));
     if (mobile.matches) toc.open = false;
+    // Native anchor navigation keeps its URL and smooth-scroll behavior. The scroll
+    // listener follows the actual position rather than locking onto a click target.
+    scheduleCurrentSection();
   }));
-  mobile.addEventListener('change', () => { toc.open = !mobile.matches; });
+  mobile.addEventListener('change', () => {
+    toc.open = !mobile.matches;
+    scheduleCurrentSection();
+  });
+  scheduleCurrentSection();
   // Keep deep links aligned after the mobile directory adopts its compact state.
   if (location.hash) {
     try {
       const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
-      if (target) requestAnimationFrame(() => target.scrollIntoView());
+      if (target) requestAnimationFrame(() => {
+        target.scrollIntoView();
+        scheduleCurrentSection();
+      });
     } catch (_) { /* Malformed fragments do not prevent reading. */ }
   }
 })();
