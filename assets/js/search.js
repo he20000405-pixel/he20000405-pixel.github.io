@@ -170,7 +170,7 @@
     render(matches, query, related);
   }
 
-  fetch("/search-index.json", { credentials: "same-origin" })
+  fetch("/search-index.json", { credentials: "same-origin", cache: "no-cache" })
     .then(function (response) {
       if (!response.ok) throw new Error("Search index unavailable");
       return response.json();

@@ -40,4 +40,4 @@ last_modified_at: 2026-10-28
   <p class="notice">当前浏览器未启用 JavaScript。请直接进入 <a href="{{ site.chatgpt_guide_url }}">ChatGPT 指南</a>、<a href="{{ site.grok_guide_url }}">Grok 指南</a>、<a href="{{ site.claude_guide_url }}">Claude 指南</a>或 <a href="{{ site.gemini_guide_url }}">Gemini 指南</a>。</p>
 </noscript>
 
-<script src="{{ '/assets/js/search.js' | relative_url }}?v={{ site.asset_version }}" defer></script>
+<script src="{{ '/assets/js/search.js' | relative_url }}?v={{ site.asset_version }}-index-refresh" defer></script>
