@@ -1,0 +1,48 @@
+[
+  {
+    "id": "chatgpt",
+    "title": "ChatGPT 新专题",
+    "description": "模型额度、凭证安全、购买渠道与会员选型。",
+    "links": [
+      {
+        "label": "GPT-6.1、GPT-6 Astra 与 Codex 额度",
+        "url": "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/gpt-6-1-codex-work-limits-guide/"
+      },
+      {
+        "label": "AuthSession 凭证安全与充后验收",
+        "url": "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-session-security-verification-guide/"
+      },
+      {
+        "label": "苹果 / Google 内购转网页端",
+        "url": "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-apple-google-to-web-migration/"
+      },
+      {
+        "label": "ChatGPT 与 Grok 会员选型",
+        "url": "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-vs-grok-2026-comparison/"
+      }
+    ]
+  },
+  {
+    "id": "grok",
+    "title": "Grok 新专题",
+    "description": "联合会员、Bot 权限、旧版合并与 Cursor 计费。",
+    "links": [
+      {
+        "label": "X 联合会员四档怎么选",
+        "url": "https://he20000405-pixel.github.io/supergrok-china-guide/guides/x-subscription-overview/"
+      },
+      {
+        "label": "Grok Bot 权限与每周额度",
+        "url": "https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-bot-weekly-pool-guide/"
+      },
+      {
+        "label": "旧版 SuperGrok / Cursor 合并指南",
+        "url": "https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-unify-migration-guide/"
+      },
+      {
+        "label": "Cursor：Grok 与 Claude / GPT 怎么计费",
+        "url": "https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-cursor-shared-billing/"
+      }
+    ]
+  }
+]

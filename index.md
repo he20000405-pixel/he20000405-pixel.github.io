@@ -4,7 +4,7 @@ description: "面向中文用户的 ChatGPT、Grok、Claude 与 Gemini 会员订
 image_alt: "ChongGrok AI 会员指南：四产品订阅与付款排障知识库"
 permalink: /
 schema_type: CollectionPage
-last_modified_at: 2026-10-28
+last_modified_at: 2026-10-31
 faq:
   - question: "这个网站提供哪些会员订阅指南？"
     answer: "当前提供 ChatGPT Plus / Pro、Grok 联合会员 / 旧 SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套知识库，覆盖订阅流程、付款报错、账号状态和资料安全说明。"
@@ -184,6 +184,7 @@ faq:
     </div>
     <p>围绕 ChatGPT 与 Grok 的版本、会员权益和工具登录问题，提供可直接执行的判断步骤。</p>
   </div>
+  {% include home-featured-guides.html %}
   <div class="editorial-grid">
     <article class="editorial-card chatgpt">
       <p class="eyebrow">ChatGPT · Version</p>
@@ -330,4 +331,4 @@ faq:
   </div>
 </section>
 
-<p class="meta home-updated">最后更新：2026-10-28</p>
+<p class="meta home-updated">最后更新：2026-10-31</p>

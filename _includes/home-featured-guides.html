@@ -1,0 +1,38 @@
+<div class="product-grid" id="latest-guides" aria-label="ChatGPT 与 Grok 新专题">
+{% for group in site.data.home_featured %}
+  <article class="product-card product-{{ group.id }}">
+    <div class="product-body">
+      <div class="product-heading">
+        <img class="product-brand-icon" src="{{ '/assets/images/brands/' | append: group.id | append: '.svg' | relative_url }}" alt="" width="40" height="40" loading="lazy">
+        <h3>{{ group.title }}</h3>
+      </div>
+      <p>{{ group.description }}</p>
+      <ul class="product-links">
+      {% for link in group.links %}
+        {% assign guide = site.data.guides | where: 'url', link.url | first %}
+        <li><a href="{{ link.url }}" title="{{ guide.title | escape }}">{{ link.label }} <span aria-hidden="true">→</span></a></li>
+      {% endfor %}
+      </ul>
+    </div>
+  </article>
+{% endfor %}
+</div>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "{{ '/#latest-guides' | absolute_url }}",
+  "name": "ChatGPT 与 Grok 新专题",
+  "numberOfItems": 8,
+  "itemListElement": [
+    {% assign guide_position = 0 %}
+    {% for group in site.data.home_featured %}
+    {% for link in group.links %}
+    {% assign guide_position = guide_position | plus: 1 %}
+    {% unless guide_position == 1 %},{% endunless %}
+    {"@type":"ListItem","position":{{ guide_position }},"name":{{ link.label | jsonify }},"url":{{ link.url | jsonify }}}
+    {% endfor %}
+    {% endfor %}
+  ]
+}
+</script>

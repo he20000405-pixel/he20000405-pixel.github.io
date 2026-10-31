@@ -4,7 +4,7 @@ description: "分清 ChatGPT、Grok、Claude、Gemini 的收款渠道、渠道�
 permalink: /resources/ai-subscription-billing-account-map/
 lang: zh-CN
 date_published: 2026-08-04
-last_modified_at: 2026-10-28
+last_modified_at: 2026-10-31
 faq:
   - question: "应用商店显示订阅有效，为什么 AI 产品仍显示 Free？"
     answer: "应用商店的有效订阅只证明 Apple ID 或 Google Play 账号持有这笔订阅。还要使用购买时登录的 AI 产品账号进入 App，才能核对权益是否附着到正确账号。"
@@ -240,6 +240,13 @@ ChongGrok 订单由 ChongGrok 负责查询和售后，会员权益仍要回对�
 ### 已经有 ChongGrok 订单时应该去哪里查询？
 
 已有卡密的订单按产品进入 ChatGPT、旧版 SuperGrok 或新版 X 联合会员核销入口查询；客服协助订单应使用原订单号联系 ChongGrok 售后。不要在订单状态未确认前再次购买。
+
+## 订阅迁移与旧版合并：延伸阅读
+
+需要切换 ChatGPT 购买渠道，或判断旧版 SuperGrok 与 Cursor 是否合并时，可继续阅读对应专题：
+
+- [苹果 App Store / Google Play 内购的 ChatGPT Plus 怎么转网页端直充？](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-apple-google-to-web-migration/)
+- [老版 SuperGrok 与 Cursor 要不要合并（Unify）？](https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-unify-migration-guide/)
 
 ## 官方参考
 
