@@ -234,6 +234,8 @@ def make_pdf(language):
     regular, bold = register_pdf_fonts(language)
     path = DOWNLOADS / f"ai-subscription-payment-troubleshooting-{language}.pdf"
     doc = canvas.Canvas(str(path), pagesize=A4)
+    doc.setTitle("AI 订阅付款排障决策树" if zh else "AI Subscription Payment Troubleshooting")
+    doc.setAuthor("ChongGrok")
     width, height = A4
     margin = 44
 

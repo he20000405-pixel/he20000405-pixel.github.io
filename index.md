@@ -9,7 +9,7 @@ faq:
   - question: "这个网站提供哪些会员订阅指南？"
     answer: "当前提供 ChatGPT Plus / Pro、Grok 联合会员 / 旧 SuperGrok、Claude Pro / Max 与 Gemini / Google AI 四套知识库，覆盖订阅流程、付款报错、账号状态和资料安全说明。"
   - question: "不同产品需要哪些账号资料？"
-    answer: "不同产品所需资料不同：ChatGPT 使用 session，新版 X 联合会员使用 Grok SSO，旧 SuperGrok 使用 User ID。session 和 SSO 是敏感登录凭据，不等同于 User ID；Claude、Gemini 按当前产品页确认具体资料。"
+    answer: "不同产品所需资料不同：ChatGPT 使用 session，新版 X 联合会员使用 Grok SSO，历史 Grok 卡兑换使用 User ID。session 和 SSO 是敏感登录凭据，不等同于 User ID；Claude、Gemini 按当前产品页确认具体资料。"
   - question: "这个网站提供 API 额度或成品账号吗？"
     answer: "不提供 API 额度、接码或批量注册。ChatGPT、Grok、Claude 不提供成品账号；Gemini 是唯一例外，同时提供用户自有账号升级与 Gemini 专属一年成品账号。"
 ---
@@ -285,7 +285,7 @@ faq:
     </details>
     <details open>
       <summary>不同产品需要哪些账号资料？</summary>
-      <p>不同产品所需资料不同：ChatGPT 使用 session，新版 X 联合会员使用 Grok SSO，旧 SuperGrok 使用 User ID。session 和 SSO 是敏感登录凭据，不等同于 User ID；Claude、Gemini 按当前产品页确认具体资料。</p>
+      <p>不同产品所需资料不同：ChatGPT 使用 session，新版 X 联合会员使用 Grok SSO，历史 Grok 卡兑换使用 User ID。session 和 SSO 是敏感登录凭据，不等同于 User ID；Claude、Gemini 按当前产品页确认具体资料。</p>
     </details>
     <details open>
       <summary>这个网站提供 API 额度或成品账号吗？</summary>

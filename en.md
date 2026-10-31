@@ -24,8 +24,8 @@ This directory helps you choose the right guide before paying, after a declined 
 
 | Product | Coverage | Guide |
 | --- | --- | --- |
-| ChatGPT | Plus automated recharge, 5x/20x Pro, card declines, renewal failures and paid-but-Free status | [Open ChatGPT guide](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/en/) |
-| Grok | X joint-subscription SSO, legacy SuperGrok User ID, payment errors, Grok Build 403 and Grok 4.5 | [Open SuperGrok guide](https://he20000405-pixel.github.io/supergrok-china-guide/en/) |
+| ChatGPT | Plus / Go self-service, assisted Pro 100 / 200 orders, Pro 500 consultation and payment troubleshooting | [Open ChatGPT guide](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/en/) |
+| Grok | New X Subscription orders, historical Grok card redemption, account checks and payment troubleshooting | [Open SuperGrok guide](https://he20000405-pixel.github.io/supergrok-china-guide/en/) |
 | Claude | Pro, Max 5x/20x, Claude User ID safety, payment errors, paid-but-Free checks and Claude Code | [Open Claude guide](https://he20000405-pixel.github.io/claude-pro-max-china-guide/en/) |
 | Gemini | Google AI plan selection, own-account assistance, a separate Gemini-only ready-made annual account option, family sharing, Google Play billing and entitlement checks | [Open Gemini guide](https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/en/) |
 
@@ -41,7 +41,7 @@ This directory helps you choose the right guide before paying, after a declined 
 
 - Passwords, email verification codes and recovery codes are not requested.
 - A ChatGPT session credential is sensitive even when no password is requested. It should be refreshed by signing out and back in after completion.
-- X joint-subscription fulfillment uses a sensitive Grok SSO credential. Legacy SuperGrok card-key orders use a Grok User ID; the two flows are separate. Neither credential nor identifier should be posted publicly.
+- X joint-subscription fulfillment uses a sensitive Grok SSO credential. Historical Grok cards use a Grok User ID; the two flows are separate. Legacy monthly and quarterly products are no longer sold; existing cards can still be redeemed. Neither credential nor identifier should be posted publicly.
 - Claude assistance currently covers personal Pro monthly activation through manual iOS in-app purchase. Required account information is confirmed per order; a User ID is not a universal requirement or an Anthropic subscription rule.
 - Gemini own-account assistance is confirmed case by case; no fixed credential is claimed, and passwords, two-factor codes and recovery codes are not requested. Gemini also has separate ready-made annual account and monthly family-sharing options. Check eligibility, shared benefits and support terms for the selected option.
 - No API credits, SMS verification or bulk registration are offered. Ready-made accounts are not offered for ChatGPT, Grok or Claude; Gemini is the only exception.

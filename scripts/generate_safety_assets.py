@@ -136,6 +136,8 @@ def make_pdf(language):
     pdfmetrics.registerFont(TTFont(bold, str(CN_BOLD if zh else EN_BOLD)))
     path = DOWNLOADS / f"ai-membership-safety-checklist-{language}.pdf"
     doc = canvas.Canvas(str(path), pagesize=A4)
+    doc.setTitle("AI 会员订阅安全与验收清单" if zh else "AI Membership Safety Checklist")
+    doc.setAuthor("ChongGrok")
     width, height = A4
     margin = 46
 

@@ -2,7 +2,7 @@
   name: "ChatGPT"
   eyebrow: "OpenAI / ChatGPT"
   title: "ChatGPT Plus / Pro 指南"
-  description: "Plus 自动充值、5x/20x Pro、付款被拒、续费失败和已付款仍显示 Free。"
+  description: "Plus / Go 自助充值、Pro 100 / 200 客服办理、Pro 500 咨询与付款排障。"
   focus: true
   status: "重点更新"
   guide_url: "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/"
@@ -34,7 +34,7 @@
   name: "Grok"
   eyebrow: "xAI / Grok"
   title: "Grok 联合会员与旧版订阅指南"
-  description: "X 联合会员、Grok Bot、每周共享额度、旧 SuperGrok 续费与付款排障。"
+  description: "X 联合会员、Grok Bot、每周共享额度、历史 Grok 卡兑换与付款排障。"
   focus: true
   status: "重点更新"
   guide_url: "https://he20000405-pixel.github.io/supergrok-china-guide/"
