@@ -5,9 +5,11 @@
 1. 在 GitHub 账号 `he20000405-pixel` 下创建公开仓库，名称必须是 `he20000405-pixel.github.io`。
 2. 将本地仓库的 `main` 分支推送到该远程仓库。
 3. 打开仓库的 `Settings → Pages`。
-4. 在 `Build and deployment` 中选择 `Deploy from a branch`。
-5. Branch 选择 `main`，目录选择 `/(root)`，点击 `Save`。
-6. 等待 GitHub Pages 构建完成，打开 `https://he20000405-pixel.github.io/`。
+4. 在 `Build and deployment` 中将 `Source` 设为 `GitHub Actions`，使用仓库内的发布前检查工作流。
+5. 按 [发布前检查说明](.github/PUBLISHING-CHECKS.md) 确认 `github-pages` 部署环境仅允许 `main`，不要切回分支直接发布。
+6. 在 `Actions` 中确认本次 `main` 的正常运行依次通过 `verify` → `release-ready` → `deploy`，再打开 `https://he20000405-pixel.github.io/`。
+
+`release-ready` 是无权限哨兵任务，依赖 `verify` 成功；PR 和 `ci-check` 测试分支只验收，不发布。只有 `main` 的正常检查通过后才部署同一次运行已检查的产物。检查失败时不执行发布，线上保留上一次成功版本。
 
 ## 二、上线验收
 

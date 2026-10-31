@@ -1,0 +1,89 @@
+name: Validate and publish knowledge base
+
+on:
+  push:
+    branches: [main, 'ci-check/**']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: knowledge-pages-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: Build and validate all five sites
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    outputs:
+      current_alias: ${{ steps.build.outputs.current_alias }}
+    steps:
+      - name: Check out the exact candidate
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          path: sources/${{ github.event.repository.name }}
+          persist-credentials: false
+      - name: Set up Node for existing search tests
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '22'
+      - name: Build candidate and dependency snapshots
+        id: build
+        env:
+          JEKYLL_GITHUB_TOKEN: ${{ github.token }}
+          CURRENT_REPOSITORY: ${{ github.repository }}
+          CANDIDATE_SHA: ${{ github.sha }}
+          CURRENT_NAME: ${{ github.event.repository.name }}
+        run: python3 "sources/$CURRENT_NAME/.github/scripts/build_sites.py" --repository "$CURRENT_REPOSITORY" --expected-sha "$CANDIDATE_SHA"
+      - name: Test that the validator rejects broken fixtures
+        env:
+          CURRENT_NAME: ${{ github.event.repository.name }}
+        run: python3 "sources/$CURRENT_NAME/.github/scripts/test_check_site.py"
+      - name: Validate links, search index and page metadata
+        env:
+          CURRENT_NAME: ${{ github.event.repository.name }}
+        run: python3 "sources/$CURRENT_NAME/.github/scripts/check_site.py" --build-root build --report evidence/site-check.json
+      - name: Run the existing search behavior tests
+        run: node sources/he20000405-pixel.github.io/scripts/test_search.cjs
+      - name: Save validation evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: validation-evidence
+          path: evidence/
+          if-no-files-found: warn
+          retention-days: 30
+      - name: Package only the validated candidate site
+        if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+        uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: build/${{ steps.build.outputs.current_alias }}
+
+  release-ready:
+    name: Verify the release dependency gate
+    needs: verify
+    runs-on: ubuntu-24.04
+    permissions: {}
+    steps:
+      - run: echo 'All checks passed. Only main is eligible to deploy this artifact.'
+
+  deploy:
+    name: Deploy the validated site
+    needs: [verify, release-ready]
+    if: ${{ github.ref == 'refs/heads/main' && github.event_name != 'pull_request' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy the artifact from this successful run
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
