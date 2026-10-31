@@ -1,6 +1,8 @@
 "use strict";
 
-// Isolated publication failures: no requests, no mutation of the supplied build.
+// Fault injection uses stable fixtures, never the supplied build's source text.
+// The supplied build is independently checked as-is through the same integration
+// validator, so formatting changes cannot break the test mutation machinery.
 const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const os = require("node:os");
@@ -63,7 +65,7 @@ async function main() {
   const args = process.argv.slice(2);
   assert.ok(!args.length || (args.length === 2 && args[0] === "--build-root"), "Usage: node test_built_search.cjs [--build-root build]");
   const buildRoot = args[1];
-  const source = buildRoot ? Object.fromEntries([PAGE, SCRIPT, INDEX].map(file => [file, fs.readFileSync(path.join(buildRoot, file), "utf8")])) : {
+  const source = {
     [PAGE]: fixtureHtml,
     [SCRIPT]: fixtureScript,
     [INDEX]: JSON.stringify([{ product: "Grok", title: "Grok fixture guide", description: "Useful guide", keywords: "grok", url: "/grok-guide/" }])
@@ -80,7 +82,7 @@ async function main() {
     results.push(name);
   }
   try {
-    await test("actual page/script/index connection passes", () => {});
+    await test("fixture page/script/index connection passes", () => {});
     await test("removed script is rejected", root => replace(root, PAGE, /<script\b[^>]*src="\/assets\/js\/search\.js[^>]*><\/script>/i, ""), /load exactly one search\.js/);
     await test("script in a comment cannot satisfy loading", root => replace(root, PAGE, /<script\b[^>]*src="\/assets\/js\/search\.js[^>]*><\/script>/i, match => "<!--" + match + "-->"), /load exactly one search\.js/);
     await test("script in a template cannot satisfy loading", root => replace(root, PAGE, /<script\b[^>]*src="\/assets\/js\/search\.js[^>]*><\/script>/i, match => "<template>" + match + "</template>"), /load exactly one search\.js/);
@@ -110,7 +112,25 @@ async function main() {
       replace(root, PAGE, 'src="/assets/js/search.js', 'src="js/search.js');
     });
     await test("document base cannot silently move the index to another origin", root => replace(root, PAGE, "</head>", '<base href="https://example.com/"></head>'), /knowledge-base origin|actual built/);
-    console.log(JSON.stringify({ passed: true, tests: results.length, testedBuiltArtifacts: Boolean(buildRoot), cases: results }, null, 2));
+    await test("single-quoted HTML script source is valid", root => replace(root, PAGE,
+      'src="/assets/js/search.js?v=fixture"', "src='/assets/js/search.js?v=fixture'"));
+    await test("single-quoted JavaScript index request is valid", root => replace(root, SCRIPT,
+      'fetch("/search-index.json")', "fetch('/search-index.json')"));
+    await test("whitespace around script attributes and fetch arguments is valid", root => {
+      replace(root, PAGE, 'src="/assets/js/search.js?v=fixture"', 'src \n = \t "/assets/js/search.js?v=fixture"');
+      replace(root, SCRIPT, 'fetch("/search-index.json")', 'fetch \n ( \t "/search-index.json" \n )');
+    });
+    await test("combined single quotes and whitespace remain valid", root => {
+      replace(root, PAGE, 'src="/assets/js/search.js?v=fixture"', "src \n = \t '/assets/js/search.js?v=fixture'");
+      replace(root, SCRIPT, 'fetch("/search-index.json")', "fetch \n ( \t '/search-index.json' \n )");
+    });
+    // Do not derive negative cases by regex-rewriting this build. Its HTML and
+    // JavaScript can use any supported equivalent formatting or implementation.
+    // Missing scripts/DOM, wrong fetch URLs and other actual faults still fail
+    // here (and again in the workflow's dedicated built-search step).
+    const builtArtifactCheck = buildRoot ? await checkBuild(buildRoot) : null;
+    console.log(JSON.stringify({ passed: true, tests: results.length, testedBuiltArtifacts: Boolean(buildRoot),
+      builtArtifactCheck, cases: results }, null, 2));
   } finally {
     // The only recursive removal is this verified, freshly created temp folder.
     const resolved = fs.realpathSync(temporary);

@@ -48,6 +48,7 @@ class PublicationFailures(unittest.TestCase):
         for repo, prefix in ROUTES.items():
             write(self.root / repo / "index.html", page(ORIGIN + prefix))
             write(self.root / repo / "sitemap.xml", sitemap([ORIGIN + prefix]))
+        write(self.root / "portal/robots.txt", "User-agent: *\nAllow: /\n")
         write(self.root / "grok/guides/example/index.html", page(ARTICLE, '<h2 id="第一步">Step</h2><a href="../../">Back</a>'))
         write(self.root / "grok/sitemap.xml", sitemap([ORIGIN + ROUTES["grok"], ARTICLE]))
         write(self.root / "portal/index.html", page(ORIGIN + "/", f'<a href="{ARTICLE}?mode=read#%E7%AC%AC%E4%B8%80%E6%AD%A5">Read</a><link rel="stylesheet" href="/assets/style.css?v=123"><img alt="" src="/assets/icon.svg">'))
@@ -83,6 +84,131 @@ class PublicationFailures(unittest.TestCase):
         self.assertEqual(result["summary"]["mappedPages"], 6)
         self.assertEqual(result["summary"]["searchRecords"], 1)
         self.assertEqual(result["warnings"], [])
+
+    def test_robots_root_blanket_block_and_all_five_maps(self):
+        write(self.root / "portal/robots.txt", "User-agent: *\nDisallow: /\n")
+        result = self.run_audit()
+        errors = [row for row in result["errors"] if row["code"] == "ROBOTS_BLOCKED"]
+        self.assertFalse(result["passed"])
+        self.assertEqual(len(errors), 11)  # six indexable pages and five maps
+        self.assertEqual(result["summary"]["robotsAgentChecks"], 33)
+        for prefix in ROUTES.values():
+            self.assertTrue(any(ORIGIN + prefix + "sitemap.xml" in row["message"] for row in errors))
+
+    def test_robots_product_rule_cannot_be_overridden_in_subdirectory(self):
+        write(self.root / "portal/robots.txt", "User-agent: *\nDisallow: /supergrok-china-guide/\n")
+        write(self.root / "grok/robots.txt", "User-agent: *\nAllow: /\n")
+        self.assert_blocked("ROBOTS_BLOCKED")
+        write(self.root / "portal/robots.txt", "User-agent: *\nAllow: /\n")
+        write(self.root / "grok/robots.txt", "User-agent: *\nDisallow: /\n")
+        self.assertTrue(self.run_audit()["passed"])
+
+    def test_robots_map_block_is_detected_without_sitemap_declaration(self):
+        write(self.root / "portal/robots.txt", "User-agent: *\nDisallow: /*sitemap.xml$\n")
+        result = self.run_audit()
+        errors = [row for row in result["errors"] if row["code"] == "ROBOTS_BLOCKED"]
+        self.assertEqual(len(errors), 5)
+        self.assertFalse(result["passed"])
+
+    def test_robots_specific_crawler_block_is_not_hidden_by_global_allow(self):
+        for crawler in ("Googlebot", "Bingbot"):
+            with self.subTest(crawler=crawler):
+                write(self.root / "portal/robots.txt", f"User-agent: *\nAllow: /\nUser-agent: {crawler}\nDisallow: /\n")
+                result = self.run_audit()
+                self.assertFalse(result["passed"])
+                blocked = next(row for row in result["errors"] if row["code"] == "ROBOTS_BLOCKED")
+                self.assertIn(crawler + " by", blocked["message"])
+
+    def test_robots_default_profile_preserves_general_crawlability(self):
+        source = "User-agent: *\nDisallow: /\nUser-agent: Googlebot\nUser-agent: Bingbot\nAllow: /\n"
+        rules = check_site.RobotsRules(source)
+        self.assertTrue(rules.decision(ARTICLE, "Googlebot")[0])
+        self.assertTrue(rules.decision(ARTICLE, "Bingbot")[0])
+        self.assertFalse(rules.decision(ARTICLE, "*")[0])
+        write(self.root / "portal/robots.txt", source)
+        self.assert_blocked("ROBOTS_BLOCKED")
+
+    def test_robots_longest_rule_and_allow_tie_ignore_order(self):
+        examples = [
+            ("Allow: /p\nDisallow: /", "/page", True),
+            ("Allow: /folder\nDisallow: /folder", "/folder/page", True),
+            ("Disallow: /folder\nAllow: /folder", "/folder/page", True),
+            ("Allow: /page\nDisallow: /*.htm", "/page.htm", False),
+            ("Allow: /page\nDisallow: /*.ph", "/page.php5", True),
+            ("Allow: /$\nDisallow: /", "/", True),
+            ("Allow: /$\nDisallow: /", "/page.htm", False),
+        ]
+        for source, path, expected in examples:
+            with self.subTest(source=source, path=path):
+                self.assertEqual(check_site.RobotsRules("User-agent: *\n" + source).decision(ORIGIN + path, "Googlebot")[0], expected)
+
+    def test_robots_groups_specificity_merge_and_empty_rule_boundaries(self):
+        source = "User-agent: *\nDisallow: /global\nUser-agent: Googlebot\nDisallow: /one\nUser-agent: googlebot/1.2\nDisallow: /two\nUser-agent: googlebot-news\nAllow: /\n"
+        rules = check_site.RobotsRules(source)
+        self.assertTrue(rules.decision(ORIGIN + "/global", "Googlebot")[0])
+        self.assertFalse(rules.decision(ORIGIN + "/one", "Googlebot")[0])
+        self.assertFalse(rules.decision(ORIGIN + "/two", "Googlebot")[0])
+        self.assertTrue(rules.decision(ORIGIN + "/one", "Googlebot-News")[0])
+        self.assertFalse(rules.decision(ORIGIN + "/global", "Bingbot")[0])
+        rules = check_site.RobotsRules("User-agent: Googlebot\nDisallow:\nUser-agent: *\nDisallow: /\n")
+        self.assertTrue(rules.decision(ARTICLE, "Googlebot")[0])
+        self.assertFalse(rules.decision(ARTICLE, "Bingbot")[0])
+
+    def test_robots_comments_unknown_fields_and_blank_lines_do_not_split_groups(self):
+        source = "Disallow: /\nUSER-AGENT: Googlebot\n# comment\n\nSitemap: https://example.com/map.xml\nCrawl-delay: 2\nuser-agent: Bingbot\nDisallow: /private # trailing comment\n"
+        rules = check_site.RobotsRules(source)
+        for crawler in ("googlebot", "BINGBOT"):
+            self.assertFalse(rules.decision(ORIGIN + "/private/a", crawler)[0])
+            self.assertTrue(rules.decision(ORIGIN + "/public/a", crawler)[0])
+        self.assertTrue(rules.decision(ORIGIN + "/private/a", "Otherbot")[0])
+
+    def test_robots_agent_prefix_does_not_override_global_fallback(self):
+        for global_rule, prefix_rule, expected in [("Allow", "Disallow", True), ("Disallow", "Allow", False)]:
+            source = f"User-agent: *\n{global_rule}: /\nUser-agent: g\nUser-agent: Google\nUser-agent: Bing\n{prefix_rule}: /\n"
+            rules = check_site.RobotsRules(source)
+            for crawler in ("Googlebot", "Bingbot"):
+                with self.subTest(crawler=crawler, global_rule=global_rule):
+                    self.assertEqual(rules.decision(ARTICLE, crawler)[0], expected)
+
+    def test_robots_wildcards_end_anchor_query_and_case(self):
+        rules = check_site.RobotsRules("User-agent: *\nDisallow: /fish*.php$\nDisallow: /*?private=1$\nDisallow: /Case\n")
+        for path, expected in [("/fish.php", False), ("/fish/cat.php", False), ("/fish.php?q=1", True), ("/fish.php5", True), ("/Fish.php", True), ("/a?private=1", False), ("/a?private=10", True), ("/Case", False), ("/case", True)]:
+            with self.subTest(path=path):
+                self.assertEqual(rules.decision(ORIGIN + path, "Googlebot")[0], expected)
+
+    def test_robots_utf8_percent_octets_and_reserved_slashes(self):
+        rules = check_site.RobotsRules("User-agent: *\nDisallow: /中文/\nDisallow: /foo/%62%61%7a\nDisallow: /encoded%2fslash\n")
+        for path, expected in [("/中文/page", False), ("/%e4%b8%ad%e6%96%87/page", False), ("/foo/baz", False), ("/foo/%62az", False), ("/encoded%2Fslash", False), ("/encoded/slash", True)]:
+            with self.subTest(path=path):
+                self.assertEqual(rules.decision(ORIGIN + path, "Bingbot")[0], expected)
+
+    def test_robots_percent_escaped_literal_wildcard_and_dollar(self):
+        # RFC 9309 figure 6: %2A and %24 match literal URI metacharacters.
+        rules = check_site.RobotsRules("User-agent: *\nDisallow: /path/file-with-a-%2A.html\nDisallow: /path/foo-%24\nDisallow: /price$usd\n")
+        for path, expected in [("/path/file-with-a-*.html", False), ("/path/file-with-a-%2a.html", False), ("/path/file-with-a-test.html", True), ("/path/foo-$", False), ("/path/foo-%24", False), ("/path/foo-", True), ("/price$usd", False)]:
+            with self.subTest(path=path):
+                self.assertEqual(rules.decision(ORIGIN + path, "Googlebot")[0], expected)
+
+    def test_robots_intentional_noindex_paths_and_unrelated_crawlers_are_allowed(self):
+        write(self.root / "portal/robots.txt", "User-agent: *\nDisallow: /old/\nUser-agent: unwantedbot\nDisallow: /\n")
+        self.assertTrue(self.run_audit()["passed"])
+
+    def test_robots_empty_file_and_empty_directives_are_unrestricted(self):
+        for source in ("", "# no restrictions\n", "User-agent: *\nDisallow:\nAllow:\n", "User-agent: Googlebot\n"):
+            with self.subTest(source=source):
+                write(self.root / "portal/robots.txt", source)
+                self.assertTrue(self.run_audit()["passed"])
+
+    def test_robots_required_file_encoding_and_size(self):
+        path = self.root / "portal/robots.txt"
+        path.unlink()
+        self.assert_blocked("ROBOTS_FILE")
+        path.write_bytes(b"User-agent: *\nDisallow: /\xff")
+        self.assert_blocked("ROBOTS_FILE")
+        path.write_bytes(b"#" * (500 * 1024 + 1))
+        self.assert_blocked("ROBOTS_FILE")
+        path.write_bytes(b"\xef\xbb\xbfUser-agent: *\r\nAllow: /\r\n")
+        self.assertTrue(self.run_audit()["passed"])
 
     def test_missing_cross_repository_page(self):
         self.replace("portal/index.html", ARTICLE + "?", ARTICLE + "missing/?")

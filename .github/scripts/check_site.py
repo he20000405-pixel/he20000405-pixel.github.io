@@ -38,6 +38,121 @@ def document_url(value):
     return urlunsplit((p.scheme, p.netloc, p.path, "", ""))
 
 
+def robots_path(value, *, pattern=False):
+    """Normalize path octets without turning an encoded slash into a separator.
+
+    RFC 9309 section 2.2.2: UTF-8 uses percent octets; percent-encoded ASCII
+    unreserved characters compare as literals. Reserved percent octets stay
+    encoded, so /a%2Fb and /a/b remain distinct. URI * and $ are literals;
+    only rule * and a rule's final $ are operators (RFC 9309 section 2.2.3).
+    """
+    unreserved = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~"
+    result = []
+    cursor = 0
+    while cursor < len(value):
+        char = value[cursor]
+        if char == "%" and re.fullmatch(r"[0-9a-fA-F]{2}", value[cursor + 1:cursor + 3]):
+            octet = int(value[cursor + 1:cursor + 3], 16)
+            result.append(chr(octet) if chr(octet) in unreserved else f"%{octet:02X}")
+            cursor += 3
+        elif char in "*$" and not (pattern and (char == "*" or cursor == len(value) - 1)):
+            result.append(f"%{ord(char):02X}")
+            cursor += 1
+        else:
+            result.append("".join(f"%{b:02X}" for b in char.encode("utf-8")) if ord(char) > 127 else char)
+            cursor += 1
+    return "".join(result)
+
+
+def robots_pattern_matches(pattern, path):
+    """Match prefix rules with * and a final $, without regex backtracking.
+
+    The ordinary glob algorithm tracks the last star. Non-anchored robots rules
+    have an implicit final wildcard; $ elsewhere in a rule is a literal.
+    """
+    pattern = pattern[:-1] if pattern.endswith("$") else pattern + "*"
+    rule_pos = path_pos = 0
+    star_pos = -1
+    retry_pos = 0
+    while path_pos < len(path):
+        if rule_pos < len(pattern) and pattern[rule_pos] == "*":
+            star_pos, retry_pos = rule_pos, path_pos
+            rule_pos += 1
+        elif rule_pos < len(pattern) and pattern[rule_pos] == path[path_pos]:
+            rule_pos += 1
+            path_pos += 1
+        elif star_pos >= 0:
+            retry_pos += 1
+            path_pos, rule_pos = retry_pos, star_pos + 1
+        else:
+            return False
+    return all(char == "*" for char in pattern[rule_pos:])
+
+
+class RobotsRules:
+    """Offline REP rules used by this public-site publication contract.
+
+    See RFC 9309 and Google's documented most-specific group/rule selection.
+    Sitemap/unknown fields, blank lines and comments do not split a group.
+    No HTTP, caching, rate control or sitemap-discovery claims are made here.
+    """
+    def __init__(self, source):
+        self.groups = []
+        agents, rules, seen_rule = [], [], False
+        for number, raw in enumerate(source.splitlines(), 1):
+            line = raw.split("#", 1)[0].strip()
+            if ":" not in line:
+                continue
+            field, value = (part.strip() for part in line.split(":", 1))
+            field = field.lower()
+            if field == "user-agent":
+                if seen_rule:
+                    self.groups.append((agents, rules))
+                    agents, rules, seen_rule = [], [], False
+                # Ignore versions and trailing * as Google documents; a more
+                # specific token such as googlebot-news remains a distinct token.
+                token = re.match(r"[a-zA-Z_-]+", value)
+                if value == "*":
+                    agents.append("*")
+                elif token:
+                    agents.append(token[0].lower())
+            elif field in {"allow", "disallow"} and agents:
+                # Empty rules impose no restriction but still terminate the
+                # user-agent sequence, keeping a later group separate.
+                seen_rule = True
+                if value:
+                    rules.append({"allow": field == "allow", "path": robots_path(value, pattern=True),
+                                  "raw": value, "line": number})
+        if agents:
+            self.groups.append((agents, rules))
+
+    def matching_rules(self, crawler):
+        crawler = crawler.lower()
+        ranked = []
+        for agents, rules in self.groups:
+            # Match complete product tokens, not arbitrary prefixes: "g" or
+            # "Google" must not override the Googlebot group's global fallback.
+            scores = [len(agent) for agent in agents if agent != "*" and crawler != "*" and crawler == agent]
+            score = max(scores) if scores else (0 if "*" in agents else -1)
+            if score >= 0:
+                ranked.append((score, rules))
+        best = max((score for score, _ in ranked), default=-1)
+        return [rule for score, rules in ranked if score == best for rule in rules]
+
+    def decision(self, url, crawler):
+        parts = urlsplit(url)
+        path = robots_path((parts.path or "/") + ("?" + parts.query if parts.query else ""))
+        if parts.path == "/robots.txt":
+            return True, None
+        matches = [rule for rule in self.matching_rules(crawler) if robots_pattern_matches(rule["path"], path)]
+        if not matches:
+            return True, None
+        # Wildcards and the end anchor count in rule length, as in Google's
+        # /page vs /*.htm and /$ vs / examples. Allow wins equal specificity.
+        rule = max(matches, key=lambda item: (len(item["path"]), item["allow"]))
+        return rule["allow"], rule
+
+
 def css_urls(source):
     """Read URL functions, skipping comments and unrelated quoted CSS strings.
 
@@ -658,8 +773,37 @@ class Auditor:
             if not page.excluded() and re.search(r"/guides/.+", urlsplit(url).path) and url not in urls:
                 self.issue("SEARCH_COVERAGE", "Article is not yet in the portal search index; update the portal after publishing the article", page, warning=True)
 
+    def check_robots(self):
+        # The root file governs all five repositories on this origin. Product
+        # subdirectory robots.txt files cannot override it and are not consulted.
+        path = self.build_root / "portal" / "robots.txt"
+        root_url = ORIGIN + "/robots.txt"
+        try:
+            raw = path.read_bytes()
+            if len(raw) > 500 * 1024:
+                raise ValueError("Root robots.txt exceeds the 500 KiB crawler parsing limit")
+            rules = RobotsRules(raw.decode("utf-8-sig"))
+        except (OSError, ValueError, UnicodeError) as exc:
+            # Missing robots is not itself a universal crawl ban. This project
+            # deliberately requires its managed root policy to remain present.
+            self.issue("ROBOTS_FILE", f"Cannot validate required root robots.txt: {exc}", root_url)
+            return
+        targets = {url for url, page in self.pages.items() if not page.excluded()}
+        targets.update(ORIGIN + prefix + "sitemap.xml" for prefix in ROUTES.values())
+        self.stats["robotsURLsChecked"] = len(targets)
+        self.stats["robotsAgentChecks"] = len(targets) * 3
+        self.stats["robotsGroups"] = len(rules.groups)
+        for url in sorted(targets):
+            blocked = []
+            for crawler in ("Googlebot", "Bingbot", "*"):
+                allowed, rule = rules.decision(url, crawler)
+                if not allowed:
+                    blocked.append(f"{crawler} by Disallow: {rule['raw']} (line {rule['line']})")
+            if blocked:
+                self.issue("ROBOTS_BLOCKED", f"Root robots.txt blocks an intended crawl target {url}: " + "; ".join(blocked), root_url)
+
     def run(self):
-        for check in (self.load, self.check_links, self.check_maps, self.check_metadata, self.check_search):
+        for check in (self.load, self.check_links, self.check_maps, self.check_metadata, self.check_search, self.check_robots):
             try:
                 check()
             except (OSError, ValueError, TypeError, KeyError) as exc:
