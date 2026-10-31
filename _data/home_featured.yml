@@ -1,7 +1,7 @@
 [
   {
     "id": "chatgpt",
-    "title": "ChatGPT 新专题",
+    "title": "ChatGPT 专题指南",
     "description": "模型额度、凭证安全、购买渠道与会员选型。",
     "links": [
       {
@@ -19,12 +19,24 @@
       {
         "label": "ChatGPT 与 Grok 会员选型",
         "url": "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-vs-grok-2026-comparison/"
+      },
+      {
+        "label": "GPT-5.6 更新与付费计划边界",
+        "url": "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/gpt-5-6-update/"
+      },
+      {
+        "label": "已付款但仍显示 Free",
+        "url": "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-paid-but-still-free/"
+      },
+      {
+        "label": "续费失败后变回 Free",
+        "url": "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-renewal-failed-back-to-free/"
       }
     ]
   },
   {
     "id": "grok",
-    "title": "Grok 新专题",
+    "title": "Grok 专题指南",
     "description": "联合会员、Bot 权限、旧版合并与 Cursor 计费。",
     "links": [
       {
@@ -42,6 +54,18 @@
       {
         "label": "Cursor：Grok 与 Claude / GPT 怎么计费",
         "url": "https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-cursor-shared-billing/"
+      },
+      {
+        "label": "X 联合会员、Grok Bot 与每周额度",
+        "url": "https://he20000405-pixel.github.io/supergrok-china-guide/guides/x-subscription-grok-bot-guide/"
+      },
+      {
+        "label": "付款成功但仍显示 Free",
+        "url": "https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-paid-but-still-free/"
+      },
+      {
+        "label": "Grok Build 登录与 403",
+        "url": "https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-build-login-403/"
       }
     ]
   }

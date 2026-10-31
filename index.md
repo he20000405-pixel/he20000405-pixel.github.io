@@ -185,44 +185,7 @@ faq:
     <p>围绕 ChatGPT 与 Grok 的版本、会员权益和工具登录问题，提供可直接执行的判断步骤。</p>
   </div>
   {% include home-featured-guides.html %}
-  <div class="editorial-grid">
-    <article class="editorial-card chatgpt">
-      <p class="eyebrow">ChatGPT · Version</p>
-      <h3><a href="https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/gpt-5-6-update/">GPT-5.6 更新与付费计划边界</a></h3>
-      <p>先确认当前计划和模型选择器，再判断是否需要升级。</p>
-      <a class="text-link" href="https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/gpt-5-6-update/">阅读指南 <span aria-hidden="true">→</span></a>
-    </article>
-    <article class="editorial-card chatgpt">
-      <p class="eyebrow">ChatGPT · Billing</p>
-      <h3><a href="https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-paid-but-still-free/">已付款但仍显示 Free</a></h3>
-      <p>核对网页、Apple 或 Google Play 的原购买账号和订阅状态。</p>
-      <a class="text-link" href="https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-paid-but-still-free/">阅读指南 <span aria-hidden="true">→</span></a>
-    </article>
-    <article class="editorial-card chatgpt">
-      <p class="eyebrow">ChatGPT · Renewal</p>
-      <h3><a href="https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-renewal-failed-back-to-free/">续费失败后变回 Free</a></h3>
-      <p>区分主动取消、续费失败、待处理交易和登录错账号。</p>
-      <a class="text-link" href="https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-renewal-failed-back-to-free/">阅读指南 <span aria-hidden="true">→</span></a>
-    </article>
-    <article class="editorial-card grok">
-      <p class="eyebrow">Grok · 联合会员</p>
-      <h3><a href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/x-subscription-grok-bot-guide/">X 联合会员、Grok Bot 与每周额度</a></h3>
-      <p>分清新购、旧版续费与官方 Unify 转换，核对 Bot 权限和共享额度。</p>
-      <a class="text-link" href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/x-subscription-grok-bot-guide/">阅读指南 <span aria-hidden="true">→</span></a>
-    </article>
-    <article class="editorial-card grok">
-      <p class="eyebrow">Grok · Billing</p>
-      <h3><a href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-paid-but-still-free/">付款成功但仍显示 Free</a></h3>
-      <p>先核对购买入口和账号，再区分订阅未生效与周额度已用完。</p>
-      <a class="text-link" href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/supergrok-paid-but-still-free/">阅读指南 <span aria-hidden="true">→</span></a>
-    </article>
-    <article class="editorial-card grok">
-      <p class="eyebrow">Grok · Developer</p>
-      <h3><a href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-build-login-403/">Grok Build 登录与 403</a></h3>
-      <p>检查浏览器授权账号、设备码、版本和订阅权益是否一致。</p>
-      <a class="text-link" href="https://he20000405-pixel.github.io/supergrok-china-guide/guides/grok-build-login-403/">阅读指南 <span aria-hidden="true">→</span></a>
-    </article>
-  </div>
+
 </section>
 
 <section class="home-section resource-section" aria-labelledby="resources-title">

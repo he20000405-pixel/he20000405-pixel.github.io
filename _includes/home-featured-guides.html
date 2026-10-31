@@ -1,4 +1,4 @@
-<div class="product-grid" id="latest-guides" aria-label="ChatGPT 与 Grok 新专题">
+<div class="product-grid" id="latest-guides" aria-label="ChatGPT 与 Grok 专题指南">
 {% for group in site.data.home_featured %}
   <article class="product-card product-{{ group.id }}">
     <div class="product-body">
@@ -22,8 +22,10 @@
   "@context": "https://schema.org",
   "@type": "ItemList",
   "@id": "{{ '/#latest-guides' | absolute_url }}",
-  "name": "ChatGPT 与 Grok 新专题",
-  "numberOfItems": 8,
+  "name": "ChatGPT 与 Grok 专题指南",
+  {% assign featured_count = 0 %}
+  {% for group in site.data.home_featured %}{% assign featured_count = featured_count | plus: group.links.size %}{% endfor %}
+  "numberOfItems": {{ featured_count }},
   "itemListElement": [
     {% assign guide_position = 0 %}
     {% for group in site.data.home_featured %}
