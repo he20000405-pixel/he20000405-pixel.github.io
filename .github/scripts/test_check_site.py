@@ -96,6 +96,49 @@ class PublicationFailures(unittest.TestCase):
         self.replace("portal/assets/style.css", 'icon.svg', 'missing.svg')
         self.assert_blocked("MISSING_TARGET")
 
+    def test_css_comments_and_content_strings_are_not_dependencies(self):
+        write(self.root / "portal/assets/style.css", '''
+/* Example only: background-image: url("example-only.svg"); */
+body { content: "url('not-a-resource.svg')"; background: url("icon.svg?note=/*literal*/"); }
+/* url(another-example.svg) */
+''')
+        result = self.run_audit()
+        self.assertTrue(result["passed"], result)
+        self.replace("portal/assets/style.css", 'icon.svg?note=', 'missing.svg?note=')
+        self.assert_blocked("MISSING_TARGET")
+
+    def test_css_quoted_urls_comments_and_escapes(self):
+        write(self.root / "portal/assets/style.css", r'''body {
+background: URL(/* a comment */ "ic\6fn.svg" /* another comment */);
+content: "escaped \" url(fake.svg)";
+}''')
+        self.assertTrue(self.run_audit()["passed"])
+        self.replace("portal/assets/style.css", r'ic\6fn.svg', r'miss\69ng.svg')
+        self.assert_blocked("MISSING_TARGET")
+
+    def test_base_href_changes_relative_links_and_fragment_targets(self):
+        article = "grok/guides/example/index.html"
+        self.replace(article, 'href="../../"', 'href="../example/#第一步"')
+        self.assertTrue(self.run_audit()["passed"])
+        self.replace(article, '</head>', f'<base href="{ORIGIN}/"></head>')
+        self.assert_blocked("MISSING_TARGET")
+
+    def test_base_first_href_relative_urls_and_target_only_base(self):
+        article = "grok/guides/example/index.html"
+        self.replace(article, 'href="../../"', 'href="example/#第一步"')
+        self.replace(article, '</head>', '<base target="_blank"><base href="../"><base href="/ignored/"></head>')
+        result = self.run_audit()
+        self.assertTrue(result["passed"], result)
+        self.replace(article, 'href="example/#第一步"', 'href="example/#missing"')
+        self.assert_blocked("MISSING_FRAGMENT")
+
+    def test_base_target_only_and_unsupported_scheme(self):
+        article = "grok/guides/example/index.html"
+        self.replace(article, '</head>', '<base target="_blank"></head>')
+        self.assertTrue(self.run_audit()["passed"])
+        self.replace(article, '</head>', '<base href="data:text/html,ignored"></head>')
+        self.assert_blocked("BASE_URL")
+
     def test_duplicate_id(self):
         self.replace("grok/guides/example/index.html", '</body>', '<div id="第一步"></div></body>')
         self.assert_blocked("DUPLICATE_ID")
@@ -156,6 +199,67 @@ class PublicationFailures(unittest.TestCase):
         self.replace("grok/guides/example/index.html", '</body>', '<script type="application/ld+json">' + json.dumps(site) + '</script></body>')
         self.assertTrue(self.run_audit()["passed"])
 
+    def test_cited_article_and_parent_dates_are_separate(self):
+        article = "grok/guides/example/index.html"
+        citation = {"@type": "Article", "url": "https://example.com/reference/", "datePublished": "2010-01-01", "dateModified": "2011-01-01"}
+        for relation in ("citation", "isPartOf"):
+            self.replace(article, '"dateModified": "2020-01-01"', '"dateModified": "2020-01-01", ' + json.dumps(relation) + ': ' + json.dumps(citation))
+        result = self.run_audit()
+        self.assertTrue(result["passed"], result)
+        self.assertEqual(result["summary"]["pageDateFieldsChecked"], 6)
+
+    def test_graph_citation_reference_is_separate_from_primary_article(self):
+        citation = {"@id": "https://example.com/reference/#article", "@type": "Article", "url": "https://example.com/reference/", "dateModified": "2011-01-01"}
+        primary = {"@id": ARTICLE + "#article", "@type": "Article", "url": ARTICLE, "dateModified": "2020-01-01", "citation": {"@id": citation["@id"]}}
+        graph = {"@context": "https://schema.org", "@graph": [primary, citation]}
+        self.replace("grok/guides/example/index.html", '</body>', '<script type="application/ld+json">' + json.dumps(graph) + '</script></body>')
+        result = self.run_audit()
+        self.assertTrue(result["passed"], result)
+        self.replace("grok/guides/example/index.html", '"dateModified": "2020-01-01", "citation"', '"dateModified": "2019-01-01", "citation"')
+        self.assert_blocked("SITEMAP_DATE_MISMATCH")
+
+    def test_primary_schema_wrong_url_and_nested_main_entity_still_block(self):
+        article = "grok/guides/example/index.html"
+        original = (self.root / article).read_text(encoding="utf-8")
+        for schema in (
+            {"@type": "Article", "url": "https://example.com/wrong/"},
+            {"@type": "WebPage", "url": ARTICLE, "mainEntity": {"@type": "Article", "url": "https://example.com/wrong/"}},
+            {"@type": "Article", "url": ARTICLE, "mainEntityOfPage": {"@id": "https://example.com/wrong/"}},
+        ):
+            with self.subTest(schema=schema):
+                write(self.root / article, original.replace('</body>', '<script type="application/ld+json">' + json.dumps(schema) + '</script></body>'))
+                self.assert_blocked("JSONLD_PAGE_URL")
+
+    def test_citation_reference_across_jsonld_scripts_is_separate(self):
+        citation = {"@id": "https://example.com/reference/#article", "@type": "Article", "url": "https://example.com/reference/", "dateModified": "2011-01-01"}
+        self.replace("grok/guides/example/index.html", '"dateModified": "2020-01-01"', '"dateModified": "2020-01-01", "citation": ' + json.dumps(citation["@id"]))
+        self.replace("grok/guides/example/index.html", '</body>', '<script type="application/ld+json">' + json.dumps(citation) + '</script></body>')
+        result = self.run_audit()
+        self.assertTrue(result["passed"], result)
+
+    def test_local_fragment_citation_id_does_not_make_it_the_current_page(self):
+        citation = {"@id": ARTICLE + "#reference-1", "@type": "Article", "url": "https://example.com/reference/", "dateModified": "2011-01-01"}
+        primary = {"@id": ARTICLE + "#article", "@type": "Article", "url": ARTICLE, "dateModified": "2020-01-01", "citation": {"@id": citation["@id"]}}
+        graph = {"@context": "https://schema.org", "@graph": [primary, citation]}
+        self.replace("grok/guides/example/index.html", '</body>', '<script type="application/ld+json">' + json.dumps(graph) + '</script></body>')
+        result = self.run_audit()
+        self.assertTrue(result["passed"], result)
+
+    def test_explicit_main_entity_is_checked_even_if_it_is_also_cited(self):
+        wrong = {"@id": ARTICLE + "#wrong", "@type": "Article", "url": "https://example.com/wrong/", "dateModified": "2011-01-01"}
+        primary = {"@type": "WebPage", "url": ARTICLE, "mainEntity": {"@id": wrong["@id"]}, "citation": {"@id": wrong["@id"]}}
+        graph = {"@context": "https://schema.org", "@graph": [primary, wrong]}
+        self.replace("grok/guides/example/index.html", '</body>', '<script type="application/ld+json">' + json.dumps(graph) + '</script></body>')
+        self.assert_blocked("JSONLD_PAGE_URL")
+
+    def test_main_entity_graph_reference_dates_are_checked(self):
+        graph = {"@context": "https://schema.org", "@graph": [
+            {"@type": "WebPage", "url": ARTICLE, "mainEntity": {"@id": ARTICLE + "#article"}},
+            {"@id": ARTICLE + "#article", "@type": "Article", "url": ARTICLE, "dateModified": "2019-01-01"},
+        ]}
+        self.replace("grok/guides/example/index.html", '</body>', '<script type="application/ld+json">' + json.dumps(graph) + '</script></body>')
+        self.assert_blocked("SITEMAP_DATE_MISMATCH")
+
     def test_sitemap_missing_page(self):
         write(self.root / "grok/sitemap.xml", sitemap([ORIGIN + ROUTES["grok"]]))
         self.assert_blocked("MISSING_SITEMAP_PAGE")
@@ -165,6 +269,26 @@ class PublicationFailures(unittest.TestCase):
             with self.subTest(code=code):
                 write(self.root / "grok/sitemap.xml", text)
                 self.assert_blocked(code)
+
+    def test_robots_none_excludes_sitemap_and_search_targets(self):
+        article = "grok/guides/example/index.html"
+        original = (self.root / article).read_text(encoding="utf-8")
+        for name in ("robots", "googlebot"):
+            for directives in ("none", " NoNe ", "follow, NONE", "none nofollow", "noindex nofollow"):
+                with self.subTest(name=name, directives=directives):
+                    write(self.root / article, original.replace('<meta name="robots" content="">', f'<meta name="{name}" content="{directives}">'))
+                    result = self.run_audit()
+                    self.assertFalse(result["passed"], result)
+                    self.assertTrue({"SITEMAP_NOINDEX", "SEARCH_URL"}.issubset({row["code"] for row in result["errors"]}), result)
+
+    def test_robots_parameter_none_does_not_mean_noindex(self):
+        article = "grok/guides/example/index.html"
+        original = (self.root / article).read_text(encoding="utf-8")
+        for directives in ("max-image-preview:none", "index, follow, max-image-preview: none", "max-image-preview:none, noimageindex", "index follow max-image-preview: none"):
+            with self.subTest(directives=directives):
+                write(self.root / article, original.replace('name="robots" content=""', f'name="robots" content="{directives}"'))
+                result = self.run_audit()
+                self.assertTrue(result["passed"], result)
 
     def test_search_invalid_target_duplicate_and_format(self):
         self.index[0]["url"] = ARTICLE + "missing/"

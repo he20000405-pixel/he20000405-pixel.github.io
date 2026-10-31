@@ -38,6 +38,81 @@ def document_url(value):
     return urlunsplit((p.scheme, p.netloc, p.path, "", ""))
 
 
+def css_urls(source):
+    """Read URL functions, skipping comments and unrelated quoted CSS strings.
+
+    A regex over the whole stylesheet mistakes documentation and content strings
+    for dependencies. Keep original offsets for diagnostics and respect escapes.
+    """
+    size = len(source)
+
+    def string_end(start):
+        quote, cursor = source[start], start + 1
+        while cursor < size:
+            if source[cursor] == "\\":
+                cursor += 2
+            elif source[cursor] == quote:
+                return cursor + 1
+            else:
+                cursor += 1
+        return size
+
+    def space_end(start):
+        while start < size:
+            if source[start].isspace():
+                start += 1
+            elif source.startswith("/*", start):
+                end = source.find("*/", start + 2)
+                start = size if end < 0 else end + 2
+            else:
+                break
+        return start
+
+    def unescape(value):
+        def replace(match):
+            text = match[0][1:]
+            if text in {"\n", "\r", "\r\n", "\f"}:
+                return ""
+            if re.fullmatch(r"[0-9a-fA-F]{1,6}\s?", text):
+                code = int(text.strip(), 16)
+                return chr(code) if 0 < code <= 0x10ffff and not 0xd800 <= code <= 0xdfff else "\ufffd"
+            return text
+        return re.sub(r"\\(?:\r\n|[\n\r\f]|[0-9a-fA-F]{1,6}[ \t\r\n\f]?|.)", replace, value)
+
+    cursor = 0
+    while cursor < size:
+        if source.startswith("/*", cursor):
+            cursor = space_end(cursor)
+            continue
+        if source[cursor] in "\"'":
+            cursor = string_end(cursor)
+            continue
+        token = re.match(r"[-\w]+", source[cursor:])
+        if token:
+            start = cursor
+            cursor += len(token[0])
+            if token[0].lower() != "url" or cursor >= size or source[cursor] != "(":
+                continue
+            begin = space_end(cursor + 1)
+            if begin < size and source[begin] in "\"'":
+                end = string_end(begin)
+                close = space_end(end)
+                if end > begin + 1 and source[end - 1] == source[begin] and close < size and source[close] == ")":
+                    yield unescape(source[begin + 1:end - 1]), start
+                    cursor = close + 1
+                else:
+                    cursor = end
+            else:
+                end = begin
+                while end < size and source[end] != ")":
+                    end += 2 if source[end] == "\\" else 1
+                if end < size:
+                    yield unescape(source[begin:end].strip()), start
+                cursor = min(end + 1, size)
+        else:
+            cursor += 1
+
+
 def parsed_date(value):
     """Preserve date-only precision rather than inventing a midnight or offset."""
     if not isinstance(value, str) or not value.strip():
@@ -99,6 +174,10 @@ class Page(HTMLParser):
         self.ids = [n.attrs["id"] for n in self.find(lambda n: bool(n.attrs.get("id")))]
         self.fragment_names = set(self.ids) | {n.attrs["name"] for n in self.find(lambda n: n.tag == "a" and bool(n.attrs.get("name")))}
         self.lang = next((n.attrs.get("lang", "") for n in self.find(lambda n: n.tag == "html")), "")
+        # Only the first base[href] is effective; base[target] does not count.
+        base = next(iter(self.find(lambda n: n.tag == "base" and "href" in n.attrs)), None)
+        self.base_url = urljoin(url, base.attrs["href"] or "") if base else url
+        self.invalid_base = base if urlsplit(self.base_url).scheme not in {"http", "https"} else None
 
     def find(self, predicate):
         return self.root.find(predicate)
@@ -131,8 +210,11 @@ class Page(HTMLParser):
 
     def excluded(self):
         # Verification documents and deliberate noindex/redirect/404 pages are not articles.
-        robots = " ".join(n.attrs.get("content", "") for n in self.meta("robots") + self.meta("googlebot")).lower()
-        if "noindex" in robots or self.path.name.lower() == "404.html":
+        # Keep parameter/value pairs together, including whitespace around ':'.
+        # max-image-preview:none is not the standalone directive none.
+        robots = {directive.lower() for n in self.meta("robots") + self.meta("googlebot")
+                  for directive in re.findall(r"[^\s,:]+(?:\s*:\s*[^\s,]+)?", n.attrs.get("content") or "")}
+        if robots.intersection({"noindex", "none"}) or self.path.name.lower() == "404.html":
             return True
         if re.fullmatch(r"google[0-9a-f]+\.html", self.path.name, re.I) and self.source.strip().startswith("google-site-verification:"):
             return True
@@ -147,6 +229,74 @@ def objects(value):
     elif isinstance(value, list):
         for item in value:
             yield from objects(item)
+
+
+def page_entities(value, canonical, base_url):
+    """Select the current page's entities, not cited/parent/listed works.
+
+    Top-level page objects remain candidates even with a wrong URL, so a typo
+    cannot escape validation. Follow explicit mainEntity relationships, including
+    graph @id references, while keeping citation and isPartOf metadata separate.
+    """
+    kinds = {"WebPage", "CollectionPage", "Article", "TechArticle", "BlogPosting"}
+
+    def types(obj):
+        value = obj.get("@type", [])
+        return {value} if isinstance(value, str) else {v for v in value if isinstance(v, str)} if isinstance(value, list) else set()
+
+    def roots(item):
+        if isinstance(item, list):
+            for child in item:
+                yield from roots(child)
+        elif isinstance(item, dict):
+            yield item
+            yield from roots(item.get("@graph"))
+
+    nodes = list(objects(value))
+    by_id = {urljoin(base_url, obj["@id"]): obj for obj in nodes if isinstance(obj.get("@id"), str) and obj.get("@type")}
+    referenced = set()
+    for obj in nodes:
+        for relation in ("citation", "isPartOf", "hasPart", "itemListElement"):
+            related = obj.get(relation)
+            for reference in (related if isinstance(related, list) else [related]):
+                if isinstance(reference, str):
+                    referenced.add(urljoin(base_url, reference))
+            for reference in objects(related):
+                if isinstance(reference.get("@id"), str):
+                    referenced.add(urljoin(base_url, reference["@id"]))
+
+    def matches_page(obj):
+        main = obj.get("mainEntityOfPage")
+        main = main.get("@id", main.get("url")) if isinstance(main, dict) else main
+        # A cited work may have a document-local node id (#reference-1) while
+        # describing a completely different URL. Node identity alone does not
+        # make it the current page; explicit mainEntity links are followed below.
+        return any(isinstance(v, str) and document_url(urljoin(base_url, v)) == canonical
+                   for v in (obj.get("url"), main))
+
+    selected = {}
+    pending = []
+    for obj in roots(value):
+        kind = types(obj)
+        ident = urljoin(base_url, obj["@id"]) if isinstance(obj.get("@id"), str) else None
+        if (kind & kinds and (ident not in referenced or matches_page(obj))) or ("WebSite" in kind and isinstance(obj.get("url"), str) and document_url(urljoin(base_url, obj["url"])) == canonical):
+            pending.append(obj)
+    while pending:
+        obj = pending.pop()
+        if id(obj) in selected:
+            continue
+        selected[id(obj)] = obj
+        for relation in ("mainEntity", "mainEntityOfPage"):
+            values = obj.get(relation, [])
+            values = values if isinstance(values, list) else [values]
+            for child in values:
+                if isinstance(child, str):
+                    child = by_id.get(urljoin(base_url, child))
+                elif isinstance(child, dict) and not child.get("@type") and isinstance(child.get("@id"), str):
+                    child = by_id.get(urljoin(base_url, child["@id"]), child)
+                if isinstance(child, dict) and types(child) & kinds:
+                    pending.append(child)
+    return set(selected)
 
 
 class Auditor:
@@ -195,7 +345,7 @@ class Auditor:
         if not raw:
             return None
         try:
-            url = urljoin(page.url if isinstance(page, Page) else str(page), raw)
+            url = urljoin(page.base_url if isinstance(page, Page) else str(page), raw)
             parsed = urlsplit(url)
             path = self.local_path(url)
         except (ValueError, OSError) as exc:
@@ -238,10 +388,15 @@ class Auditor:
 
     def check_links(self):
         for page in self.pages.values():
+            if page.invalid_base:
+                self.issue("BASE_URL", "base href must resolve to an HTTP(S) URL", page, page.invalid_base.line)
             for ident, count in Counter(page.ids).items():
                 if count > 1:
                     self.issue("DUPLICATE_ID", f"Duplicate id: {ident}", page)
             for node in page.find(lambda n: True):
+                # A base URL changes resolution; it is not itself a fetched resource.
+                if node.tag == "base":
+                    continue
                 for key in ("href", "src", "poster"):
                     if node.attrs.get(key):
                         self.target(node.attrs[key], page, node.line)
@@ -260,10 +415,9 @@ class Auditor:
             for path in sorted((self.build_root / repo).rglob("*.css")):
                 url = ORIGIN + prefix + path.relative_to(self.build_root / repo).as_posix()
                 text = path.read_text(encoding="utf-8-sig")
-                for match in re.finditer(r"url\(\s*(['\"]?)(.*?)\1\s*\)", text, re.I):
-                    value = match[2].strip()
+                for value, offset in css_urls(text):
                     if value and not value.startswith(("#", "data:")):
-                        self.target(value, url, text[:match.start()].count("\n") + 1)
+                        self.target(value, url, text[:offset].count("\n") + 1)
 
     def check_maps(self):
         all_mapped = set()
@@ -315,6 +469,7 @@ class Auditor:
         scripts = page.find(lambda n: n.tag == "script" and n.attrs.get("type", "").lower() == "application/ld+json")
         if not scripts:
             self.issue("JSONLD_MISSING", "Indexable page has no JSON-LD", page)
+        parsed_scripts = []
         for script in scripts:
             try:
                 value = json.loads(script.text())
@@ -323,27 +478,28 @@ class Auditor:
             except (ValueError, TypeError) as exc:
                 self.issue("JSONLD_PARSE", str(exc), page, script.line)
                 continue
+            parsed_scripts.append((script, value))
+        # References may point to an entity defined in another script on this page.
+        current_entities = page_entities([value for _, value in parsed_scripts], canonical, page.base_url)
+        for script, value in parsed_scripts:
             for obj in objects(value):
                 types = obj.get("@type", [])
                 types = [types] if isinstance(types, str) else types
                 if not isinstance(types, list) or any(not isinstance(t, str) for t in types):
                     self.issue("JSONLD_TYPE", "@type must be a string or list", page, script.line)
                     continue
-                page_type = bool(set(types).intersection({"WebPage", "CollectionPage", "Article", "TechArticle", "BlogPosting"}))
-                # Do not mistake dates of a site-wide WebSite for an article's.
-                # Jekyll also emits a WebSite page object whose URL is canonical.
-                page_type = page_type or ("WebSite" in types and isinstance(obj.get("url"), str) and document_url(obj["url"]) == canonical)
+                page_type = id(obj) in current_entities
                 if page_type:
                     for field in ("datePublished", "dateModified"):
                         if field in obj:
                             self.record_page_date(page, field, obj[field], script.line, "JSONLD_DATE")
-                if set(types).intersection({"WebPage", "Article", "TechArticle", "BlogPosting"}):
+                if page_type and set(types).intersection({"WebPage", "CollectionPage", "Article", "TechArticle", "BlogPosting"}):
                     own = obj.get("url")
-                    if isinstance(own, str) and document_url(own) != canonical:
+                    if isinstance(own, str) and document_url(urljoin(page.base_url, own)) != canonical:
                         self.issue("JSONLD_PAGE_URL", f"Page schema URL differs from canonical: {own}", page, script.line)
                     main = obj.get("mainEntityOfPage")
                     main = main.get("@id") if isinstance(main, dict) else main
-                    if isinstance(main, str) and document_url(main) != canonical:
+                    if isinstance(main, str) and document_url(urljoin(page.base_url, main)) != canonical:
                         self.issue("JSONLD_PAGE_URL", f"mainEntityOfPage differs from canonical: {main}", page, script.line)
                 if "BreadcrumbList" in types or "ItemList" in types:
                     items = obj.get("itemListElement")
@@ -369,7 +525,7 @@ class Auditor:
                             if not norm(item.get("name")) or not isinstance(target, str):
                                 self.issue("JSONLD_BREADCRUMB", "Breadcrumb requires name and item URL", page, script.line)
                             else:
-                                schema_crumbs.append((norm(item["name"]), urljoin(page.url, target)))
+                                schema_crumbs.append((norm(item["name"]), urljoin(page.base_url, target)))
                     if (is_breadcrumb or positions) and positions != list(range(1, len(items) + 1)):
                         self.issue("JSONLD_POSITIONS", "Structured list positions must be consecutive from 1", page, script.line)
                     if "numberOfItems" in obj and str(obj["numberOfItems"]) != str(len(items)):
@@ -381,7 +537,7 @@ class Auditor:
                             for node in visible[0].children:
                                 if isinstance(node, str) or node.tag not in {"a", "span"} or node.attrs.get("aria-hidden") == "true" or not norm(node.text()):
                                     continue
-                                crumbs.append((norm(node.text()), urljoin(page.url, node.attrs.get("href", page.url))))
+                                crumbs.append((norm(node.text()), urljoin(page.base_url, node.attrs.get("href", page.url))))
                             # Visible short labels and descriptive schema names may differ;
                             # compare target order and count, not editorial wording.
                             if [u for _, u in crumbs] != [u for _, u in schema_crumbs]:
@@ -455,7 +611,7 @@ class Auditor:
             self.check_schema(page, canonical)
             self.check_page_dates(page)
             alternate_nodes = page.alternates()
-            alternate = {n.attrs["hreflang"].lower(): urljoin(page.url, n.attrs.get("href", "")) for n in alternate_nodes}
+            alternate = {n.attrs["hreflang"].lower(): urljoin(page.base_url, n.attrs.get("href", "")) for n in alternate_nodes}
             if len(alternate) != len(alternate_nodes):
                 self.issue("HREFLANG_DUPLICATE", "Duplicate hreflang code", page)
             for code, target in alternate.items():
@@ -465,7 +621,7 @@ class Auditor:
                     continue
                 if code != "x-default" and destination.lang.lower() != code:
                     self.issue("HREFLANG_LANGUAGE", f"Alternate {code} targets lang={destination.lang}: {target}", page)
-                reverse = {n.attrs["hreflang"].lower(): urljoin(destination.url, n.attrs.get("href", "")) for n in destination.alternates()}
+                reverse = {n.attrs["hreflang"].lower(): urljoin(destination.base_url, n.attrs.get("href", "")) for n in destination.alternates()}
                 if reverse != alternate:
                     self.issue("HREFLANG_RECIPROCAL", f"Alternate set not reciprocal: {target}", page)
 
