@@ -36,3 +36,18 @@ input::placeholder{color:#586b7d;opacity:1}
   html[lang="en"] .site-nav { min-width: 0; flex-wrap: wrap; row-gap: 18px; padding: 14px 0; }
   html[lang="en"] .site-nav a[aria-current]:not(.nav-cta)::after { bottom: -5px; }
 }
+
+/* Make ordinary reading links identifiable without relying on color alone. */
+[data-article-content] :where(p, li, td, th, dd, figcaption) a:not(:where(
+  .button-link, .primary-link, .secondary-link, .link-arrow, .text-link, [role="button"],
+  .route-card a, .guide-card a, .issue-card a, .resource-card a, .directory-card a,
+  .product-card a, .catalog-item, .catalog-item a, .lab-list-item a, .intent-group a,
+  .search-result a, .search-discovery a, .search-suggestions a,
+  .hero-actions a, .intro-actions a, .card-actions a, .directory-actions a,
+  .toc-panel a, .reading-rail a, .breadcrumbs a, .site-nav a
+)) {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .18em;
+  text-decoration-skip-ink: auto;
+}

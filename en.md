@@ -3,7 +3,7 @@ title: "ChongGrok AI Membership Guides"
 description: "Independent ChatGPT, SuperGrok, Claude and Gemini membership guides covering subscription assistance, payment errors, account checks and safety boundaries."
 permalink: /en/
 lang: en
-last_modified_at: 2026-10-28
+last_modified_at: 2026-10-31
 ---
 
 <p class="eyebrow">English Guide Directory</p>
@@ -15,9 +15,9 @@ This directory helps you choose the right guide before paying, after a declined 
 
 <div class="intent-grid">
   <section class="intent-group"><h3>Before payment</h3><p>Confirm the sign-in account, plan, billing channel and minimum data required.</p><a href="{{ '/en/resources/ai-membership-safety-checklist/' | relative_url }}">Open the safety checklist →</a></section>
-  <section class="intent-group grok"><h3>Payment was declined</h3><p>Use the product guide to check the bank, billing details, authentication and original billing channel.</p><a href="{{ '/search/?q=card%20declined' | relative_url }}">Find a card-declined guide →</a></section>
+  <section class="intent-group grok"><h3>Payment was declined</h3><p>Use the product guide to check the bank, billing details, authentication and original billing channel.</p><a href="{{ '/search/?q=card%20declined' | relative_url }}">Find a card-declined guide (Chinese) →</a></section>
   <section class="intent-group claude"><h3>Paid, but still on Free</h3><p>Do not pay again. Check whether the bank is still processing the payment, whether the seller issued a final receipt, whether the plan is active, and whether the current account shows the paid plan.</p><a href="{{ '/en/resources/ai-subscription-payment-troubleshooting/' | relative_url }}">Open the troubleshooting tree →</a></section>
-  <section class="intent-group gemini"><h3>The subscription belongs to another account</h3><p>Return to the original purchasing account and sign-in method before reinstalling or subscribing elsewhere.</p><a href="{{ '/search/?q=associated%20account' | relative_url }}">Find account-association help →</a></section>
+  <section class="intent-group gemini"><h3>The subscription belongs to another account</h3><p>Return to the original purchasing account and sign-in method before reinstalling or subscribing elsewhere.</p><a href="{{ '/search/?q=associated%20account' | relative_url }}">Find account-association help (Chinese) →</a></section>
 </div>
 
 ## Available guides
