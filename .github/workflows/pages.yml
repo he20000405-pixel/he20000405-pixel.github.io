@@ -1,0 +1,18 @@
+# Keep this retired workflow registered so GitHub can disable its historic runs.
+# Deleting the file alone does not prevent an old run from being re-run.
+# The workflow ID must remain disabled_manually in GitHub Actions.
+name: Validate and publish knowledge base
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  retired:
+    name: Retired workflow - use pages-validated.yml
+    runs-on: ubuntu-24.04
+    steps:
+      - run: |
+          echo 'This workflow is retired. Use Validate and publish knowledge base (hardened).'
+          exit 1

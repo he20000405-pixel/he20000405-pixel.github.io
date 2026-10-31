@@ -44,7 +44,7 @@ node <主库目录>/scripts/test_search.cjs
 
 五库的 `.github/workflows/pages-validated.yml` 和 `.github/scripts/` 使用相同版本。维护共享规则时同步五库并重新进行正向/反向验收。镜像与 Actions 均固定版本摘要；升级前须核对网站产物及门禁测试。
 
-原 `.github/workflows/pages.yml` 的运行记录保留，但原工作流应在 GitHub Actions 中停用。GitHub 重跑历史任务会使用历史版本的工作流，因此仅修改旧文件不能保护已经存在的旧任务。首次迁移到新工作流后，须核对原工作流为 `disabled_manually`，不要重新启用它。
+原 `.github/workflows/pages.yml` 保留为不具有部署步骤、也不会由提交自动触发的退役占位文件；原工作流必须在 GitHub Actions 中停用，历史运行记录保留。GitHub 重跑历史任务会使用历史版本的工作流，因此仅修改旧文件不能保护已经存在的旧任务。实测删除文件后的 `deleted` 状态仍允许重跑历史任务，所以不能只删除此文件。首次迁移后，须核对原工作流为 `disabled_manually`，不要重新启用或删除占位文件。
 
 需要回退网站时，将所需内容作为新的 `main` 提交（例如正常 revert），让新工作流重新构建和验收；不要通过重跑历史任务回退。
 
