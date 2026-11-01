@@ -68,6 +68,10 @@ async function main() {
   const args = process.argv.slice(2);
   assert.ok(!args.length || (args.length === 2 && args[0] === "--build-root"), "Usage: node test_built_search.cjs [--build-root build]");
   const buildRoot = args[1];
+  const permissionCheck = spawnSync(process.platform === "win32" ? "python" : "python3",
+    ["-B", path.join(__dirname, "test_build_permissions.py")], { encoding: "utf8" });
+  assert.ok(!permissionCheck.error, String(permissionCheck.error));
+  assert.equal(permissionCheck.status, 0, permissionCheck.stdout + permissionCheck.stderr);
   const source = {
     [PAGE]: fixtureHtml,
     [SCRIPT]: fixtureScript,
@@ -179,7 +183,7 @@ async function main() {
     // Missing scripts/DOM, wrong fetch URLs and other actual faults still fail
     // here (and again in the workflow's dedicated built-search step).
     const builtArtifactCheck = buildRoot ? await checkBuild(buildRoot) : null;
-    console.log(JSON.stringify({ passed: true, tests: results.length, testedBuiltArtifacts: Boolean(buildRoot),
+    console.log(JSON.stringify({ passed: true, ownershipBoundaryTests: true, tests: results.length, testedBuiltArtifacts: Boolean(buildRoot),
       builtArtifactCheck, cases: results }, null, 2));
   } finally {
     // The only recursive removal is this verified, freshly created temp folder.

@@ -49,6 +49,26 @@ def manifest(root):
         result[file.relative_to(root).as_posix()] = value
     return result
 
+def prepare_search_index(build_root):
+    """Hand only the generated index back to the runner before host-side enrichment."""
+    root = Path(build_root).resolve()
+    target = root / 'portal' / 'search-index.json'
+    if target.is_symlink() or not target.is_file() or not target.resolve().is_relative_to(root):
+        raise RuntimeError('Expected a regular search index inside the build directory')
+    if os.access(target, os.W_OK):
+        return {'path': str(target), 'ownershipChanged': False}
+    if not hasattr(os, 'getuid') or not hasattr(os, 'getgid'):
+        raise RuntimeError('Search index ownership handoff requires the POSIX CI runner')
+    owner = str(os.getuid()) + ':' + str(os.getgid())
+    # The official image writes as root. Mount only this output file, preserve
+    # its permission bits, and leave the source snapshots and other outputs alone.
+    run('docker', 'run', '--rm', '--network', 'none',
+        '--mount', 'type=bind,source=' + str(target) + ',target=/search-index.json',
+        '--entrypoint', '/bin/chown', IMAGE, owner, '/search-index.json')
+    if not os.access(target, os.W_OK):
+        raise PermissionError('Search index remains unwritable after ownership handoff')
+    return {'path': str(target), 'ownershipChanged': True, 'runnerOwner': owner}
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--repository', required=True)
@@ -101,6 +121,8 @@ def main():
             '--destination', '/github/workspace/build/' + alias)
         print('::endgroup::', flush=True)
     # Use rendered headings from these exact snapshots, not manually maintained aliases.
+    ownership = prepare_search_index(workspace / 'build')
+    (evidence / 'search-index-ownership.json').write_text(json.dumps(ownership, indent=2), encoding='utf-8')
     search_headings = enrich(workspace / 'build')
     (evidence / 'search-headings.json').write_text(json.dumps(search_headings, indent=2), encoding='utf-8')
     (evidence / 'build-manifest.json').write_text(json.dumps(manifest(workspace / 'build'), indent=2), encoding='utf-8')
