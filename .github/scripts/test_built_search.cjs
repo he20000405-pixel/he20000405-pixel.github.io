@@ -7,10 +7,13 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
+const { spawnSync } = require("node:child_process");
 const { checkBuild } = require("./check_built_search.cjs");
 const PAGE = "portal/search/index.html";
 const SCRIPT = "portal/assets/js/search.js";
 const INDEX = "portal/search-index.json";
+const TARGET = "portal/grok-guide/index.html";
+const HEADING = "Grok & unique heading";
 
 const fixtureHtml = `<!doctype html><html><head></head><body>
 <form data-search-form><input name="q" data-search-input><button type="submit">Search</button></form>
@@ -30,7 +33,7 @@ const fixtureScript = `(function () {
     status.textContent = 'Search ready';
     discovery.hidden = false;
     if (!input.value) return;
-    items.filter(item => item.title.includes(input.value)).forEach(item => {
+    items.filter(item => [item.title, ...item.headings].some(title => title.includes(input.value))).forEach(item => {
       const article = document.createElement('article');
       const link = document.createElement('a');
       link.href = item.url;
@@ -68,7 +71,8 @@ async function main() {
   const source = {
     [PAGE]: fixtureHtml,
     [SCRIPT]: fixtureScript,
-    [INDEX]: JSON.stringify([{ product: "Grok", title: "Grok fixture guide", description: "Useful guide", keywords: "grok", url: "/grok-guide/" }])
+    [INDEX]: JSON.stringify([{ product: "Grok", title: "Grok fixture guide", description: "Useful guide", keywords: "grok", url: "https://he20000405-pixel.github.io/grok-guide/", headings: [HEADING] }]),
+    [TARGET]: '<!doctype html><html><body><h1>Grok &amp; <span>unique heading</span></h1></body></html>'
   };
   const temporaryParent = fs.realpathSync(os.tmpdir());
   const temporary = fs.mkdtempSync(path.join(temporaryParent, "chonggrok-search-gate-"));
@@ -81,8 +85,40 @@ async function main() {
     else assert.equal((await checkBuild(root)).passed, true, name);
     results.push(name);
   }
+  async function testGenerator(name, change, expectedError) {
+    const root = path.join(temporary, String(results.length));
+    for (const [file, text] of Object.entries(source)) write(root, file, text);
+    await change(root);
+    const before = fs.readFileSync(path.join(root, INDEX));
+    const run = () => spawnSync(process.platform === "win32" ? "python" : "python3",
+      ["-B", path.join(__dirname, "enrich_search_index.py"), "--build-root", root], { encoding: "utf8" });
+    const result = run();
+    assert.ok(!result.error, String(result.error));
+    if (expectedError) {
+      assert.notEqual(result.status, 0, name);
+      assert.match(result.stderr, expectedError, name);
+      assert.deepEqual(fs.readFileSync(path.join(root, INDEX)), before, "Failed enrichment must not partially rewrite the index");
+    } else {
+      assert.equal(result.status, 0, result.stderr);
+      assert.equal((await checkBuild(root)).passed, true, name);
+      const generated = fs.readFileSync(path.join(root, INDEX));
+      assert.equal(run().status, 0);
+      assert.deepEqual(fs.readFileSync(path.join(root, INDEX)), generated, "Heading enrichment must be idempotent");
+    }
+    results.push(name);
+  }
   try {
     await test("fixture page/script/index connection passes", () => {});
+    await testGenerator("generator replaces stale aliases using the rendered nested H1", root =>
+      replace(root, INDEX, HEADING, "obsolete heading"));
+    await testGenerator("generator ignores headings inside inert templates", root =>
+      replace(root, TARGET, "<body>", "<body><template><h1>Not displayed</h1></template>"));
+    await testGenerator("generator rejects missing target without changing the index", root =>
+      fs.unlinkSync(path.join(root, TARGET)), /HTML does not exist/);
+    await testGenerator("generator rejects multiple H1s without changing the index", root =>
+      replace(root, TARGET, "</body>", "<h1>Second title</h1></body>"), /one nonempty H1/);
+    await testGenerator("generator rejects external targets without fetching them", root =>
+      replace(root, INDEX, "https://he20000405-pixel.github.io/grok-guide/", "https://example.com/grok-guide/"), /canonical knowledge-base URL/);
     await test("removed script is rejected", root => replace(root, PAGE, /<script\b[^>]*src="\/assets\/js\/search\.js[^>]*><\/script>/i, ""), /load exactly one search\.js/);
     await test("script in a comment cannot satisfy loading", root => replace(root, PAGE, /<script\b[^>]*src="\/assets\/js\/search\.js[^>]*><\/script>/i, match => "<!--" + match + "-->"), /load exactly one search\.js/);
     await test("script in a template cannot satisfy loading", root => replace(root, PAGE, /<script\b[^>]*src="\/assets\/js\/search\.js[^>]*><\/script>/i, match => "<template>" + match + "</template>"), /load exactly one search\.js/);
@@ -105,6 +141,20 @@ async function main() {
     await test("non-array index is rejected", root => write(root, INDEX, "{}"), /nonempty array/);
     await test("empty index is rejected", root => write(root, INDEX, "[]"), /nonempty array/);
     await test("invalid record fields are rejected", root => write(root, INDEX, '[{"title":"fixture"}]'), /must contain string/);
+    await test("missing generated heading is rejected", root => {
+      const items = JSON.parse(fs.readFileSync(path.join(root, INDEX), "utf8"));
+      delete items[0].headings;
+      write(root, INDEX, JSON.stringify(items));
+    }, /one generated heading/);
+    await test("stale generated heading is rejected", root => replace(root, INDEX, HEADING, "obsolete heading"), /differs from the actual H1/);
+    await test("heading-only search failure is rejected", root => replace(root, SCRIPT,
+      "[item.title, ...item.headings].some(title => title.includes(input.value))", "item.title.includes(input.value)"), /did not render pageH1/);
+    await test("missing target HTML is rejected", root => fs.unlinkSync(path.join(root, TARGET)), /Indexed HTML page is missing/);
+    await test("every record is checked even within the same product", root => {
+      const items = JSON.parse(fs.readFileSync(path.join(root, INDEX), "utf8"));
+      items.push({ ...items[0], title: "Second Grok guide", url: "https://he20000405-pixel.github.io/second-guide/" });
+      write(root, INDEX, JSON.stringify(items));
+    }, /Indexed HTML page is missing/);
     await test("empty script cannot pass static checks", root => write(root, SCRIPT, "// Script accidentally empty"), /actually load the index/);
     await test("submit handler is required", root => replace(root, SCRIPT, /form\.addEventListener\(["']submit["']/, 'form.addEventListener("unused"'), /submit handler/);
     await test("script path respects the document base", root => {

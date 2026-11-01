@@ -50,4 +50,6 @@ input::placeholder{color:#586b7d;opacity:1}
   text-decoration-thickness: 1px;
   text-underline-offset: .18em;
   text-decoration-skip-ink: auto;
+  /* Let long URLs wrap within narrow article lists without widening the page. */
+  overflow-wrap: anywhere;
 }

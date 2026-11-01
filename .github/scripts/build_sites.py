@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 import subprocess
 import xml.etree.ElementTree as ET
+from enrich_search_index import enrich
 
 OWNER = 'he20000405-pixel'
 REPOS = {
@@ -99,6 +100,9 @@ def main():
             'build', '--source', '/github/workspace/sources/' + name,
             '--destination', '/github/workspace/build/' + alias)
         print('::endgroup::', flush=True)
+    # Use rendered headings from these exact snapshots, not manually maintained aliases.
+    search_headings = enrich(workspace / 'build')
+    (evidence / 'search-headings.json').write_text(json.dumps(search_headings, indent=2), encoding='utf-8')
     (evidence / 'build-manifest.json').write_text(json.dumps(manifest(workspace / 'build'), indent=2), encoding='utf-8')
 
 if __name__ == '__main__':

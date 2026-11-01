@@ -61,15 +61,16 @@
 
   function score(item, query, terms) {
     var title = normalize(item.title);
+    var headings = Array.isArray(item.headings) ? item.headings.map(normalize) : [];
     var product = normalize(item.product);
     var keywords = normalize(item.keywords);
     var description = normalize(item.description);
-    var haystack = [title, product, keywords, description].join(" ");
+    var haystack = [title, product, keywords, description].concat(headings).join(" ");
     if (!query || !terms.length) return -1;
     if (!terms.every(function (term) { return containsTerm(haystack, term); })) return -1;
-    if (title === query) return 1000;
-    if (title.startsWith(query)) return 800;
-    if (title.includes(query)) return 600;
+    if (title === query || headings.includes(query)) return 1000;
+    if (title.startsWith(query) || headings.some(function (heading) { return heading.startsWith(query); })) return 800;
+    if (title.includes(query) || headings.some(function (heading) { return heading.includes(query); })) return 600;
     if (haystack.includes(query)) return 500;
     return Math.min(199, terms.reduce(function (total, term) {
       return total + (containsTerm(title, term) ? 10 : 0)

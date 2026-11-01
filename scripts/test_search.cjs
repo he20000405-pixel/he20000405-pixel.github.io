@@ -132,6 +132,16 @@ async function main() {
   assert.equal(rendered.children[1].children[0].children[0].textContent, fixtures[4].title);
   assert.equal(rendered.children[2].children[0].textContent, fixtures[4].description);
 
+  const headingPage = await browser([
+    { title: "Gemini short label", product: "Gemini", keywords: "", description: "", url: "/gemini/own-account/", headings: ["Gemini 用户自有账号升级与验收"] },
+    { title: "Grok other label", product: "Grok", keywords: "", description: "", url: "/grok/other/", headings: ["Grok 用户自有账号升级与验收"] }
+  ]);
+  headingPage.search("Gemini 用户自有账号升级与验收");
+  assert.deepEqual(headingPage.urls(), ["/gemini/own-account/"], "Actual H1 must retrieve its page without dropping the explicit product");
+  assert.equal(headingPage.nodes.results.children[0].children[1].children[0].children[0].textContent, "Gemini short label", "Search must retain the editorial short label");
+  headingPage.search("Gemini 用户自有账号升级与验收 火星求职");
+  assert.equal(headingPage.urls().length, 0, "Heading aliases must not weaken unknown-topic constraints");
+
   const familyFixtures = [
     { title: "Gemini 家庭组", product: "Gemini", keywords: "家庭组", description: "资格核对", url: "/gemini/family/" },
     { title: "Grok 家庭组无法加入", product: "Grok", keywords: "家庭组", description: "", url: "/grok/family/" },

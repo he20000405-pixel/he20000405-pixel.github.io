@@ -10,12 +10,16 @@ const ORIGIN = "https://he20000405-pixel.github.io";
 const PAGE_URL = ORIGIN + "/search/";
 const SCRIPT_PATH = "/assets/js/search.js";
 const INDEX_PATH = "/search-index.json";
+const PRODUCT_PATHS = {
+  "/chatgpt-plus-pro-china-guide/": "chatgpt", "/supergrok-china-guide/": "grok",
+  "/claude-pro-max-china-guide/": "claude", "/gemini-google-ai-pro-china-guide/": "gemini"
+};
 const VOID = new Set("area base br col embed hr img input link meta param source track wbr".split(" "));
 
 function decode(value) {
-  return value.replace(/&(#x[0-9a-f]+|#\d+|amp|quot|apos|lt|gt);/gi, (all, code) => {
+  return value.replace(/&(#x[0-9a-f]+|#\d+|amp|quot|apos|lt|gt|nbsp);/gi, (all, code) => {
     if (code[0] === "#") return String.fromCodePoint(parseInt(code.slice(code[1].toLowerCase() === "x" ? 2 : 1), code[1].toLowerCase() === "x" ? 16 : 10));
-    return { amp: "&", quot: '"', apos: "'", lt: "<", gt: ">" }[code.toLowerCase()];
+    return { amp: "&", quot: '"', apos: "'", lt: "<", gt: ">", nbsp: "\u00a0" }[code.toLowerCase()];
   });
 }
 
@@ -40,8 +44,12 @@ class Element {
 function parsePage(html) {
   const nodes = [], stack = [];
   const tags = /<!--[\s\S]*?(?:-->|$)|<![^>]*>|<\/?[a-z][^>"']*(?:(?:"[^"]*"|'[^']*')[^>"']*)*>/gi;
-  let match;
+  let match, textStart = 0;
   while ((match = tags.exec(html))) {
+    if (stack.length && match.index > textStart) {
+      stack.at(-1).appendChild({ textContent: decode(html.slice(textStart, match.index)) });
+    }
+    textStart = tags.lastIndex;
     const raw = match[0];
     if (raw.startsWith("<!")) continue;
     const tag = /^<\/?([\w:-]+)/.exec(raw)[1].toLowerCase();
@@ -68,9 +76,30 @@ function parsePage(html) {
       const end = closing.exec(html);
       node.textContent = html.slice(tags.lastIndex, end ? end.index : html.length);
       tags.lastIndex = end ? closing.lastIndex : html.length;
+      textStart = tags.lastIndex;
     } else if (!VOID.has(tag)) stack.push(node);
   }
   return nodes.filter(node => !node.inert);
+}
+
+function targetHeading(buildRoot, value) {
+  const url = new URL(value, PAGE_URL);
+  assert.equal(url.origin, ORIGIN, "Indexed page must be on the knowledge-base origin");
+  assert.ok(!url.search && !url.hash, "Indexed page must use its canonical URL");
+  let alias = "portal", route = decodeURIComponent(url.pathname);
+  for (const [prefix, product] of Object.entries(PRODUCT_PATHS)) {
+    if (route.startsWith(prefix)) { alias = product; route = route.slice(prefix.length); break; }
+  }
+  const root = path.resolve(buildRoot, alias);
+  let file = path.resolve(root, route.replace(/^\/+/, ""));
+  const relative = path.relative(root, file);
+  assert.ok(!relative.startsWith("..") && !path.isAbsolute(relative), "Indexed page escapes its build root");
+  if (route.endsWith("/") || (fs.existsSync(file) && fs.statSync(file).isDirectory())) file = path.join(file, "index.html");
+  assert.ok(file.endsWith(".html") && fs.existsSync(file), "Indexed HTML page is missing: " + value);
+  const headings = parsePage(fs.readFileSync(file, "utf8")).filter(node => node.tagName === "H1")
+    .map(node => node.textContent.replace(/\s+/g, " ").trim());
+  assert.ok(headings.length === 1 && headings[0], "Indexed page must contain one nonempty H1: " + value);
+  return headings[0];
 }
 
 function localFile(root, url) {
@@ -126,6 +155,8 @@ function validateIndex(items) {
       assert.equal(typeof item[key], "string", "Search record " + index + " must contain string " + key);
     }
     assert.ok(item.title.trim() && item.product.trim(), "Search titles and products must not be empty");
+    assert.ok(Array.isArray(item.headings) && item.headings.length === 1 && typeof item.headings[0] === "string" && item.headings[0].trim(),
+      "Search record must contain one generated heading: " + item.title);
     assert.equal(new URL(item.url, PAGE_URL).origin, ORIGIN, "Search result must link to this knowledge base");
   }
 }
@@ -194,27 +225,31 @@ async function checkBuild(buildRoot) {
   const page = await openSearch(buildRoot);
   assert.equal(page.rendered().length, 0, "Empty initial search must not render the full index");
   assert.ok(page.searchNodes.status.textContent.trim(), "Search status must explain the initial state");
-  const samples = [...new Set(page.index.map(item => item.product))]
-    .map(product => page.index.find(item => item.product === product));
   const checked = [];
-  for (const item of samples) {
-    page.search(item.title);
-    const matches = page.rendered();
-    const expected = new URL(item.url, PAGE_URL).href;
-    assert.ok(matches.some(match => match.href === expected && match.title === item.title), "Built search did not render the indexed article: " + item.title);
-    for (const match of matches) assert.ok(page.index.some(entry => new URL(entry.url, PAGE_URL).href === match.href && entry.title === match.title), "Search rendered a result outside the built index");
-    checked.push({ query: item.title, expected });
+  for (const item of page.index) {
+    const heading = targetHeading(buildRoot, item.url);
+    assert.equal(item.headings[0], heading, "Generated search heading differs from the actual H1: " + item.url);
+    for (const [kind, query] of [["resultTitle", item.title], ["pageH1", heading]]) {
+      page.search(query);
+      const matches = page.rendered();
+      const expected = new URL(item.url, PAGE_URL).href;
+      assert.ok(matches.some(match => match.href === expected && match.title === item.title), "Built search did not render " + kind + ": " + query);
+      for (const match of matches) assert.ok(page.index.some(entry => new URL(entry.url, PAGE_URL).href === match.href && entry.title === match.title), "Search rendered a result outside the built index");
+      checked.push({ kind, query, expected });
+    }
   }
-  const first = samples[0];
+  const first = page.index[0];
   const initial = await openSearch(buildRoot, first.title);
   assert.ok(initial.rendered().some(item => item.href === new URL(first.url, PAGE_URL).href), "Query-string search must work on first load");
+  const headingInitial = await openSearch(buildRoot, first.headings[0]);
+  assert.ok(headingInitial.rendered().some(item => item.href === new URL(first.url, PAGE_URL).href), "H1 query-string search must work on first load");
   page.search("unfindablefixturetoken987654321xyz");
   assert.equal(page.rendered().length, 0, "An unknown query must clear previous results");
   page.search("");
   assert.equal(page.rendered().length, 0, "Clearing search must clear results");
   assert.equal(page.searchNodes.discovery.hidden, false, "Clearing search must restore product links");
   return { passed: true, page: PAGE_URL, script: page.scriptUrl.href, indexRequests: page.requests,
-    indexEntries: page.index.length, checkedQueries: checked, queryStringSearch: true, emptyAndNoMatch: true };
+    indexEntries: page.index.length, actualH1sVerified: page.index.length, checkedQueries: checked, queryStringSearch: true, headingQueryStringSearch: true, emptyAndNoMatch: true };
 }
 
 async function main() {

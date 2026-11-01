@@ -4,6 +4,7 @@ import argparse
 import html
 import importlib.util
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -465,14 +466,29 @@ content: "escaped \" url(fake.svg)";
         write(self.root / "grok/guides/example/index.html", page(ARTICLE, '<script type="application/ld+json">' + json.dumps(crumb) + '</script>'))
         self.assert_blocked("JSONLD_LIST_COUNT")
 
+    def run_cli(self, report):
+        command = [sys.executable, "-B", str(SCRIPT), "--build-root", str(self.root), "--report", str(report)]
+        # The child must write the same UTF-8 encoding that this parent decodes,
+        # including on Windows with a legacy console encoding or a Chinese TEMP path.
+        env = os.environ.copy()
+        env["PYTHONIOENCODING"] = "utf-8"
+        return subprocess.run(command, capture_output=True, text=True, encoding="utf-8", env=env)
+
+    def test_cli_unicode_report_path_with_legacy_environment(self):
+        report = self.root / "中文证据" / "验收报告.json"
+        with patch.dict(os.environ, {"PYTHONIOENCODING": "cp936", "PYTHONUTF8": "0"}):
+            result = self.run_cli(report)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        self.assertEqual(json.loads(result.stdout)["report"], str(report))
+        self.assertTrue(json.loads(report.read_text(encoding="utf-8"))["passed"])
+
     def test_cli_exit_report_and_annotation(self):
         report = self.root / "evidence/report.json"
-        command = [sys.executable, "-B", str(SCRIPT), "--build-root", str(self.root), "--report", str(report)]
-        good = subprocess.run(command, capture_output=True, text=True, encoding="utf-8")
+        good = self.run_cli(report)
         self.assertEqual(good.returncode, 0, good.stdout + good.stderr)
         self.assertTrue(json.loads(report.read_text(encoding="utf-8"))["passed"])
         self.replace("portal/index.html", ARTICLE + "?", ARTICLE + "missing/?")
-        bad = subprocess.run(command, capture_output=True, text=True, encoding="utf-8")
+        bad = self.run_cli(report)
         self.assertEqual(bad.returncode, 1, bad.stdout + bad.stderr)
         self.assertIn("::error", bad.stdout)
         self.assertFalse(json.loads(report.read_text(encoding="utf-8"))["passed"])
