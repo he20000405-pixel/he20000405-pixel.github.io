@@ -102,6 +102,7 @@ ChongGrok no longer sells legacy monthly or quarterly SuperGrok products. New or
 - Main guide: https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/
 - Topic index: https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/
 - Google AI plans: https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/google-ai-plans/
+- Own-account upgrade and verification: https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/gemini-own-account-upgrade/
 - Payment errors: https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/gemini-payment-errors/
 - Paid but entitlement not active: https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/gemini-paid-but-not-active/
 - Renewal failed or downgraded: https://he20000405-pixel.github.io/gemini-google-ai-pro-china-guide/guides/gemini-renewal-failed/
