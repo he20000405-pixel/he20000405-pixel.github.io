@@ -387,6 +387,111 @@ content: "escaped \" url(fake.svg)";
         self.replace("grok/guides/example/index.html", '</body>', '<script type="application/ld+json">' + json.dumps(graph) + '</script></body>')
         self.assert_blocked("SITEMAP_DATE_MISMATCH")
 
+    def test_project_author_regression_mixed_webpage_person_article_organization(self):
+        # The original production issue: valid JSON, two conflicting brand identities.
+        person = {"@type": "Person", "name": "ChongGrok", "url": "https://chonggrok.com/"}
+        self.replace("grok/guides/example/index.html", '"dateModified": "2020-01-01"', '"dateModified": "2020-01-01", "author": ' + json.dumps(person))
+        article = {"@type": "Article", "url": ARTICLE, "author": {**person, "@type": "Organization"}}
+        self.replace("grok/guides/example/index.html", '</body>', '<script type="application/ld+json">' + json.dumps(article) + '</script></body>')
+        self.assert_blocked("JSONLD_PROJECT_AUTHOR")
+
+    def test_project_author_requires_explicit_organization_type(self):
+        relative = "grok/guides/example/index.html"
+        original = (self.root / relative).read_text(encoding="utf-8")
+        for kind in (None, "Person", ["Person", "Organization"]):
+            with self.subTest(kind=kind):
+                author = {"name": "ChongGrok", "url": "https://chonggrok.com/"}
+                if kind is not None:
+                    author["@type"] = kind
+                schema = {"@type": "Article", "url": ARTICLE, "author": author}
+                write(self.root / relative, original.replace('</body>', '<script type="application/ld+json">' + json.dumps(schema) + '</script></body>'))
+                self.assert_blocked("JSONLD_PROJECT_AUTHOR")
+
+    def test_project_author_url_cannot_drift_to_product_or_unrelated_identity(self):
+        relative = "grok/guides/example/index.html"
+        original = (self.root / relative).read_text(encoding="utf-8")
+        for url in (None, "https://chonggrok.com/chatgpt", "https://chonggrok.com/claude", "https://example.com/"):
+            with self.subTest(url=url):
+                author = {"@type": "Organization", "name": "ChongGrok", "url": url}
+                schema = {"@type": "Article", "url": ARTICLE, "author": author}
+                write(self.root / relative, original.replace('</body>', '<script type="application/ld+json">' + json.dumps(schema) + '</script></body>'))
+                self.assert_blocked("JSONLD_PROJECT_AUTHOR_URL")
+
+    def test_project_author_allows_real_people_other_organizations_and_multiple_authors(self):
+        for kind, url in (("Organization", "https://chonggrok.com/"), (["Organization"], "https://chonggrok.com")):
+            authors = [{"@type": kind, "name": "ChongGrok", "url": url},
+                       {"@type": "Person", "name": "Jane Doe", "url": "https://example.com/jane"},
+                       {"@type": "Organization", "name": "Other Publisher", "url": "https://example.com/"}]
+            schema = {"@type": "Article", "url": ARTICLE, "author": authors}
+            self.replace("grok/guides/example/index.html", '</body>', '<script type="application/ld+json">' + json.dumps(schema) + '</script></body>')
+        result = self.run_audit()
+        self.assertTrue(result["passed"], result)
+        self.assertEqual(result["summary"]["projectAuthorFieldsChecked"], 2)
+
+    def test_project_author_resolves_graph_and_cross_script_references(self):
+        relative = "grok/guides/example/index.html"
+        original = (self.root / relative).read_text(encoding="utf-8")
+        for reference in ("#brand-author", {"@id": "#brand-author"}):
+            with self.subTest(reference=reference):
+                author = {"@id": "#brand-author", "@type": "Person", "name": "ChongGrok", "url": "https://chonggrok.com/"}
+                graph = {"@graph": [{"@type": "Article", "url": ARTICLE, "author": reference}]}
+                scripts = ''.join('<script type="application/ld+json">' + json.dumps(s) + '</script>' for s in (graph, author))
+                write(self.root / relative, original.replace('</body>', scripts + '</body>'))
+                self.assert_blocked("JSONLD_PROJECT_AUTHOR")
+                self.replace(relative, '"@type": "Person"', '"@type": "Organization"')
+                self.assertTrue(self.run_audit()["passed"])
+
+    def test_project_author_does_not_relabel_cited_work_authors(self):
+        # A historical citation can describe someone with the same name. Its
+        # identity is separate from the current page and must not be rewritten.
+        citation = {"@id": "https://example.com/reference/#article", "@type": "Article", "url": "https://example.com/reference/", "author": {"@type": "Person", "name": "ChongGrok", "url": "https://example.com/profile"}}
+        primary = {"@type": "Article", "url": ARTICLE, "author": {"@type": "Person", "name": "Jane Doe"}, "citation": {"@id": citation["@id"]}}
+        graph = {"@graph": [primary, citation]}
+        self.replace("grok/guides/example/index.html", '</body>', '<script type="application/ld+json">' + json.dumps(graph) + '</script></body>')
+        result = self.run_audit()
+        self.assertTrue(result["passed"], result)
+        self.assertEqual(result["summary"].get("projectAuthorFieldsChecked", 0), 0)
+
+    def test_project_author_same_id_type_conflict_cannot_be_shadowed(self):
+        relative = "grok/guides/example/index.html"
+        original = (self.root / relative).read_text(encoding="utf-8")
+        primary = {"@type": "Article", "url": ARTICLE, "author": {"@id": "#brand"}}
+        person = {"@id": "#brand", "@type": "Person"}
+        organization = {"@id": ARTICLE + "#brand", "@type": "Organization", "name": "ChongGrok", "url": "https://chonggrok.com/"}
+        for order in ((person, organization), (organization, person)):
+            for cross_script in (True, False):
+                with self.subTest(order=order, cross_script=cross_script):
+                    objects = [primary, *order]
+                    schemas = objects if cross_script else [{"@graph": objects}]
+                    scripts = ''.join('<script type="application/ld+json">' + json.dumps(s) + '</script>' for s in schemas)
+                    write(self.root / relative, original.replace('</body>', scripts + '</body>'))
+                    self.assert_blocked("JSONLD_PROJECT_AUTHOR")
+
+    def test_project_author_same_id_url_conflict_cannot_be_shadowed(self):
+        relative = "grok/guides/example/index.html"
+        original = (self.root / relative).read_text(encoding="utf-8")
+        primary = {"@type": "Article", "url": ARTICLE, "author": {"@id": "#brand"}}
+        product = {"@id": "#brand", "url": "https://chonggrok.com/chatgpt"}
+        organization = {"@id": "#brand", "@type": "Organization", "name": "ChongGrok", "url": "https://chonggrok.com/"}
+        for order in ((product, organization), (organization, product)):
+            with self.subTest(order=order):
+                scripts = ''.join('<script type="application/ld+json">' + json.dumps(s) + '</script>' for s in [primary, *order])
+                write(self.root / relative, original.replace('</body>', scripts + '</body>'))
+                self.assert_blocked("JSONLD_PROJECT_AUTHOR_URL")
+
+    def test_project_author_same_id_partial_statements_merge_without_false_failure(self):
+        schemas = [
+            {"@type": "Article", "url": ARTICLE, "author": {"@id": "#brand"}},
+            {"@id": "#brand", "name": "ChongGrok"},
+            {"@id": "#brand", "@type": "Organization"},
+            {"@id": ARTICLE + "#brand", "url": "https://chonggrok.com/"},
+        ]
+        scripts = ''.join('<script type="application/ld+json">' + json.dumps(s) + '</script>' for s in schemas)
+        self.replace("grok/guides/example/index.html", '</body>', scripts + '</body>')
+        result = self.run_audit()
+        self.assertTrue(result["passed"], result)
+        self.assertEqual(result["summary"]["projectAuthorFieldsChecked"], 1)
+
     def test_sitemap_missing_page(self):
         write(self.root / "grok/sitemap.xml", sitemap([ORIGIN + ROUTES["grok"]]))
         self.assert_blocked("MISSING_SITEMAP_PAGE")

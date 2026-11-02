@@ -80,6 +80,13 @@ async function main() {
     assert.equal(page.nodes.discovery.hidden, true);
     console.log(query + " -> " + page.urls().length + " results; first: " + page.urls()[0]);
   }
+  const latestProGuide = items.find(item => item.url.endsWith("/gpt-6-1-codex-work-limits-guide/"));
+  const historicalProGuide = items.find(item => item.url.endsWith("/chatgpt-pro-100-200/"));
+  assert.ok(latestProGuide && historicalProGuide, "Both current and historical Pro guides must remain indexed");
+  page.search("Pro 500");
+  assert.ok(page.urls().includes(latestProGuide.url) && page.urls().includes(historicalProGuide.url));
+  assert.ok(page.urls().indexOf(latestProGuide.url) < page.urls().indexOf(historicalProGuide.url), "The current Pro 500 guide must precede a historical guide that only mentions the new plan");
+  console.log("Pro 500 -> current guide precedes the historical Pro 100 / 200 guide");
   page.search("grok 403");
   assert.ok(!page.urls()[0].includes("/en/"), "Chinese should lead comparable matches");
   assert.ok(page.urls().some(url => url.includes("/en/")), "English matches must remain accessible");
@@ -132,6 +139,25 @@ async function main() {
   assert.equal(rendered.children[1].children[0].children[0].textContent, fixtures[4].title);
   assert.equal(rendered.children[2].children[0].textContent, fixtures[4].description);
 
+  const topicPriority = await browser([
+    { title: "Pro 500", product: "ChatGPT", keywords: "", description: "", url: "/exact-plan/" },
+    { title: "额度说明", product: "ChatGPT", keywords: "", description: "", headings: ["如何选择 Pro 500"], url: "/heading-plan/" },
+    { title: "当前额度指南", product: "ChatGPT", keywords: "ChatGPT Pro 500", description: "", url: "/keyword-plan/" },
+    { title: "历史方案对照", product: "ChatGPT", keywords: "Pro 100 200", description: "当前 Pro 500 请查阅最新指南。", url: "/mentioned-plan/" },
+    { title: "English plan guide", product: "ChatGPT", keywords: "ChatGPT Pro 500", description: "", url: "/en/keyword-plan/" },
+    { title: "其他产品", product: "Grok", keywords: "Pro 500", description: "", url: "/other-product/" }
+  ]);
+  topicPriority.search("Pro 500");
+  const ordered = topicPriority.urls();
+  assert.equal(ordered[0], "/exact-plan/", "An exact title must retain highest priority");
+  assert.ok(ordered.indexOf("/heading-plan/") < ordered.indexOf("/keyword-plan/"), "A matching H1 must precede keywords");
+  assert.ok(ordered.indexOf("/keyword-plan/") < ordered.indexOf("/mentioned-plan/"), "A topic keyword must precede a descriptive mention");
+  assert.ok(ordered.indexOf("/keyword-plan/") < ordered.indexOf("/en/keyword-plan/"), "Comparable Chinese matches must retain priority");
+  topicPriority.search("ChatGPT Pro 500");
+  assert.ok(!topicPriority.urls().includes("/other-product/"), "Keyword priority must not discard an explicit product");
+  topicPriority.search("Pro 500 火星求职");
+  assert.equal(topicPriority.urls().length, 0, "Keyword priority must not discard unknown query terms");
+
   const headingPage = await browser([
     { title: "Gemini short label", product: "Gemini", keywords: "", description: "", url: "/gemini/own-account/", headings: ["Gemini 用户自有账号升级与验收"] },
     { title: "Grok other label", product: "Grok", keywords: "", description: "", url: "/grok/other/", headings: ["Grok 用户自有账号升级与验收"] }
@@ -175,6 +201,9 @@ async function main() {
     fallback.search(query);
     assert.ok(fallback.urls().length > 0, query + " must work without Intl.Segmenter");
   }
+  fallback.search("Pro 500");
+  assert.ok(fallback.urls().includes(latestProGuide.url) && fallback.urls().includes(historicalProGuide.url));
+  assert.ok(fallback.urls().indexOf(latestProGuide.url) < fallback.urls().indexOf(historicalProGuide.url), "Current-plan ranking must work without Intl.Segmenter");
   console.log("PASS: real index queries, conservative natural-question fallback, product/topic constraints, exact-match priority, language retention, no matches, empty input, safe text rendering, loading and three failure modes; " + items.length + " index entries.");
 }
 

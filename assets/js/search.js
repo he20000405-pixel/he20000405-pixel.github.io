@@ -71,6 +71,8 @@
     if (title === query || headings.includes(query)) return 1000;
     if (title.startsWith(query) || headings.some(function (heading) { return heading.startsWith(query); })) return 800;
     if (title.includes(query) || headings.some(function (heading) { return heading.includes(query); })) return 600;
+    // Editorial keywords identify the topic; a description can merely mention another plan.
+    if (keywords.includes(query)) return 550;
     if (haystack.includes(query)) return 500;
     return Math.min(199, terms.reduce(function (total, term) {
       return total + (containsTerm(title, term) ? 10 : 0)
