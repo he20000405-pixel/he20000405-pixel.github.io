@@ -17,7 +17,7 @@ collection_items:
 <div class="lab-list">
   <article class="lab-list-item">
     <a class="lab-list-media" href="{{ '/labs/codex-dream-skin-windows/' | relative_url }}">
-      <img src="{{ '/assets/images/labs/codex-dream-skin-windows-social.png' | relative_url }}" alt="Windows Codex Desktop 动态换肤教程" width="1200" height="630">
+      <img src="{{ '/assets/images/labs/codex-dream-skin-windows-preview.webp' | relative_url }}" alt="Windows Codex Desktop 动态换肤教程" width="640" height="336" decoding="async">
     </a>
     <div>
       <p class="eyebrow">Windows · Codex Desktop · CDP</p>
