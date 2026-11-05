@@ -35,3 +35,5 @@ collection_items:
 - 不把本机回环调试描述成绝对安全。
 - 不提供 API 额度、接码、批量注册或其他业务范围外教程。
 - 第三方项目必须保留来源、版本、许可和非官方声明。
+
+[CI gate fixture](/ci-negative-node24-intentionally-missing-20261105/)
