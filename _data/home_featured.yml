@@ -5,6 +5,10 @@
     "description": "模型额度、凭证安全、购买渠道与会员选型。",
     "links": [
       {
+        "label": "ChatGPT Plus / Pro 开票报销",
+        "url": "https://he20000405-pixel.github.io/docs/chatgpt-plus-pro-invoice-reimbursement-guide/"
+      },
+      {
         "label": "GPT-6.1、GPT-6 Astra 与 Codex 额度",
         "url": "https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/gpt-6-1-codex-work-limits-guide/"
       },

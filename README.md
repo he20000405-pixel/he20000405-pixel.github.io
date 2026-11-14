@@ -29,10 +29,11 @@ See [PUBLISHING.md](PUBLISHING.md) for deployment and indexing steps.
 
 ## Recent Chinese-language guides
 
-Knowledge index updated: 2026-10-31. These links point to the original articles in the existing product knowledge bases.
+Knowledge index updated: 2026-11-15. These links point to the original articles in this repository and the product knowledge bases.
 
 ### ChatGPT Plus / Pro
 
+- [公司与高校订阅 ChatGPT Plus / Pro 如何开票报销？电子普票与《服务费用结算证明》办理指南](./docs/chatgpt-plus-pro-invoice-reimbursement-guide.md) — 详解发票入账与《服务费用结算证明》对账字段、财务及客服确认话术模板。
 - [GPT-6.1 (Terra / Sol) 与 GPT-6 Astra、Codex 额度详解：2026 年 10 月 Plus 与 Pro 怎么选？](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/gpt-6-1-codex-work-limits-guide/)
 - [ChatGPT Plus / Pro 免密码代充安全吗？2026 AuthSession 凭证边界与充后刷新验收指南](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-session-security-verification-guide/)
 - [苹果 App Store / Google Play 内购的 ChatGPT Plus 怎么转网页端直充？2026 防掉号与防重复扣费指南](https://he20000405-pixel.github.io/chatgpt-plus-pro-china-guide/guides/chatgpt-apple-google-to-web-migration/)
