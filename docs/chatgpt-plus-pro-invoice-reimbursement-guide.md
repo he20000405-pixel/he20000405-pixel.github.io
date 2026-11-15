@@ -1,5 +1,5 @@
 ---
-title: "公司与高校订阅 ChatGPT Plus / Pro 如何开票报销？电子普票与《服务费用结算证明》办理指南"
+title: "ChatGPT Plus / Pro 开票报销指南：电子普票与服务费用结算证明"
 description: "公司、高校课题组和个人办理 ChatGPT Plus / Pro 报销时，如何核对 ChongGrok 充值服务的电子普通发票、服务费用结算证明、订单和服务期限。"
 keywords: [ChatGPT Plus 开票, ChatGPT Pro 报销, 科研经费报销 ChatGPT, 服务费用结算证明, ChongGrok, 电子普通发票, ChatGPT Invoice Reimbursement]
 permalink: /docs/chatgpt-plus-pro-invoice-reimbursement-guide/
