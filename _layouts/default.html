@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="{{ "/assets/css/knowledge-ui.css" | relative_url }}?v={{ site.asset_version }}">
     {% if page.url == "/" %}<link rel="stylesheet" href="{{ "/assets/css/homepage-refresh.css" | relative_url }}?v={{ site.asset_version }}">{% endif %}
     <script src="{{ "/assets/js/knowledge-ui.js" | relative_url }}?v={{ site.asset_version }}" defer></script>
+    {% if site.data.umami.website_id and site.data.umami.paths contains page.url %}
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="{{ site.data.umami.website_id | escape }}" data-domains="he20000405-pixel.github.io" data-exclude-search="true" data-exclude-hash="true" data-do-not-track="true"></script>
+    {% endif %}
     {% include seo-structured-data.html %}
   </head>
   {% assign section_key = 'guide' %}
