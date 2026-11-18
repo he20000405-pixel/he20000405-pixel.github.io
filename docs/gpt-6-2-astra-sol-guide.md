@@ -154,7 +154,7 @@ GPT-6.2 系列最大的工程改进在于**单任务总成本的降幅远大于 
 
 ### 5.2 长上下文加价、速率倍率与数据驻留
 * **长上下文阶梯定价**：当单次请求输入超过 **272K tokens** 时，整次请求的输入与缓存费率按对应短上下文价格的 **2 倍**计算，输出按 **1.5 倍**计算。
-* **API 速率模式费率**：`Batch` 模式为同条件 Standard 价格的 **0.5 倍**（半价）；`Fast` 模式为 **2 倍**；API `Ultrafast` 沿用与合格 Credits 相同的阶梯优惠窗口--截至 **2027 年 2 月 28 日**（太平洋时间，含当天）按 **3 倍**计费，次日起恢复为 **6 倍**。
+* **API 速率模式费率**：`Batch` 模式为同条件 Standard 价格的 **0.5 倍**（半价）；`Fast` 模式为 **2 倍**；API `Ultrafast` 沿用与合格 Credits 相同的阶梯优惠窗口。截至 **2027 年 2 月 28 日**（太平洋时间，含当天）按 **3 倍**计费，次日起恢复为 **6 倍**。
 * **数据驻留（Data Residency）**：使用 API 数据驻留功能时，`Standard`、`Fast` 与 `Batch` 可选择受支持的**美国或欧盟**区域驻留，而 `Ultrafast` 的区域驻留**仅限美国**（[API 更新日志](https://developers.openai.com/api/docs/changelog#november-2026) 另提供全球处理选项）。
 
 ---
@@ -194,19 +194,19 @@ Plus、Pro 100 与 Business 不支持 Ultrafast（购买额外 credits 亦无法
 
 ### OpenAI 官方发布与文档
 * **发布公告**：[Introducing GPT-6.2 Astra and Sol](https://openai.com/index/introducing-gpt-6-2-astra-sol/)
-* **系统卡与安全分级**：[GPT-6.2 Astra & Sol System Card](https://deploymentsafety.openai.com/gpt-6-2-astra-sol) | [Preparedness Assessment](https://deploymentsafety.openai.com/gpt-6-2-astra-sol/preparedness-assessment)
-* **ChatGPT Work 与 Codex 指南**：[ChatGPT Work and Codex](https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex) | [What's New: GPT-6.2 Astra & Sol](https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol)
-* **更新日志与套餐权限**：[ChatGPT Release Notes](https://help.openai.com/en/articles/6825453-chatgpt-release-notes) | [Business Models and Limits](https://help.openai.com/en/articles/12003714-chatgpt-business-models-and-limits) | [Understanding ChatGPT and Codex Usage Limits](https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits)
-* **速度档位与认证说明**：[Agent Configuration: Speed](https://learn.chatgpt.com/docs/agent-configuration/speed) | [Codex Pricing (Ultrafast)](https://learn.chatgpt.com/docs/pricing?codex-pricing-speed=ultrafast) | [Authentication Docs](https://learn.chatgpt.com/docs/auth)
-* **API 模型与定价文档**：[gpt-6.2-astra](https://developers.openai.com/api/docs/models/gpt-6.2-astra) | [gpt-6.2-sol](https://developers.openai.com/api/docs/models/gpt-6.2-sol) | [API Pricing](https://developers.openai.com/api/docs/pricing) | [API Changelog (Nov 2026)](https://developers.openai.com/api/docs/changelog#november-2026)
+* **系统卡与安全分级**：[GPT-6.2 Astra & Sol System Card](https://deploymentsafety.openai.com/gpt-6-2-astra-sol)、[Preparedness Assessment](https://deploymentsafety.openai.com/gpt-6-2-astra-sol/preparedness-assessment)
+* **ChatGPT Work 与 Codex 指南**：[ChatGPT Work and Codex](https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex)、[What's New: GPT-6.2 Astra & Sol](https://learn.chatgpt.com/docs/whats-new/gpt-62-astra-sol)
+* **更新日志与套餐权限**：[ChatGPT Release Notes](https://help.openai.com/en/articles/6825453-chatgpt-release-notes)、[Business Models and Limits](https://help.openai.com/en/articles/12003714-chatgpt-business-models-and-limits)、[Understanding ChatGPT and Codex Usage Limits](https://help.openai.com/en/articles/20001625-understanding-chatgpt-and-codex-usage-limits)
+* **速度档位与认证说明**：[Agent Configuration: Speed](https://learn.chatgpt.com/docs/agent-configuration/speed)、[Codex Pricing (Ultrafast)](https://learn.chatgpt.com/docs/pricing?codex-pricing-speed=ultrafast)、[Authentication Docs](https://learn.chatgpt.com/docs/auth)
+* **API 模型与定价文档**：[gpt-6.2-astra](https://developers.openai.com/api/docs/models/gpt-6.2-astra)、[gpt-6.2-sol](https://developers.openai.com/api/docs/models/gpt-6.2-sol)、[API Pricing](https://developers.openai.com/api/docs/pricing)、[API Changelog (Nov 2026)](https://developers.openai.com/api/docs/changelog#november-2026)
 
 ### 第三方基准机构报告
-* **Artificial Analysis**：[OpenAI has the #2 model in the Intelligence Index with the release of GPT-6.2 Astra and GPT-6.2 Sol](https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol) | [AA-3D Methodology](https://artificialanalysis.ai/methodology/aa-3d)
+* **Artificial Analysis**：[OpenAI has the #2 model in the Intelligence Index with the release of GPT-6.2 Astra and GPT-6.2 Sol](https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol)、[AA-3D Methodology](https://artificialanalysis.ai/methodology/aa-3d)
 * **Epoch AI**：[How good are Fable 5.2 and GPT-6.2 Astra at real work?](https://epoch.ai/publications/how-good-are-fable-5-2-and-gpt-6-2-astra-at-real-work)
-* **其他基准原榜**：[Agents’ Last Exam Leaderboard](https://agents-last-exam.org/leaderboard) | [Cognition FrontierCode 2.0](https://cognition.com/frontiercode) | [LifeVal Paper](https://cdn.openai.com/pdf/lifeval.pdf)
+* **其他基准原榜**：[Agents’ Last Exam Leaderboard](https://agents-last-exam.org/leaderboard)、[Cognition FrontierCode 2.0](https://cognition.com/frontiercode)、[LifeVal Paper](https://cdn.openai.com/pdf/lifeval.pdf)
 
 ### 开发者与媒体实测引用
 * **DataCamp（Josef Waples）**：[GPT-6.2 Astra and Sol 实测分析](https://www.datacamp.com/zh/blog/gpt-6-2-astra-and-sol)
 * **APPSO（36 氪授权发布）**：[GPT-6.2 Astra 场景实测](https://www.36kr.com/p/4074475449062281)
 * **数字生命卡兹克（凤凰网转载）**：[GPT-6.2 代码审查与实测报告](https://tech.ifeng.com/c/8y7WiMENt8f)
-* **Reddit Three.js Eval（`u/k1rd`）**：[GPT-6.2 Sol Results on a Standard Three.js Eval](https://www.reddit.com/r/OpenAI/comments/1xz037w/gpt62_sol_results_on_a_standard_threejs_eval_16/) | [threejseval.com](https://threejseval.com/models/gpt-6.2-sol-high)
+* **Reddit Three.js Eval（`u/k1rd`）**：[GPT-6.2 Sol Results on a Standard Three.js Eval](https://www.reddit.com/r/OpenAI/comments/1xz037w/gpt62_sol_results_on_a_standard_threejs_eval_16/)、[threejseval.com](https://threejseval.com/models/gpt-6.2-sol-high)
