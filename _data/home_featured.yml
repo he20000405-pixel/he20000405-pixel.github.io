@@ -5,6 +5,10 @@
     "description": "模型额度、凭证安全、购买渠道与会员选型。",
     "links": [
       {
+        "label": "GPT-6.2 Astra / Sol 切换与额度",
+        "url": "https://he20000405-pixel.github.io/docs/gpt-6-2-astra-sol-guide/"
+      },
+      {
         "label": "ChatGPT Plus / Pro 开票报销",
         "url": "https://he20000405-pixel.github.io/docs/chatgpt-plus-pro-invoice-reimbursement-guide/"
       },
